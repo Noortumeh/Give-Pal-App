@@ -2,9 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Services\NewsService;
 
 class NewsController extends Controller
 {
-    //
+    protected $newsService;
+    public function __construct(NewsService $newsService)
+    {
+        $this->newsService = $newsService;
+    }
+
+    public function getNews(){
+        return $this->newsService->getNews();
+    }
 }
