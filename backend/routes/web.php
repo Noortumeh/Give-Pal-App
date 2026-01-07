@@ -1,16 +1,15 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{MediaController, NewsController, ProjectsController, ServicesController, StatisticsController, SuccessPartnersController, SuccessStoriesController};
+use App\Http\Controllers\{MediaController, NewsController, ProjectsController, ServicesController, StatisticsController, SuccessPartnersController, SuccessStoriesController, UserController};
 
 //Services Routes
 Route::get('/services',[ServicesController::class, 'getServices']);
-// Route::post('/services',[ServicesController::class, 'addServices']);
-// Route::put('/services/{id}',[ServicesController::class, 'updateServices']);
-// Route::delete('/services/{id}',[ServicesController::class, 'deleteServices']);
+Route::get('/services/{id}',[ServicesController::class, 'getServiceData']);
 
 //Projects Routes
 Route::get('/projects', [ProjectsController::class, 'getProjects']);
+Route::get('/projects/{id}', [ProjectsController::class, 'getProjectData']);
 
 //Success Stories Routes
 Route::get('/success-stories', [SuccessStoriesController::class, 'getSuccessStories']);
