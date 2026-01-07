@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
-use App\Services\{MediaService, NewsService, ProjectsService, ServicesService, StatisticsService, SuccessPartnersService, SuccessStoriesService};
+use App\Services\{MediaService, NewsService, ProjectsService, ServicesService, StatisticsService, SuccessPartnersService, SuccessStoriesService, UserService};
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -39,6 +39,10 @@ class AppServiceProvider extends ServiceProvider
 
         App::bind(SuccessPartnersService::class, function () {
             return new SuccessPartnersService();
+        });
+
+        App::bind(UserService::class, function () {
+            return new UserService();
         });
     }
 
