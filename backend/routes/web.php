@@ -13,9 +13,11 @@ Route::get('/projects/{id}', [ProjectsController::class, 'getProjectData']);
 
 //Success Stories Routes
 Route::get('/success-stories', [SuccessStoriesController::class, 'getSuccessStories']);
+Route::get('/success-stories/{id}', [SuccessStoriesController::class, 'getSuccessStorieData']);
 
 //Statistics Routes
 Route::get('/statistics', [StatisticsController::class, 'getStatistics']);
+Route::get('/statistics/{id}', [StatisticsController::class, 'getStatisticsData']);
 
 //News Routes
 Route::get('/news', [NewsController::class, 'getNews']);
