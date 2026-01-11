@@ -21,12 +21,17 @@ Route::get('/statistics/{id}', [StatisticsController::class, 'getStatisticsData'
 
 //News Routes
 Route::get('/news', [NewsController::class, 'getNews']);
+Route::get('/news/{id}', [NewsController::class, 'getNewsData']);
+
 
 //Media Routes
 Route::get('/media', [MediaController::class, 'getMedia']);
+Route::get('/media/{id}', [MediaController::class, 'getMediaData']);
+
 
 //Success Partners Routes
 Route::get('/success-partners', [SuccessPartnersController::class, 'getSuccessPartners']);
+Route::get('/success-partners/{id}', [SuccessPartnersController::class, 'getSuccessPartnersData']);
 
 
 

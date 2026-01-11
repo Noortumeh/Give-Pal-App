@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{ProjectsController, ServicesController, StatisticsController, SuccessStoriesController, UserController};
+use App\Http\Controllers\{MediaController, NewsController, ProjectsController, ServicesController, StatisticsController, SuccessPartnersController, SuccessStoriesController, UserController};
 
 Route::get('/user', function (Request $request) {
     return $request->user();
@@ -30,3 +30,18 @@ Route::delete('/success-stories/{id}',[SuccessStoriesController::class, 'deleteS
 Route::post('/statistics',[StatisticsController::class, 'addStatistics'])->middleware('auth:sanctum');
 Route::put('/statistics/{id}',[StatisticsController::class, 'updateStatistics'])->middleware('auth:sanctum');
 Route::delete('/statistics/{id}',[StatisticsController::class, 'deleteStatistics'])->middleware('auth:sanctum');
+
+// News Routes
+Route::post('/news',[NewsController::class, 'addNews'])->middleware('auth:sanctum');
+Route::put('/news/{id}',[NewsController::class, 'updateNewsById'])->middleware('auth:sanctum');
+Route::delete('/news/{id}',[NewsController::class, 'deleteNewsById'])->middleware('auth:sanctum');
+
+//Media Routes
+Route::post('/media',[MediaController::class, 'addMedia'])->middleware('auth:sanctum');
+Route::put('/media/{id}',[MediaController::class, 'updateMediaById'])->middleware('auth:sanctum');
+Route::delete('/media/{id}',[MediaController::class, 'deleteMediaById'])->middleware('auth:sanctum');
+
+// Success Partners Routes
+Route::post('/success-partners',[SuccessPartnersController::class, 'addSuccessPartners'])->middleware('auth:sanctum');
+Route::put('/success-partners/{id}',[SuccessPartnersController::class, 'updateSuccessPartnersById'])->middleware('auth:sanctum');
+Route::delete('/success-partners/{id}',[SuccessPartnersController::class, 'deleteSuccessPartnersById'])->middleware('auth:sanctum');

@@ -64,7 +64,7 @@ class ServicesService
 
             $service = Services::find($id);
             if (!$service) {
-                return response()->json(['message' => 'Service Not Found!'], 209);
+                return response()->json(['message' => 'Service Not Found!'], 404);
             }
 
             $service->update($newService);
@@ -79,7 +79,7 @@ class ServicesService
         try {
             $service = Services::find($id);
             if (!$service) {
-                return response()->json(['message' => 'Service Not Found!'], 209);
+                return response()->json(['message' => 'Service Not Found!'], 404);
             }
             $service->delete();
             return response()->json(['message' => 'Service Deleted Successfully'], 200);
