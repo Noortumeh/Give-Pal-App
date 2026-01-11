@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Services\NewsService;
+use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
@@ -12,7 +13,28 @@ class NewsController extends Controller
         $this->newsService = $newsService;
     }
 
-    public function getNews(){
+    public function getNews()
+    {
         return $this->newsService->getNews();
+    }
+
+    public function getNewsData($id)
+    {
+        return $this->newsService->getNewsData($id);
+    }
+
+    public function addNews(Request $request)
+    {
+        return $this->newsService->addNews($request);
+    }
+    
+    public function updateNewsById(Request $request, $id)
+    {
+        return $this->newsService->updateNewsById($request, $id);
+    }
+
+    public function deleteNewsById($id)
+    {
+        return $this->newsService->deleteNewsById($id);
     }
 }

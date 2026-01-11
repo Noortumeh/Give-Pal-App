@@ -28,7 +28,7 @@ class StatisticsService
         try {
             $statistics = Statistics::find($id);
             if (!$statistics) {
-                return response()->json(['message' => 'Statistics Not Found!'], 209);
+                return response()->json(['message' => 'Statistics Not Found!'], 404);
             }
             return response(['data' => $statistics, 'message' => 'Statistics Found Successfully!'], 200);
         } catch (Exception $error) {
@@ -64,7 +64,7 @@ class StatisticsService
 
             $statistics = Statistics::find($id);
             if (!$statistics) {
-                return response()->json(['message' => 'Statistics Not Found!'], 209);
+                return response()->json(['message' => 'Statistics Not Found!'], 404);
             }
 
             $statistics->update($newStatistics);
@@ -79,7 +79,7 @@ class StatisticsService
         try {
             $statistics = Statistics::find($id);
             if (!$statistics) {
-                return response()->json(['message' => 'Statistics Not Found!'], 209);
+                return response()->json(['message' => 'Statistics Not Found!'], 404);
             }
             $statistics->delete();
             return response()->json(['message' => 'Statistics Deleted Successfully'], 200);

@@ -28,7 +28,7 @@ class ProjectsService
         try {
             $project = Projects::find($id);
             if (!$project) {
-                return response()->json(['message' => 'Project Not Found!'], 209);
+                return response()->json(['message' => 'Project Not Found!'], 404);
             }
             return response(['data' => $project, 'message' => 'Project Found Successfully!'],200);
 
@@ -55,7 +55,7 @@ class ProjectsService
          try {
             $project = Projects::find($id);
             if (!$project) {
-                return response()->json(['message' => 'Project Not Found!'], 209);
+                return response()->json(['message' => 'Project Not Found!'], 404);
             }
             $project->delete();
             return response()->json(['message' => 'Project Deleted Successfully'], 200);
@@ -74,7 +74,7 @@ class ProjectsService
 
             $project = Projects::find($id);
             if (!$project) {
-                return response()->json(['message' => 'Project Not Found!'], 209);
+                return response()->json(['message' => 'Project Not Found!'], 404);
             }
 
             $project->update($newProject);

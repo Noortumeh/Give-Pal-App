@@ -27,7 +27,7 @@ class SuccessStoriesService
          try {
             $successStory = SuccessStories::find($id);
             if (!$successStory) {
-                return response()->json(['message' => 'SuccessStory Not Found!'], 209);
+                return response()->json(['message' => 'SuccessStory Not Found!'], 404);
             }
             return response(['data' => $successStory, 'message' => 'SuccessStory Found Successfully!'],200);
 
@@ -63,7 +63,7 @@ class SuccessStoriesService
 
             $successStory = SuccessStories::find($id);
             if (!$successStory) {
-                return response()->json(['message' => 'SuccessStory Not Found!'], 209);
+                return response()->json(['message' => 'SuccessStory Not Found!'], 404);
             }
 
             $successStory->update($newSuccessStory);
@@ -77,7 +77,7 @@ class SuccessStoriesService
         try {
             $successStory = SuccessStories::find($id);
             if (!$successStory) {
-                return response()->json(['message' => 'SuccessStory Not Found!'], 209);
+                return response()->json(['message' => 'SuccessStory Not Found!'], 404);
             }
             $successStory->delete();
             return response()->json(['message' => 'SuccessStory Deleted Successfully'], 200);
