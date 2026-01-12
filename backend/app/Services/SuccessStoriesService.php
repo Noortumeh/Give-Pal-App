@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Facades\StoreFile;
 use App\Http\Requests\SuccessStoriesRequest;
+use App\Http\Resources\SuccessStoriesResource;
 use App\Models\SuccessStories;
 use Exception;
 
@@ -31,7 +32,7 @@ class SuccessStoriesService
             if (!$successStory) {
                 return response()->json(['message' => 'SuccessStory Not Found!'], 404);
             }
-            return response(['data' => $successStory, 'message' => 'SuccessStory Found Successfully!'], 200);
+            return response(['data' => new SuccessStoriesResource($successStory), 'message' => 'SuccessStory Found Successfully!'], 200);
         } catch (Exception $error) {
             return response()->json('Server Error: ' + $error, 500);
         }

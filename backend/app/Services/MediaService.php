@@ -4,10 +4,9 @@ namespace App\Services;
 
 use App\Facades\StoreFile;
 use App\Http\Requests\MediaRequest;
+use App\Http\Resources\MediaResource;
 use App\Models\Media;
 use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class MediaService
 {
@@ -32,7 +31,7 @@ class MediaService
             if (!$mediaData) {
                 return response()->json(['message' => 'Media Not Found!'], 404);
             }
-            return response(['data' => $mediaData, 'message' => 'Media Found Successfully!'], 200);
+            return response(['data' => new MediaResource($mediaData), 'message' => 'Media Found Successfully!'], 200);
         } catch (Exception $error) {
             return response()->json(['message: ' => 'Server Error', $error], 500);
         }

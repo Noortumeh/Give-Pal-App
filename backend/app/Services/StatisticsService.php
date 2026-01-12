@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\Requests\StatisticsRequest;
+use App\Http\Resources\StatisticsResource;
 use App\Models\Statistics;
 use Exception;
 
@@ -30,7 +31,7 @@ class StatisticsService
             if (!$statistics) {
                 return response()->json(['message' => 'Statistics Not Found!'], 404);
             }
-            return response(['data' => $statistics, 'message' => 'Statistics Found Successfully!'], 200);
+            return response(['data' => new StatisticsResource($statistics), 'message' => 'Statistics Found Successfully!'], 200);
         } catch (Exception $error) {
             return response()->json('Server Error: ' + $error, 500);
         }
