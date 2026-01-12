@@ -44,7 +44,6 @@ class MediaService
             if ($request->hasFile('media')) {
                 $validateData['media'] = StoreFile::storeFile($request->media, 'media');
             }
-            //to get the image use this path: http://127.0.0.1:8000/storage/media/ZJqHLKlFttM15EsQBNc7Gn34h6nKg6dxoRx5T7HW.jpg
 
             Media::create($validateData);
             return response(['message' => 'Created successfully', 'data' => $validateData], 200);
