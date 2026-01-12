@@ -2,9 +2,11 @@
 
 namespace App\Services;
 
+use App\Facades\StoreFile;
 use App\Models\News;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class NewsService
 {
@@ -40,12 +42,15 @@ class NewsService
     {
         try {
             $news = $request->validate([
-                'image' => 'string',
+                'image' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
                 'date' => 'date',
                 'address' => 'string',
                 'title' => 'string',
                 'description' => 'string',
             ]);
+            if ($request->hasFile('image')) {
+                 $news['image'] = StoreFile::storeFile($request->image, 'news-images');
+            }
             News::create($news);
             return response(['message' => 'Created successfully', 'data' => $news], 200);
         } catch (Exception $error) {
@@ -57,7 +62,7 @@ class NewsService
     {
         try {
             $validatedRequest = $request->validate([
-                'image' => 'string',
+                'image' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
                 'date' => 'date',
                 'address' => 'string',
                 'title' => 'string',
@@ -68,7 +73,9 @@ class NewsService
             if (!$prevNew) {
                 return response()->json(['message' => 'New Data Not Found!'], 404);
             }
-
+            if ($request->hasFile('image')) {
+                $validatedRequest['image'] = StoreFile::updateStoredFile($prevNew->image, $request->image, 'news-images');
+            }
             $prevNew->update($validatedRequest);
             return response()->json(['message' => 'Updated Successfully'], 200);
         } catch (Exception $error) {
@@ -80,9 +87,10 @@ class NewsService
     {
         try {
             $prevNew = News::find($id);
-            if(!$prevNew){
+            if (!$prevNew) {
                 return response()->json(['message' => 'New Data Not Found!'], 404);
             }
+            StoreFile::deleteStoredFile($prevNew->image);
             $prevNew->delete();
             return response()->json(['message' => 'New Deleted Successfully'], 200);
         } catch (Exception $error) {

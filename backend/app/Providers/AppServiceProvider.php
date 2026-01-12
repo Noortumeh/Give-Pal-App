@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\ServiceProvider;
-use App\Services\{MediaService, NewsService, ProjectsService, ServicesService, StatisticsService, SuccessPartnersService, SuccessStoriesService, UserService};
+use App\Services\{MediaService, NewsService, ProjectsService, ServicesService, StatisticsService, StoreFileService, SuccessPartnersService, SuccessStoriesService, UserService};
 
 class AppServiceProvider extends ServiceProvider
 {

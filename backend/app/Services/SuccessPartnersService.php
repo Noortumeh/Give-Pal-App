@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Facades\StoreFile;
 use App\Models\SuccessPartners;
 use Exception;
 use Illuminate\Http\Request;
@@ -39,8 +40,12 @@ class SuccessPartnersService
     {
         try {
             $validateData = $request->validate([
-                'icon' => 'string',
+                'icon' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
             ]);
+
+            if ($request->hasFile('icon')) {
+                $validateData['icon'] = StoreFile::storeFile($request->icon, 'successPartners-icons');
+            }
             SuccessPartners::create($validateData);
             return response(['message' => 'Created successfully', 'data' => $validateData], 200);
         } catch (Exception $error) {
@@ -51,11 +56,15 @@ class SuccessPartnersService
     {
         try {
             $validatedRequest = $request->validate([
-                'icon' => 'string',
+                'icon' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
             ]);
             $prevSuccessPartner = SuccessPartners::find($id);
             if (!$prevSuccessPartner) {
                 return response()->json(['message' => 'Success Partner Data Not Found!'], 404);
+            }
+
+            if ($request->hasFile('icon')) {
+                $validatedRequest['icon'] = StoreFile::updateStoredFile($prevSuccessPartner->icon, $request->icon, 'successPartners-icons');
             }
 
             $prevSuccessPartner->update($validatedRequest);
@@ -64,12 +73,16 @@ class SuccessPartnersService
             return response()->json(['message: ' => 'Server Error', $error], 500);
         }
     }
-    public function deleteSuccessPartnersById($id) {
-         try {
+    public function deleteSuccessPartnersById($id)
+    {
+        try {
             $prevSuccessPartner = SuccessPartners::find($id);
             if (!$prevSuccessPartner) {
                 return response()->json(['message' => 'Success Partner Data Not Found!'], 404);
             }
+            
+            StoreFile::deleteStoredFile($prevSuccessPartner->icon);
+
             $prevSuccessPartner->delete();
             return response()->json(['message' => 'Success Partner Deleted Successfully'], 200);
         } catch (Exception $error) {
