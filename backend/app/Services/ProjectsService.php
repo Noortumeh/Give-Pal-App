@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Facades\StoreFile;
 use App\Http\Requests\ProjectsRequest;
+use App\Http\Resources\ProjectsResource;
 use App\Models\Projects;
 use Exception;
 
@@ -31,7 +32,7 @@ class ProjectsService
             if (!$project) {
                 return response()->json(['message' => 'Project Not Found!'], 404);
             }
-            return response(['data' => $project, 'message' => 'Project Found Successfully!'], 200);
+            return response(['data' => new ProjectsResource($project), 'message' => 'Project Found Successfully!'], 200);
         } catch (Exception $error) {
             return response()->json('Server Error: ' + $error, 500);
         }

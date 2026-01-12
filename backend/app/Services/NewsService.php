@@ -4,10 +4,9 @@ namespace App\Services;
 
 use App\Facades\StoreFile;
 use App\Http\Requests\NewsRequest;
+use App\Http\Resources\NewsResource;
 use App\Models\News;
 use Exception;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class NewsService
 {
@@ -33,7 +32,7 @@ class NewsService
             if (!$NewData) {
                 return response()->json(['message' => 'News Not Found!'], 404);
             }
-            return response(['data' => $NewData, 'message' => 'News Found Successfully!'], 200);
+            return response(['data' => new NewsResource($NewData), 'message' => 'News Found Successfully!'], 200);
         } catch (Exception $error) {
             return response()->json(['message: ' => 'Server Error', $error], 500);
         }

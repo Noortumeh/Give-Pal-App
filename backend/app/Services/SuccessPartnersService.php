@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Facades\StoreFile;
 use App\Http\Requests\SuccessPartnersRequest;
+use App\Http\Resources\SuccessPartnersResource;
 use App\Models\SuccessPartners;
 use Exception;
 
@@ -31,7 +32,7 @@ class SuccessPartnersService
             if (!$successPartners) {
                 return response()->json(['message' => 'Media Not Found!'], 404);
             }
-            return response(['data' => $successPartners, 'message' => 'Media Found Successfully!'], 200);
+            return response(['data' => new SuccessPartnersResource($successPartners), 'message' => 'Media Found Successfully!'], 200);
         } catch (Exception $error) {
             return response()->json(['message: ' => 'Server Error', $error], 500);
         }

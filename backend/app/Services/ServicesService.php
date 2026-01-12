@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Facades\StoreFile;
 use App\Http\Requests\ServicesRequest;
+use App\Http\Resources\ServiceResource;
 use App\Models\Services;
 use Exception;
 
@@ -31,7 +32,7 @@ class ServicesService
             if (!$service) {
                 return response()->json(['message' => 'Service Not Found!'], 209);
             }
-            return response(['data' => $service, 'message' => 'Service Found Successfully!'], 200);
+            return response(['data' => new ServiceResource($service), 'message' => 'Service Found Successfully!'], 200);
         } catch (Exception $error) {
             return response()->json(['message' => 'Server Error', $error], 500);
         }
