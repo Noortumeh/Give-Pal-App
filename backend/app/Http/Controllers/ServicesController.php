@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ServicesRequest;
 use App\Services\ServicesService;
-use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
@@ -17,11 +17,11 @@ class ServicesController extends Controller
         return $this->servicesService->getServices();
     }
 
-    public function addServices(Request $request){
+    public function addServices(ServicesRequest $request){
         return $this->servicesService->addServices($request);
     }
 
-    public function updateServices(Request $request, $id){
+    public function updateServices(ServicesRequest $request, $id){
         return $this->servicesService->updateServices($request, $id);
     }
 

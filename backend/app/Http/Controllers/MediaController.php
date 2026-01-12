@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\MediaRequest;
 use App\Services\MediaService;
 use Illuminate\Http\Request;
 
@@ -20,11 +21,11 @@ class MediaController extends Controller
         return $this->media->getMediaData($id);
     }
 
-    public function addMedia(Request $request){
+    public function addMedia(MediaRequest $request){
         return $this->media->addMedia($request);
     }
 
-    public function updateMediaById(Request $request, $id){
+    public function updateMediaById(MediaRequest $request, $id){
         return $this->media->updateMediaById($request, $id);
     }
 

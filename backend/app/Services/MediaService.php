@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Facades\StoreFile;
+use App\Http\Requests\MediaRequest;
 use App\Models\Media;
 use Exception;
 use Illuminate\Http\Request;
@@ -37,15 +38,10 @@ class MediaService
         }
     }
 
-    public function addMedia(Request $request)
+    public function addMedia(MediaRequest $request)
     {
         try {
-            $validateData = $request->validate([
-                'date' => 'date',
-                'title' => 'string',
-                'dsecription' => 'string',
-                'media' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-            ]);
+            $validateData = $request->validated();
             if ($request->hasFile('media')) {
                 $validateData['media'] = StoreFile::storeFile($request->media, 'media');
             }
@@ -58,15 +54,10 @@ class MediaService
         }
     }
 
-    public function updateMediaById(Request $request, $id)
+    public function updateMediaById(MediaRequest $request, $id)
     {
         try {
-            $validatedRequest = $request->validate([
-                'date' => 'date',
-                'title' => 'string',
-                'dsecription' => 'string',
-                'media' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-            ]);
+            $validatedRequest = $request->validated();
             $prevMedia = Media::find($id);
             if (!$prevMedia) {
                 return response()->json(['message' => 'Media Data Not Found!'], 404);

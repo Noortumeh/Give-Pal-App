@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Facades\StoreFile;
+use App\Http\Requests\NewsRequest;
 use App\Models\News;
 use Exception;
 use Illuminate\Http\Request;
@@ -38,16 +39,10 @@ class NewsService
         }
     }
 
-    public function addNews(Request $request)
+    public function addNews(NewsRequest $request)
     {
         try {
-            $news = $request->validate([
-                'image' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-                'date' => 'date',
-                'address' => 'string',
-                'title' => 'string',
-                'description' => 'string',
-            ]);
+            $news = $request->validated();
             if ($request->hasFile('image')) {
                  $news['image'] = StoreFile::storeFile($request->image, 'news-images');
             }
@@ -58,17 +53,10 @@ class NewsService
         }
     }
 
-    public function updateNewsById(Request $request, $id)
+    public function updateNewsById(NewsRequest $request, $id)
     {
         try {
-            $validatedRequest = $request->validate([
-                'image' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-                'date' => 'date',
-                'address' => 'string',
-                'title' => 'string',
-                'description' => 'string',
-            ]);
-
+            $validatedRequest = $request->validated();
             $prevNew = News::find($id);
             if (!$prevNew) {
                 return response()->json(['message' => 'New Data Not Found!'], 404);

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SuccessStoriesRequest;
 use App\Services\SuccessStoriesService;
-use Illuminate\Http\Request;
 
 class SuccessStoriesController extends Controller
 {
@@ -19,10 +19,10 @@ class SuccessStoriesController extends Controller
     public function getSuccessStorieData($id){
         return $this->successStories->getSuccessStorieData($id);
     }
-    public function addSuccessStories(Request $request){
+    public function addSuccessStories(SuccessStoriesRequest $request){
         return $this->successStories->addSuccessStories($request);
     }
-    public function updateSuccessStories(Request $request, $id){
+    public function updateSuccessStories(SuccessStoriesRequest $request, $id){
         return $this->successStories->updateSuccessStories($request, $id);
     }
     public function deleteSuccessStories($id){

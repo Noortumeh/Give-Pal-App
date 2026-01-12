@@ -3,11 +3,9 @@
 namespace App\Services;
 
 use App\Facades\StoreFile;
+use App\Http\Requests\ServicesRequest;
 use App\Models\Services;
 use Exception;
-use Illuminate\Container\Attributes\Auth;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class ServicesService
 {
@@ -39,14 +37,10 @@ class ServicesService
         }
     }
 
-    public function addServices(Request $request)
+    public function addServices(ServicesRequest $request)
     {
         try {
-            $service = $request->validate([
-                'icon' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-                'title' => 'string',
-                'description' => 'string'
-            ]);
+            $service = $request->validated();
 
             if ($request->hasFile('icon')) {
                 $service['icon'] = StoreFile::storeFile($request->icon, 'services-icons');
@@ -59,14 +53,10 @@ class ServicesService
         }
     }
 
-    public function updateServices(Request $request, $id)
+    public function updateServices(ServicesRequest $request, $id)
     {
         try {
-            $newService = $request->validate([
-                'icon' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-                'title' => 'string',
-                'description' => 'string'
-            ]);
+            $newService = $request->validated();
 
             $service = Services::find($id);
             if (!$service) {
