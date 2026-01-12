@@ -2,9 +2,9 @@
 
 namespace App\Services;
 
+use App\Http\Requests\StatisticsRequest;
 use App\Models\Statistics;
 use Exception;
-use Illuminate\Http\Request;
 
 class StatisticsService
 {
@@ -36,15 +36,10 @@ class StatisticsService
         }
     }
 
-    public function addStatistics(Request $request)
+    public function addStatistics(StatisticsRequest $request)
     {
         try {
-            $statistics = $request->validate([
-                'projects_number' => 'int',
-                'beneficiaries_of_cultural_program' => 'int',
-                'beneficiaries_of_relief_program' => 'int',
-                'articles_number' => 'int'
-            ]);
+            $statistics = $request->validated();
             Statistics::create($statistics);
             return response(['message' => 'Created successfully', 'data' => $statistics], 200);
         } catch (Exception $error) {
@@ -52,15 +47,10 @@ class StatisticsService
         }
     }
 
-    public function updateStatistics(Request $request, $id)
+    public function updateStatistics(StatisticsRequest $request, $id)
     {
         try {
-            $newStatistics = $request->validate([
-                'projects_number' => 'int',
-                'beneficiaries_of_cultural_program' => 'int',
-                'beneficiaries_of_relief_program' => 'int',
-                'articles_number' => 'int'
-            ]);
+            $newStatistics = $request->validated();
 
             $statistics = Statistics::find($id);
             if (!$statistics) {

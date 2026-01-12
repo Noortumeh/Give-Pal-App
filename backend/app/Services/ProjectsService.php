@@ -3,10 +3,9 @@
 namespace App\Services;
 
 use App\Facades\StoreFile;
-use Illuminate\Http\Request;
+use App\Http\Requests\ProjectsRequest;
 use App\Models\Projects;
 use Exception;
-use Illuminate\Support\Facades\Storage;
 
 class ProjectsService
 {
@@ -38,15 +37,10 @@ class ProjectsService
         }
     }
 
-    public function addProjects(Request $request)
+    public function addProjects(ProjectsRequest $request)
     {
         try {
-            $project = $request->validate([
-                'image' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-                'title' => 'string',
-                'description' => 'string'
-            ]);
-
+            $project = $request->validated();
             if ($request->hasFile('image')) {
                 $project['image'] = StoreFile::storeFile($request->image, 'projects-images');
             }
@@ -72,15 +66,10 @@ class ProjectsService
         }
     }
 
-    public function updateProject(Request $request, $id)
+    public function updateProject(ProjectsRequest $request, $id)
     {
         try {
-            $newProject = $request->validate([
-                'image' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-                'title' => 'string',
-                'description' => 'string'
-            ]);
-
+            $newProject = $request->validated();
             $project = Projects::find($id);
             if (!$project) {
                 return response()->json(['message' => 'Project Not Found!'], 404);

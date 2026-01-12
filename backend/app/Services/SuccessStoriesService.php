@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Facades\StoreFile;
+use App\Http\Requests\SuccessStoriesRequest;
 use App\Models\SuccessStories;
 use Exception;
-use Illuminate\Http\Request;
 
 class SuccessStoriesService
 {
@@ -38,15 +38,10 @@ class SuccessStoriesService
     }
 
 
-    public function addSuccessStories(Request $request)
+    public function addSuccessStories(SuccessStoriesRequest $request)
     {
         try {
-            $successStory = $request->validate([
-                'avatar' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-                'name' => 'string',
-                'address' => 'string',
-                'description' => 'string'
-            ]);
+            $successStory = $request->validated();
 
             if ($request->hasFile('avatar')) {
                 $successStory['avatar'] = StoreFile::storeFile($request->avatar, 'successStories-avatars');
@@ -59,15 +54,10 @@ class SuccessStoriesService
         }
     }
 
-    public function updateSuccessStories(Request $request, $id)
+    public function updateSuccessStories(SuccessStoriesRequest $request, $id)
     {
         try {
-            $newSuccessStory = $request->validate([
-                'avatar' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-                'name' => 'string',
-                'address' => 'string',
-                'description' => 'string'
-            ]);
+            $newSuccessStory = $request->validated();
 
             $successStory = SuccessStories::find($id);
             if (!$successStory) {

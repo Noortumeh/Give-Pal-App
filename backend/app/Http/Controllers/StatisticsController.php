@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StatisticsRequest;
 use App\Services\StatisticsService;
-use Illuminate\Http\Request;
 
 class StatisticsController extends Controller
 {
@@ -20,10 +20,10 @@ class StatisticsController extends Controller
     public function getStatisticsData($id){
         return $this->statisticsService->getStatisticsData($id);
     }
-    public function addStatistics(Request $request){
+    public function addStatistics(StatisticsRequest $request){
         return $this->statisticsService->addStatistics($request);
     }
-    public function updateStatistics(Request $request, $id){
+    public function updateStatistics(StatisticsRequest $request, $id){
         return $this->statisticsService->updateStatistics($request, $id);
     }
     public function deleteStatistics($id){

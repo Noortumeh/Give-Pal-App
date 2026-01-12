@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SuccessPartnersRequest;
 use App\Services\SuccessPartnersService;
-use Illuminate\Http\Request;
 
 class SuccessPartnersController extends Controller
 {
@@ -22,11 +22,11 @@ class SuccessPartnersController extends Controller
         return $this->successPartners->getSuccessPartnersData($id);
     }
 
-    public function addSuccessPartners(Request $request){
+    public function addSuccessPartners(SuccessPartnersRequest $request){
         return $this->successPartners->addSuccessPartners($request);
     }
 
-    public function updateSuccessPartnersById(Request $request, $id){
+    public function updateSuccessPartnersById(SuccessPartnersRequest $request, $id){
         return $this->successPartners->updateSuccessPartnersById($request, $id);
     }
 

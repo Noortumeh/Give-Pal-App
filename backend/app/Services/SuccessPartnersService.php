@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Facades\StoreFile;
+use App\Http\Requests\SuccessPartnersRequest;
 use App\Models\SuccessPartners;
 use Exception;
-use Illuminate\Http\Request;
 
 class SuccessPartnersService
 {
@@ -36,12 +36,10 @@ class SuccessPartnersService
             return response()->json(['message: ' => 'Server Error', $error], 500);
         }
     }
-    public function addSuccessPartners(Request $request)
+    public function addSuccessPartners(SuccessPartnersRequest $request)
     {
         try {
-            $validateData = $request->validate([
-                'icon' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-            ]);
+            $validateData = $request->validated();
 
             if ($request->hasFile('icon')) {
                 $validateData['icon'] = StoreFile::storeFile($request->icon, 'successPartners-icons');
@@ -52,12 +50,11 @@ class SuccessPartnersService
             return response()->json(['message: ' => 'Server Error', $error], 500);
         }
     }
-    public function updateSuccessPartnersById(Request $request, $id)
+    public function updateSuccessPartnersById(SuccessPartnersRequest $request, $id)
     {
         try {
-            $validatedRequest = $request->validate([
-                'icon' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
-            ]);
+            $validatedRequest = $request->validated();
+
             $prevSuccessPartner = SuccessPartners::find($id);
             if (!$prevSuccessPartner) {
                 return response()->json(['message' => 'Success Partner Data Not Found!'], 404);
