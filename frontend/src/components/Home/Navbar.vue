@@ -3,12 +3,8 @@ import {
   Disclosure,
   DisclosureButton,
   DisclosurePanel,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
 } from "@headlessui/vue";
-import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/vue/24/outline";
+import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 
 const navigation = [
   { name: "من نحن", href: "#", current: true },
@@ -49,7 +45,7 @@ const navigation = [
                 v-for="item in navigation"
                 :key="item.name"
                 :href="item.href"
-                class="text-black 'rounded-md px-5.5 py-2 text-sm font-medium',"
+                class="text-black rounded-md px-5.5 py-2 text-sm font-medium"
                 :aria-current="item.current ? 'page' : undefined"
                 >{{ item.name }}</a
               >
