@@ -21,7 +21,7 @@ class UserService
             User::create($credintals);
             return response(['message' => 'User Created Successfuly'], 201);
         } catch (Exception $error) {
-            return response(['message' => 'Some Server Error: '] . $error, 500);
+            return response(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -47,7 +47,7 @@ class UserService
                 'token_type' => 'Bearer',
             ], 200);
         } catch (Exception $error) {
-            return response(['message' => 'Some Server Error', 'error' => $error], 500);
+            return response(['message' => 'Server Error', $error], 500);
         }
     }
 }

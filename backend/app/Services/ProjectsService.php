@@ -21,7 +21,7 @@ class ProjectsService
                 return response()->json('There is No Projects Found', 404);
             }
         } catch (Exception $error) {
-            return response()->json('Server Error', 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -34,7 +34,7 @@ class ProjectsService
             }
             return response(['data' => new ProjectsResource($project), 'message' => 'Project Found Successfully!'], 200);
         } catch (Exception $error) {
-            return response()->json('Server Error: ' + $error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -48,7 +48,7 @@ class ProjectsService
             Projects::create($project);
             return response(['message' => 'Created Project successfully', 'data' => $project], 200);
         } catch (Exception $error) {
-            return response()->json(['Server Error',  $error->getMessage()], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -63,7 +63,7 @@ class ProjectsService
             $project->delete();
             return response()->json(['message' => 'Project Deleted Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json($error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -83,7 +83,7 @@ class ProjectsService
             $project->update($newProject);
             return response()->json(['message' => 'Updated Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json($error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 }

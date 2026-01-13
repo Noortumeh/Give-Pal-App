@@ -21,7 +21,7 @@ class SuccessStoriesService
                 return response()->json('There is No Success Stories Found', 404);
             }
         } catch (Exception $error) {
-            return response()->json('Server Error', 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -34,7 +34,7 @@ class SuccessStoriesService
             }
             return response(['data' => new SuccessStoriesResource($successStory), 'message' => 'SuccessStory Found Successfully!'], 200);
         } catch (Exception $error) {
-            return response()->json('Server Error: ' + $error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -51,7 +51,7 @@ class SuccessStoriesService
             SuccessStories::create($successStory);
             return response(['message' => 'Created successfully', 'data' => $successStory], 200);
         } catch (Exception $error) {
-            return response()->json('Server Error: ' + $error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -72,7 +72,7 @@ class SuccessStoriesService
             $successStory->update($newSuccessStory);
             return response()->json(['message' => 'Updated Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json($error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -89,7 +89,7 @@ class SuccessStoriesService
             $successStory->delete();
             return response()->json(['message' => 'SuccessStory Deleted Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json($error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 }

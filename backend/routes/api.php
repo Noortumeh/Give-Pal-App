@@ -9,7 +9,7 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/register', [UserController::class, 'register']);
-Route::post('/login', [UserController::class, 'login']);
+Route::post('/login', [UserController::class, 'login'])->middleware('throttle:limit3');
 
 // Services Admin Routes
 Route::post('/services',[ServicesController::class, 'addServices'])->middleware('auth:sanctum');

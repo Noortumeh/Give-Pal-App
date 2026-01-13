@@ -20,7 +20,7 @@ class StatisticsService
                 return response()->json('There is No Statistics Found', 404);
             }
         } catch (Exception $error) {
-            return response()->json('Server Error', 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -33,7 +33,7 @@ class StatisticsService
             }
             return response(['data' => new StatisticsResource($statistics), 'message' => 'Statistics Found Successfully!'], 200);
         } catch (Exception $error) {
-            return response()->json('Server Error: ' + $error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -44,7 +44,7 @@ class StatisticsService
             Statistics::create($statistics);
             return response(['message' => 'Created successfully', 'data' => $statistics], 200);
         } catch (Exception $error) {
-            return response()->json('Server Error: ' + $error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -61,7 +61,7 @@ class StatisticsService
             $statistics->update($newStatistics);
             return response()->json(['message' => 'Updated Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json($error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -75,7 +75,7 @@ class StatisticsService
             $statistics->delete();
             return response()->json(['message' => 'Statistics Deleted Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json($error, 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 }

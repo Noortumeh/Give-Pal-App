@@ -30,7 +30,7 @@ class ServicesService
         try {
             $service = Services::find($id);
             if (!$service) {
-                return response()->json(['message' => 'Service Not Found!'], 209);
+                return response()->json(['message' => 'Service Not Found!'], 404);
             }
             return response(['data' => new ServiceResource($service), 'message' => 'Service Found Successfully!'], 200);
         } catch (Exception $error) {
