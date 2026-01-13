@@ -20,7 +20,7 @@ class MediaService
                 return response()->json('There is No Media Found', 404);
             }
         } catch (Exception $error) {
-            return response()->json('Server Error', 500);
+            return response()->json(['message: ' => 'Server Error', $error], 500);
         }
     }
 

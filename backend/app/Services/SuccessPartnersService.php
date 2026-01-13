@@ -21,7 +21,7 @@ class SuccessPartnersService
                 return response()->json('There is No Success Partners Found', 404);
             }
         } catch (Exception $error) {
-            return response()->json('Server Error', 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -34,7 +34,7 @@ class SuccessPartnersService
             }
             return response(['data' => new SuccessPartnersResource($successPartners), 'message' => 'Media Found Successfully!'], 200);
         } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
     public function addSuccessPartners(SuccessPartnersRequest $request)
@@ -48,7 +48,7 @@ class SuccessPartnersService
             SuccessPartners::create($validateData);
             return response(['message' => 'Created successfully', 'data' => $validateData], 200);
         } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
     public function updateSuccessPartnersById(SuccessPartnersRequest $request, $id)
@@ -68,7 +68,7 @@ class SuccessPartnersService
             $prevSuccessPartner->update($validatedRequest);
             return response()->json(['message' => 'Updated Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
     public function deleteSuccessPartnersById($id)
@@ -84,7 +84,7 @@ class SuccessPartnersService
             $prevSuccessPartner->delete();
             return response()->json(['message' => 'Success Partner Deleted Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 }

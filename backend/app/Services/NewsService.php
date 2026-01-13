@@ -21,7 +21,7 @@ class NewsService
                 return response()->json('There is No News Found', 404);
             }
         } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -34,7 +34,7 @@ class NewsService
             }
             return response(['data' => new NewsResource($NewData), 'message' => 'News Found Successfully!'], 200);
         } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -48,7 +48,7 @@ class NewsService
             News::create($news);
             return response(['message' => 'Created successfully', 'data' => $news], 200);
         } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -66,7 +66,7 @@ class NewsService
             $prevNew->update($validatedRequest);
             return response()->json(['message' => 'Updated Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 
@@ -81,7 +81,7 @@ class NewsService
             $prevNew->delete();
             return response()->json(['message' => 'New Deleted Successfully'], 200);
         } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
+            return response()->json(['message' => 'Server Error', $error], 500);
         }
     }
 }

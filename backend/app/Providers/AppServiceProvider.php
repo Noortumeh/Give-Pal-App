@@ -2,9 +2,11 @@
 
 namespace App\Providers;
 
-use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\{App, RateLimiter};
 use Illuminate\Support\ServiceProvider;
 use App\Services\{MediaService, NewsService, ProjectsService, ServicesService, StatisticsService, StoreFileService, SuccessPartnersService, SuccessStoriesService, UserService};
+use Illuminate\Cache\RateLimiting\Limit;
+use Illuminate\Http\Request;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -51,6 +53,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        RateLimiter::for('limit3', function(Request $request){
+            return Limit::perMinute(3)->by($request->user()?->id ?: $request->ip());
+        });
     }
 }
