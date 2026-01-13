@@ -7,7 +7,7 @@ import ServicesSection from '@/components/Home/Sections/ServicesSection.vue';
 </script>
 <template>
     <HeroSection />
-    <div class="max-w-[1350px] mx-auto px-9">
+    <div class="max-w-[1350px] mx-auto px-0">
         <ServicesSection />
         <ProjectsSection />
     </div>
