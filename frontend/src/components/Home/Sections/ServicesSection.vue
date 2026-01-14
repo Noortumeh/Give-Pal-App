@@ -24,7 +24,10 @@ onMounted(async () => {
   <div class="text-end p-5">
     <h1 class="text-3xl font-semibold text-start">خدمات عطاء</h1>
   </div>
-  <div class="flex flex-wrap gap-4 justify-around content-center text-center">
+  <div v-if=!data>
+    <p class="mt-5 text-center text-3xl ">لايوحد خدمات لعرضها بعد!</p>
+  </div>
+  <div v-else class="flex flex-wrap gap-4 justify-around content-center text-center">
     <div
       v-for="service in data"
       :key="service.title"
