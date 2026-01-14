@@ -30,7 +30,11 @@ onMounted(async () => {
     </p>
   </div>
 
-  <div class="flex flex-wrap items-center justify-center gap-4 pt-12">
+  <div v-if=!data>
+    <p class="mt-5 text-center text-3xl ">لايوحد مشاريع لعرضها بعد!</p>
+  </div>
+
+  <div v-else class="flex flex-wrap items-center justify-center gap-4 pt-12 pb-12">
     <div
       v-for="projects in data"
       class="max-w-[323px] max-h-[544px] w-full shadow-2xl"
