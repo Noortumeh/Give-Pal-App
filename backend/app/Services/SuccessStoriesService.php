@@ -14,7 +14,7 @@ class SuccessStoriesService
     public function getSuccessStories()
     {
         try {
-            $data = SuccessStories::all();
+            $data = SuccessStories::getSuccessStoriesHomePage();
             if (!$data->isEmpty()) {
                 return response()->json($data, 200);
             } else {

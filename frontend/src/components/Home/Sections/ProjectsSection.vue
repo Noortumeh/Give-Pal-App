@@ -1,20 +1,19 @@
 <script setup>
+import { API_HEADER } from "@/APIs/ApiHeader";
+import { projectsSection } from "@/APIs/EndPoints";
 import { onMounted, ref } from "vue";
 
 const data = ref([]);
 
 onMounted(async () => {
   try {
-    const res = await fetch("http://127.0.0.1:8000/projects", {
+    const res = await fetch(projectsSection, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "access-control-allow-credentials": "true",
-      },
+      headers: API_HEADER,
     });
     if (res.ok) {
       data.value = await res.json();
-      console.log("Services Data: ", data.value);
+      console.log("Projects Data: ", data.value);
     }
   } catch (err) {
     console.log("Faild to load Service Data", err);
@@ -23,25 +22,29 @@ onMounted(async () => {
 </script>
 <template>
   <div class="text-start pr-5 pt-5">
-    <h1 class="text-3xl font-semibold">مشاريع عطاء</h1>
-    <p class="text-sm text-slate-500 mt-2">
+    <h1 class="text-3xl font-semibold absolute">مشاريع عطاء</h1>
+    <div class="under-line"></div>
+    <p class="text-sm text-slate-500 mt-8">
       تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال يتّسم بالإنتاجية، وقد انطلقت
       أولى مجتمعات "دار الرجاء" تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال
     </p>
   </div>
 
-  <div v-if=!data>
-    <p class="mt-5 text-center text-3xl ">لايوحد مشاريع لعرضها بعد!</p>
+  <div v-if="!data">
+    <p class="mt-5 text-center text-3xl">لايوحد مشاريع لعرضها بعد!</p>
   </div>
 
-  <div v-else class="flex flex-wrap items-center justify-center gap-4 pt-12 pb-12">
+  <div
+    v-else
+    class="flex flex-wrap items-center justify-center gap-4 pt-12 pb-12"
+  >
     <div
       v-for="projects in data"
       class="max-w-[323px] max-h-[544px] w-full shadow-2xl"
     >
       <div class="h-[204px] p-6">
         <span class="text-[rgba(193,221,204,0.4)] font-bold text-6xl">{{
-          projects.id < 10 ? '0'+projects.id : projects.id
+          projects.id < 10 ? "0" + projects.id : projects.id
         }}</span>
         <h2 class="text-base text-slate-900 font-medium mt-3">
           {{ projects.title }}

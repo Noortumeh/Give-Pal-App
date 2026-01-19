@@ -18,4 +18,8 @@ class News extends Model
         'title',
         'description',
     ];
+
+    public static function getNewsHomePage(){
+        return self::take(4)->get();
+    } 
 }

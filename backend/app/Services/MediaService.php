@@ -13,7 +13,7 @@ class MediaService
     public function getMedia()
     {
         try {
-            $data = Media::all();
+            $data = Media::getMediaHomePage();
             if (!$data->isEmpty()) {
                 return response()->json($data, 200);
             } else {

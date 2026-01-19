@@ -17,4 +17,8 @@ class SuccessStories extends Model
         'address',
         'description',
     ];
+
+    public static function getSuccessStoriesHomePage(){
+        return self::take(4)->get();
+    }
 }

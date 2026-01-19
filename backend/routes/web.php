@@ -33,6 +33,9 @@ Route::get('/media/{id}', [MediaController::class, 'getMediaData']);
 Route::get('/success-partners', [SuccessPartnersController::class, 'getSuccessPartners']);
 Route::get('/success-partners/{id}', [SuccessPartnersController::class, 'getSuccessPartnersData']);
 
+Route::get('/', function(){
+    return view('welcome');
+});
 
 
 

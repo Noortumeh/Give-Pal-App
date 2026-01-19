@@ -12,9 +12,12 @@ class Statistics extends Model
     protected $table = 'statistics';
 
     protected $fillable = [
-        'projects_number',
-        'beneficiaries_of_cultural_program',
-        'beneficiaries_of_relief_program',
-        'articles_number',
+        'icon',
+        'statistic_title',
+        'statistic',
     ];
+
+    public static function getStatistcsHomePage(){
+        return self::take(4)->get();
+    }
 }

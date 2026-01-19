@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Facades\StoreFile;
 use App\Http\Requests\StatisticsRequest;
 use App\Http\Resources\StatisticsResource;
 use App\Models\Statistics;
@@ -13,7 +14,7 @@ class StatisticsService
     public function getStatistics()
     {
         try {
-            $statistics = Statistics::all();
+            $statistics = Statistics::getStatistcsHomePage();
             if (!$statistics->isEmpty()) {
                 return response()->json($statistics, 200);
             } else {
@@ -41,6 +42,11 @@ class StatisticsService
     {
         try {
             $statistics = $request->validated();
+
+            if ($request->hasFile('icon')) {
+                $statistics['icon'] = StoreFile::storeFile($request->icon, 'statistics-icons');
+            }
+            
             Statistics::create($statistics);
             return response(['message' => 'Created successfully', 'data' => $statistics], 200);
         } catch (Exception $error) {
@@ -58,6 +64,10 @@ class StatisticsService
                 return response()->json(['message' => 'Statistics Not Found!'], 404);
             }
 
+            if ($request->hasFile('icon')) {
+                $newStatistics['icon'] = StoreFile::updateStoredFile($statistics->icon, $request->icon, 'statistics-icons');
+            }
+
             $statistics->update($newStatistics);
             return response()->json(['message' => 'Updated Successfully'], 200);
         } catch (Exception $error) {
@@ -72,6 +82,9 @@ class StatisticsService
             if (!$statistics) {
                 return response()->json(['message' => 'Statistics Not Found!'], 404);
             }
+
+            StoreFile::deleteStoredFile($statistics->icon);
+
             $statistics->delete();
             return response()->json(['message' => 'Statistics Deleted Successfully'], 200);
         } catch (Exception $error) {

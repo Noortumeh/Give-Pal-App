@@ -14,7 +14,7 @@ class NewsService
     public function getNews()
     {
         try {
-            $data = News::all();
+            $data = News::getNewsHomePage();
             if (!$data->isEmpty()) {
                 return response()->json($data, 200);
             } else {
