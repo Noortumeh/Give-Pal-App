@@ -16,4 +16,9 @@ class Services extends Model
         'title',
         'description',
     ];
+
+    public static function homePageServices()
+    {
+        return self::take(3)->get();
+    }
 }

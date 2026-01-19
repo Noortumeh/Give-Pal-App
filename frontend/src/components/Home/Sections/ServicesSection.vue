@@ -1,15 +1,14 @@
 <script setup>
+import { API_HEADER } from "@/APIs/ApiHeader";
+import { servicesSection } from "@/APIs/EndPoints";
 import { onMounted, ref } from "vue";
 const data = ref([]);
 
 onMounted(async () => {
   try {
-    const res = await fetch("http://127.0.0.1:8000/services", {
+    const res = await fetch(servicesSection, {
       method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        "access-control-allow-credentials": "true",
-      },
+      headers: API_HEADER,
     });
     if (res.ok) {
       data.value = await res.json();
@@ -22,12 +21,13 @@ onMounted(async () => {
 </script>
 <template>
   <div class="text-end p-5">
-    <h1 class="text-3xl font-semibold text-start">خدمات عطاء</h1>
+    <h1 class="text-3xl font-semibold text-start absolute">خدمات عطاء</h1>
+    <div class="under-line"></div>
   </div>
   <div v-if=!data>
     <p class="mt-5 text-center text-3xl ">لايوحد خدمات لعرضها بعد!</p>
   </div>
-  <div v-else class="flex flex-wrap gap-4 justify-around content-center text-center">
+  <div v-else class="flex flex-wrap gap-4 justify-around content-center text-center mt-5">
     <div
       v-for="service in data"
       :key="service.title"

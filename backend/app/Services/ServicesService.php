@@ -14,7 +14,7 @@ class ServicesService
     public function getServices()
     {
         try {
-            $Services = Services::all();
+            $Services = Services::homePageServices();
             if (!$Services->isEmpty()) {
                 return response()->json($Services, 200);
             } else {

@@ -14,7 +14,7 @@ class ProjectsService
     public function getProjects()
     {
         try {
-            $projects = Projects::all();
+            $projects = Projects::projectsHomePage();
             if (!$projects->isEmpty()) {
                 return response()->json($projects, 200);
             } else {

@@ -17,4 +17,8 @@ class Media extends Model
         'dsecription',
         'media',
     ];
+
+    public static function getMediaHomePage(){
+        return self::take(6)->get();
+    }
 }

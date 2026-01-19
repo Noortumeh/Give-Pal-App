@@ -1,11 +1,22 @@
 @import './base.css';
 @import "tailwindcss";
-@import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap"); */
 
-* {
+/* * {
   font-family: "Tajawal";
-}
+} */
 
 p{
     color: rgba(140, 140, 140, 1);
 }
+
+.under-line{
+  height: 20px;
+  width: 160px;
+  background-color: rgba(1, 123, 50, 0.25);
+  position: relative;
+  top: 28px;
+  margin-bottom: 16px;
+}
+
+

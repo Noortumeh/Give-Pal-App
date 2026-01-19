@@ -16,4 +16,8 @@ class Projects extends Model
         'title',
         'description',
     ];
+
+    public static function projectsHomePage(){
+        return self::take(4)->get();
+    }
 }

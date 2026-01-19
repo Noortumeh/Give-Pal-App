@@ -22,10 +22,9 @@ class StatisticsRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'projects_number' => 'int',
-            'beneficiaries_of_cultural_program' => 'int',
-            'beneficiaries_of_relief_program' => 'int',
-            'articles_number' => 'int'
+            'icon' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
+            'statistic_title' => 'string',
+            'statistic' => 'string',
         ];
     }
 }

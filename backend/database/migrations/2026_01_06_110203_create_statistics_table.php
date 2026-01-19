@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('statistics', function (Blueprint $table) {
             $table->id();
-            $table->integer('projects_number');
-            $table->integer('beneficiaries_of_cultural_program');
-            $table->integer('beneficiaries_of_relief_program');
-            $table->integer('articles_number');
+            $table->string('icon');
+            $table->string('statistic_title');
+            $table->string('statistic');
             $table->timestamps();
         });
     }
