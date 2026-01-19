@@ -1,6 +1,7 @@
 <script setup>
 import { API_HEADER } from "@/APIs/ApiHeader";
 import { projectsSection } from "@/APIs/EndPoints";
+import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
 
 const data = ref([]);
@@ -22,12 +23,11 @@ onMounted(async () => {
 </script>
 <template>
   <div class="text-start pr-5 pt-5">
-    <h1 class="text-3xl font-semibold absolute">مشاريع عطاء</h1>
-    <div class="under-line"></div>
-    <p class="text-sm text-slate-500 mt-8">
-      تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال يتّسم بالإنتاجية، وقد انطلقت
-      أولى مجتمعات "دار الرجاء" تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال
-    </p>
+    <Title
+      title="مشاريع عطاء"
+      description=' تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال يتّسم بالإنتاجية، وقد انطلقت
+      أولى مجتمعات "دار الرجاء" تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال'
+    />
   </div>
 
   <div v-if="!data">

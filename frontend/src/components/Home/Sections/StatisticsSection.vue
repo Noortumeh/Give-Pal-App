@@ -1,6 +1,7 @@
 <script setup>
 import { API_HEADER } from "@/APIs/ApiHeader";
 import { statisticsSection } from "@/APIs/EndPoints";
+import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
 const data = ref([]);
 
@@ -24,13 +25,16 @@ onMounted(async () => {
     class="grid md:grid-cols-1 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-1 gap-5 place-items-center m-5"
   >
     <div class="row-span-1 md:col-span-1 lg:col-span-1">
-      <h1 class="text-3xl font-semibold absolute">الاحصائيات</h1>
+      <!-- <h1 class="text-3xl font-semibold absolute">الاحصائيات</h1>
       <div class="under-line"></div>
       <p class="pt-10">
         نحن في جمعية عطاء فلسطين، نؤمن بقوة العطاء وأثره. على مدار سنوات من
         العمل الميداني، قدمنا مبادرات إنسانية وثقافية وتعليمية تساهم في بناء
         مستقبل أكثر أمانًا لأطفال فلسطين نحن في جمعية عطاء فلسطين،
-      </p>
+      </p> -->
+      <Title title="الاحصائيات" description=" نحن في جمعية عطاء فلسطين، نؤمن بقوة العطاء وأثره. على مدار سنوات من
+        العمل الميداني، قدمنا مبادرات إنسانية وثقافية وتعليمية تساهم في بناء
+        مستقبل أكثر أمانًا لأطفال فلسطين نحن في جمعية عطاء فلسطين،" />
     </div>
     <div
       class="md:row-span-4 lg:row-span-1 md:col-span-1 lg:col-span-2 grid md:grid-rows-3 grid-cols-2 lg:grid-rows-2 justify-center place-items-center gap-5 m-5 `sm:w-[512px]` md:w-[850px] `h-[577px]`"
