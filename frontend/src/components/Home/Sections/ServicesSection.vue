@@ -1,6 +1,7 @@
 <script setup>
 import { API_HEADER } from "@/APIs/ApiHeader";
 import { servicesSection } from "@/APIs/EndPoints";
+import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
 const data = ref([]);
 
@@ -12,7 +13,7 @@ onMounted(async () => {
     });
     if (res.ok) {
       data.value = await res.json();
-      console.log('Services Data: ', data.value);
+      console.log("Services Data: ", data.value);
     }
   } catch (err) {
     console.log("Faild to load Service Data", err);
@@ -21,13 +22,15 @@ onMounted(async () => {
 </script>
 <template>
   <div class="text-end p-5">
-    <h1 class="text-3xl font-semibold text-start absolute">خدمات عطاء</h1>
-    <div class="under-line"></div>
+    <Title title="خدمات عطاء" />
   </div>
-  <div v-if=!data>
-    <p class="mt-5 text-center text-3xl ">لايوحد خدمات لعرضها بعد!</p>
+  <div v-if="!data">
+    <p class="mt-5 text-center text-3xl">لايوحد خدمات لعرضها بعد!</p>
   </div>
-  <div v-else class="flex flex-wrap gap-4 justify-around content-center text-center mt-5">
+  <div
+    v-else
+    class="flex flex-wrap gap-4 justify-around content-center text-center mt-5"
+  >
     <div
       v-for="service in data"
       :key="service.title"
@@ -37,7 +40,7 @@ onMounted(async () => {
         <img
           class="max-w-[94px] max-h-[83px] mb-2"
           :src="`http://127.0.0.1:8000/storage/${service.icon}`"
-          :alt=service.title
+          :alt="service.title"
         />
       </div>
       <h2 class="font-bold text-[20px] pb-2">{{ service.title }}</h2>
