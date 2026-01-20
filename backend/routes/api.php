@@ -38,7 +38,7 @@ Route::delete('/news/{id}',[NewsController::class, 'deleteNewsById'])->middlewar
 
 //Media Routes
 Route::post('/media',[MediaController::class, 'addMedia'])->middleware('auth:sanctum');
-Route::put('/media/{id}',[MediaController::class, 'updateMediaById'])->middleware('auth:sanctum');
+Route::post('/media/{id}',[MediaController::class, 'updateMediaById'])->middleware('auth:sanctum');
 Route::delete('/media/{id}',[MediaController::class, 'deleteMediaById'])->middleware('auth:sanctum');
 
 // Success Partners Routes

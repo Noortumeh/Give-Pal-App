@@ -41,6 +41,9 @@ class MediaService
     {
         try {
             $validateData = $request->validated();
+            if(!$validateData){
+                return response()->json(['message' => 'No Media Data Enter!'], 405); 
+            }
             if ($request->hasFile('media')) {
                 $validateData['media'] = StoreFile::storeFile($request->media, 'media');
             }
@@ -56,6 +59,9 @@ class MediaService
     {
         try {
             $validatedRequest = $request->validated();
+            if(!$validatedRequest){
+                return response()->json(['message' => 'No Media Data Enter!'], 405); 
+            }
             $prevMedia = Media::find($id);
             if (!$prevMedia) {
                 return response()->json(['message' => 'Media Data Not Found!'], 404);

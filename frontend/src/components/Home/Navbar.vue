@@ -41,7 +41,7 @@ const navigation = [
                 v-for="item in navigation"
                 :key="item.name"
                 :href="item.href"
-                class="text-black rounded-md sm:px-0 md:px-3 xl:px-5.5 py-2 text-sm font-medium"
+                class="text-black rounded-md sm:px-0 md:px-3 xl:px-5.5 py-2  "
                 :aria-current="item.current ? 'page' : undefined"
                 >{{ item.name }}</a
               >

@@ -1,13 +1,14 @@
 <script setup></script>
 <template>
-  <div class="flex h-12 text-white">
+  <div class=" h-12 text-white grid grid-rows-1 grid-cols-4">
+    <!-- w-[1350px] w-[374px] -->
     <nav
-      class="bg-[rgba(46,99,68,1)] w-[1350px] flex items-center justify-end pl-5"
+      class="bg-[rgba(46,99,68,1)] col-start-1 col-span-3 flex items-center justify-end pl-5"
     >
       <a href="#">الاستمارة</a>
     </nav>
     <nav
-      class="bg-[rgba(1,123,50,1)] w-[374px] flex justify-start items-center"
+      class="bg-[rgba(1,123,50,1)] flex justify-start items-center"
     >
       <a href="#" class="pr-5">تبرع الان</a>
     </nav>

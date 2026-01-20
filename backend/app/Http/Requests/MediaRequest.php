@@ -24,7 +24,7 @@ class MediaRequest extends FormRequest
         return [
             'date' => 'date',
             'title' => 'string',
-            'dsecription' => 'string',
+            'dsecription' => 'nullable|string',
             'media' => 'file|max:2048|mimes:png,jpg,jpeg,gif,ico',
         ];
     }
