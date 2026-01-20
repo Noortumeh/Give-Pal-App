@@ -10,6 +10,10 @@ p{
     color: rgba(140, 140, 140, 1);
 }
 
+.p-white{
+  color: white;
+}
+
 .under-line{
   height: 20px;
   width: 160px;

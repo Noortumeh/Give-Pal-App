@@ -2,7 +2,7 @@
 import HeroVideo from "@/assets/HeroVideo.mp4";
 </script>
 <template>
-  <section class="relative w-full h-[490px] overflow-hidden">
+  <div class="relative w-full h-[490px] overflow-hidden">
     <video
       autoplay
       muted
@@ -12,5 +12,5 @@ import HeroVideo from "@/assets/HeroVideo.mp4";
     >
       <source :src="HeroVideo" type="video/mp4" />
     </video>
-  </section>
+  </div>
 </template>
