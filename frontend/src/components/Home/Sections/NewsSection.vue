@@ -30,7 +30,7 @@ onMounted(async () => {
           description="تابع آخر أخبار وإنجازات جمعية عطاء فلسطين، من مبادرات إنسانية ومشاريع تنموية إلى قصص النجاح التي نصنعها معًا في الميدان. هنا نشارككم الأمل، التقدّم، وكل "
         />
       </div>
-      <div class="grid grid-rows-1 grid-cols-3 gap-15 mt-8">
+      <div class="grid grid-rows-1 grid-cols-3 gap-15 mt-8 overflow-x-scroll">
         <div
           v-for="value in data"
           :key="value.id"

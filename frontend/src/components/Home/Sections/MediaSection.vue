@@ -32,7 +32,7 @@ onMounted(async () => {
 <template>
   <Title title="الميديا" />
   <div class="flex justify-center items-center py-12">
-    <div class="grid grid-cols-4 grid-rows-2 gap-5 h-[600px] w-[1250px]">
+    <div class="grid grid-cols-4 grid-rows-2 gap-5 h-[600px] w-[1250px] overflow-x-scroll">
       <div
         v-for="value in data"
         :key="value.id"
@@ -55,7 +55,7 @@ onMounted(async () => {
   </div>
 </template>
 
-<style>
+<style scoped>
 #media-0 {
   grid-column: span 1 / span 2;
   grid-row: span 1 / span 2;

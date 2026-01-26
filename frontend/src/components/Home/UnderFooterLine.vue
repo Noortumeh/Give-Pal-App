@@ -1,12 +1,15 @@
-<script setup></script>
+<script setup>
+import SocialMedia from './Sections/GeneralComponents/SocialMedia.vue';
+
+</script>
 <template>
-  <div class="h-[70px] bg-[rgba(1,123,50,1)]">
-    <div class="grid  grid-cols-3 grid-rows-1 w-[1350px] m-auto h-full items-center justify-items-center">
-        <div class="col-start-3 row-start-1">
-            <img src="../../assets/BlueLogo.png" />
+  <div class="h-[70px] bg-[rgba(1,123,50,1)] sm:hidden md:block">
+    <div class="grid  grid-cols-3 grid-rows-1 max-w-[1350px] m-auto h-full items-center justify-items-center">
+        <div class="col-start-3 row-start-1 ml-4">
+            <img src="../../assets/Footer/BlueLogo.png" />
         </div>
         <div class="col-start-2 row-start-1">
-            <img src="../../assets/Footer/social-media.png" />
+            <SocialMedia />
         </div>
         <div class="col-start-1 row-start-1">
             <p class="p-white">© 2025 Give Palestine All Rights Reserved.</p>
