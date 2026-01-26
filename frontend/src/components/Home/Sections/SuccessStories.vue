@@ -30,7 +30,7 @@ onMounted(async () => {
     </div>
     <div
       id="container"
-      class="max-w-[1350px] h-full mx-auto md:grid md:grid-cols-3 md:grid-rows-1 "
+      class="max-w-[1350px] h-full mx-auto md:grid md:grid-cols-3 md:grid-rows-1"
     >
       <div id="title-container" class="w-[525px] h-[252px] content-center">
         <div class="text-start pr-5 pt-5">
@@ -48,7 +48,7 @@ onMounted(async () => {
 
       <div
         id="stories"
-        class="grid md:grid-cols-6 md:grid-rows-6 h-full md:h-[110%] md:gap-8 col-span-2 w-full grid-cols-4 grid-rows-4"
+        class="grid md:grid-cols-6 md:grid-rows-6 h-full md:h-[110%] md:gap-8 col-span-2 w-full grid-cols-5 grid-rows-4"
       >
         <div
           v-for="value in data"
@@ -69,58 +69,6 @@ onMounted(async () => {
             </p>
           </div>
         </div>
-        <!-- <div id="grid-1" class="relative shadow-2xl">
-          <img
-            class="border-[color:rgba(1,123,50,1)] border-2 border-solid rounded-full w-[60px] h-[60px] absolute -right-8 top-7 z-1"
-            src="../../../assets/logo.png"
-          />
-          <div class="bg-white p-7">
-            <span class="text-[color:rgba(1,123,50,1)] mr-2"
-              >2فلسطين-الخليل</span
-            >
-            <h3 class="font-bold text-2xl size-9 w-full mr-2">مؤمن البسطامي</h3>
-            <p class="mr-2 mt-1">
-              في عام 2020، كانت مسابقة "أصوات جديدة" نقطة تحول في مسيرتي
-              الأدبية. بعد أن حصلت على المركز الثالث على مستوى البلاد، شعرت
-              بدفعة قوية من الحماس والطموح. بدأت أبحث عن مسابقات أدبية أخرى
-              تتناسب عن مسابقات أدبية أخرى تتناسب عن مسابقات أدبية أخرى تتناسب
-            </p>
-          </div>
-        </div>
-        <div id="grid-2" class="relative shadow-2xl">
-          <img
-            class="border-[color:rgba(1,123,50,1)] border-2 border-solid rounded-full w-[60px] h-[60px] absolute -right-8 top-3 z-1"
-            src="../../../assets/logo.png"
-          />
-          <div class="bg-white pr-10 h-full content-center">
-            <span class="text-[color:rgba(1,123,50,1)]">3فلسطين-الخليل</span>
-            <h3 class="font-bold text-2xl size-9 w-full">مؤمن البسطامي</h3>
-            <p class="w-[100%] p-2">
-              في عام 2020، كانت مسابقة "أصوات جديدة" نقطة تحول في مسيرتي
-              الأدبية. بعد أن حصلت على المركز الثالث على مستوى البلاد، شعرت
-              بدفعة قوية من الحماس والطموح. بدأت أبحث عن مسابقات أدبية أخرى
-              تتناسب عن مسابقات أدبية أخرى تتناسب عن مسابقات أدبية أخرى تتناسب
-            </p>
-          </div>
-        </div>
-        <div id="grid-3" class="relative shadow-2xl">
-          <img
-            class="border-[color:rgba(1,123,50,1)] border-2 border-solid rounded-full w-[60px] h-[60px] absolute -right-8 top-7 z-1"
-            src="../../../assets/logo.png"
-          />
-          <div class="bg-white p-7 h-full">
-            <span class="text-[color:rgba(1,123,50,1)] mr-2"
-              >فلسطين-الخليل</span
-            >
-            <h3 class="font-bold text-2xl size-9 w-full mr-2">مؤمن البسطامي</h3>
-            <p class="mr-2 w-[100%] p-2">
-              في عام 2020، كانت مسابقة "أصوات جديدة" نقطة تحول في مسيرتي
-              الأدبية. بعد أن حصلت على المركز الثالث على مستوى البلاد، شعرت
-              بدفعة قوية من الحماس والطموح. بدأت أبحث عن مسابقات أدبية أخرى
-              تتناسب عن مسابقات أدبية أخرى تتناسب عن مسابقات أدبية أخرى تتناسب
-            </p>
-          </div>
-        </div> -->
       </div>
     </div>
   </div>
@@ -132,6 +80,12 @@ onMounted(async () => {
 }
 #success-stories {
   background-image: url("../../../assets/bg-success-stories.png");
+
+  @media screen and (max-width: 1200px) {
+    background-image: url("../../../assets/scuseess-stories-mobile.png");
+    background-size: cover;
+    height: 574px !important;
+  }
 }
 #grid-0 {
   grid-column-start: 2 !important;
@@ -162,9 +116,13 @@ onMounted(async () => {
 }
 
 @media screen and (max-width: 1100px) {
-  #success-stories{
+  #success-stories {
     height: 100%;
     margin-bottom: 50px;
+    font-size: 12px;
+    h3{
+    font-size: 18px;
+    }
   }
   #mobile-title {
     display: block;
@@ -172,23 +130,27 @@ onMounted(async () => {
   #title-container {
     display: none;
   }
-  #stories{
-    margin-right: 50px;
+  #stories {
+    /* margin-right: 50px; */
     overflow: visible;
   }
   #grid-0 {
-    grid-column-start: 2 ;
+    grid-column-start: 3 !important;
     grid-row-start: 1 !important;
     grid-column: span 2 / span 2;
     grid-row: span 2 / span 2 !important;
     max-height: 350px;
   }
   #grid-1 {
-    grid-row-start: 3 !important;
-    grid-column-start: 1 !important;
+    grid-row-start: 2 !important;
+    grid-column-start: 2 !important;
     grid-column: span 2 / span 2;
     grid-row: span 2 / span 2 !important;
     max-height: 350px;
+    p{
+      height: 200px;
+      overflow: hidden;
+    }
   }
 
   #grid-2 {
@@ -197,6 +159,47 @@ onMounted(async () => {
 
   #grid-3 {
     display: none;
+  }
+}
+
+@media screen and (min-width: 750px) and (max-width: 1100px) {
+  #stories {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(4, minmax(0, auto)) !important;
+    grid-column: span 3 / span 3 !important;
+    gap: 20px !important;
+  }
+  #grid-0 {
+    grid-column-start: 3 !important;
+    grid-row-start: 1 !important;
+  }
+
+  #grid-1 {
+    grid-column-start: 2 !important;
+    grid-row-start: 2 !important;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #stories {
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    grid-template-rows: repeat(3, minmax(0, auto)) !important;
+    grid-column: span 3 / span 3 !important;
+    gap: 20px !important;
+  }
+  #grid-0 {
+    grid-column-start: 3 !important;
+    grid-row-start: 1 !important;
+    font-size: 12px;
+  }
+  #grid-1 {
+    grid-column-start: 2 !important;
+    grid-row-start: 2 !important;
+    height: inherit;
+
+    p {
+      font-size: 12px;
+    }
   }
 }
 </style>
