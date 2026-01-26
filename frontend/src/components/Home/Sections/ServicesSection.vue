@@ -29,10 +29,11 @@ onMounted(async () => {
   </div>
   <div
     v-else
-    class="flex flex-wrap gap-4 justify-around content-center text-center mt-5"
+    class="flex flex-wrap gap-4 justify-around content-center text-center mt-5 services-section"
   >
     <div
       v-for="service in data"
+      :id="[`media-${data.indexOf(service)}`]"
       :key="service.title"
       class="flex-col justify-center content-center max-w-[437px] max-h-[345px] p-3 border-[0.25px] border-[rgba(1,123,50,0.5)] border-[solid]"
     >
@@ -43,10 +44,70 @@ onMounted(async () => {
           :alt="service.title"
         />
       </div>
-      <h2 class="font-bold text-[20px] pb-2">{{ service.title }}</h2>
-      <p class="w-[372px] h-[104px]">
-        {{ service.description }}
-      </p>
+      <div id="content" class="flex-col">
+        <h2 class="font-bold text-[20px] pb-2">{{ service.title }}</h2>
+        <p class="w-[372px] h-[104px]">
+          {{ service.description }}
+        </p>
+      </div>
     </div>
   </div>
 </template>
+<style scoped>
+@media screen and (max-width: 830px) {
+  .services-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    gap: 15px;
+    /* grid-area: 
+        "media-0 media-0"
+        "media-1 media-2"
+      ; */
+  }
+  .services-section #media-0 {
+    border-radius: 20px;
+    width: 100%;
+    grid-column: span 2 / span 2;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    
+    #content {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+      margin-right: 10px;
+
+      p{
+        width: 100%
+      }
+      h2{
+        margin-right: 8px;
+      }
+    }
+  }
+  .services-section #media-1 {
+    margin-right: 12px;
+    border-radius: 20px;
+    width: 100%;
+    height: 180px;
+    grid-column: span 1 / span 2;
+    p {
+      display: none;
+    }
+  }
+  .services-section #media-2 {
+    margin-left: 12px;
+    border-radius: 20px;
+    width: 100%;
+    height: 180px;
+    grid-column: span 1 / span 2;
+    p {
+      display: none;
+    }
+  }
+}
+</style>

@@ -23,19 +23,19 @@ const navigation = [
   >
     <div class="mx-auto px-2 sm:px-6 lg:px-8">
       <div class="relative flex h-16 items-center justify-between">
-        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+        <!-- <div class="absolute inset-y-0 left-0 flex items-center sm:hidden"> -->
           <!-- Mobile menu button-->
-          <DisclosureButton
+          <!-- <DisclosureButton
             class="relative inline-flex items-center justify-center rounded-md p-2 text-black hover:bg-white/5 hover:text-gray-400 focus:outline-2 focus:-outline-offset-1 focus:outline-indigo-500"
           >
             <span class="absolute -inset-0.5"></span>
             <span class="sr-only">Open main menu</span>
             <Bars3Icon v-if="!open" class="block size-6" aria-hidden="true" />
             <XMarkIcon v-else class="block size-6" aria-hidden="true" />
-          </DisclosureButton>
-        </div>
-        <div class="flex flex-1 items-center justify-center sm:items-stretch">
-          <div class="hidden sm:mr-8 sm:block">
+          </DisclosureButton> -->
+        <!-- </div> -->
+        <div class="flex flex-1 items-center justify-center md:items-stretch">
+          <div class="hidden sm:mr-8 md:block">
             <div class="flex space-x-4">
               <a
                 v-for="item in navigation"
@@ -51,7 +51,7 @@ const navigation = [
       </div>
     </div>
 
-    <DisclosurePanel class="sm:hidden">
+    <!-- <DisclosurePanel class="sm:hidden">
       <div class="space-y-1 px-2 pt-2 pb-3">
         <DisclosureButton
           v-for="item in navigation"
@@ -68,6 +68,6 @@ const navigation = [
           >{{ item.name }}</DisclosureButton
         >
       </div>
-    </DisclosurePanel>
+    </DisclosurePanel> -->
   </Disclosure>
 </template>

@@ -1,44 +1,72 @@
 <script setup>
-import UnderFooterLine from './UnderFooterLine.vue';
-
+import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
+import UnderFooterLine from "./UnderFooterLine.vue";
 </script>
 <template>
-  <div class="grid grid-rows-1 grid-cols-4 w-[1350px] m-auto py-12">
-    <div class="col-start-1">
-      <img src="../../assets/FooterLogo.png" />
+  <div
+    id="footer"
+    class="grid md:grid-rows-1 md:grid-cols-4 max-w-[1350px] m-auto py-12"
+  >
+    <div
+      id="footer-logo"
+      class="col-start-1 sm:row-span-2 row-start-4 md:row-start-1 flex justify-center items-center"
+    >
+      <img src="../../assets/Footer/FooterLogo.png" />
     </div>
-    <div class="col-start-2 col-span-2 w-full flex justify-around items-center pl-24">
-      <div>
-        <h3 class="list-title">من نحن</h3>
-        <ul>
-          <li>المنتجات</li>
-          <li>السلع المتاحة</li>
-          <li>الإصدارات الجديدة</li>
-          <li>الشركاء</li>
-        </ul>
+    <div
+      class="md:col-start-2 md:col-span-2 md:pl-24 sm:row-span-3 sm:col-span-1 sm:row-start-1"
+    >
+      <div
+        id="footer-content"
+        class="md:flex justify-around items-center w-full hidden"
+      >
+        <div>
+          <h3 class="list-title">من نحن</h3>
+          <ul>
+            <li>المنتجات</li>
+            <li>السلع المتاحة</li>
+            <li>الإصدارات الجديدة</li>
+            <li>الشركاء</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="list-title">تواصل معنا</h3>
+          <ul>
+            <li>خدمة العملاء</li>
+            <li>العروض الخاصة</li>
+            <li>فرص العمل</li>
+            <li>الإصدارات الجديدة</li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="list-title">الأسئلة المتكرره</h3>
+          <ul>
+            <li>الفعاليات القادمة</li>
+            <li>المعرض الفني</li>
+            <li>العروض المميزة</li>
+            <li>مجتمعنا</li>
+          </ul>
+        </div>
       </div>
-      <div>
-        <h3 class="list-title">تواصل معنا</h3>
-        <ul>
-          <li>خدمة العملاء</li>
-          <li>العروض الخاصة</li>
-          <li>فرص العمل</li>
-          <li>الإصدارات الجديدة</li>
-        </ul>
-      </div>
-      <div>
-        <h3 class="list-title">الأسئلة المتكرره</h3>
-        <ul>
+      <div class="flex-col justify-center text-center md:hidden row-start-1">
+        <ul class="mobile-content">
+          <li>تواصل معنا</li>
+          <li>الاسئلة المتكررة</li>
+          <li>من نحن</li>
           <li>الفعاليات القادمة</li>
-          <li>المعرض الفني</li>
-          <li>العروض المميزة</li>
           <li>مجتمعنا</li>
+          <li>الاصدارات الجديدة</li>
         </ul>
       </div>
     </div>
-    <div class="col-start-4">
+    <div
+      id="footer-contact"
+      class="col-start-4 sm:row-span-1 ml-4 sm:col-span-1 hidden md:block"
+    >
       <h3 class="text-[20px]">ابقى معنا على اتصال عن طريق :</h3>
-      <div class="flex justify-between items-center w-[80%] border-1 px-3 my-2">
+      <div
+        class="flex justify-between items-center min-w-[50%] border-1 px-3 my-2"
+      >
         <input placeholder="البريد الالكتروني" />
         <div class="my-2">
           <svg
@@ -62,17 +90,42 @@ import UnderFooterLine from './UnderFooterLine.vue';
         والموثوقية.
       </p>
     </div>
+    <div class="flex md:hidden mt-5 row-start-5">
+      <SocialMedia color="rgba(1,123,50,1)" borderColor="rgba(1,123,50,0.03)" />
+    </div>
   </div>
-  <UnderFooterLine />
 </template>
 <style>
-    .list-title{
-        color: rgba(1,123,50,1) ;
-        margin-bottom: 12px;
-        font-weight: bold;
-    }
+.list-title {
+  color: rgba(1, 123, 50, 1);
+  margin-bottom: 12px;
+  font-weight: bold;
+}
 
-    li{
-        margin-bottom: 10px;
-    }
+li {
+  margin-bottom: 10px;
+}
+
+#footer-content {
+  /* @media (width <= 768px) {
+    display: hidden;
+  } */
+}
+#footer{
+  @media (width <= 768px) {
+    grid-template-columns: 1;
+    grid-template-rows: 6;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.mobile-content{
+  li{
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(28, 134, 70, 0.2);
+  }
+  margin-bottom: 24px;
+}
+
 </style>

@@ -3,8 +3,8 @@
 <template>
   <div id="final-section" class="h-[368px]">
     <div id="over-lay" class="h-full flex-col content-center text-center">
-      <h1 class="text-white text-4xl">نزرع الأمل في قلوب الأطفال لنحصد غدًا أكثر أمنًا واستقرارًا في فلسطين</h1>
-      <p class="p-white mt-4 text-[20px]">نؤمن أن كل طفل يستحق فرصة ليحلم، ونحن هنا لنصنع له تلك الفرصة</p>
+      <h1 class="text-white text-2xl md:text-4xl">نزرع الأمل في قلوب الأطفال لنحصد غدًا أكثر أمنًا واستقرارًا في فلسطين</h1>
+      <p class="p-white mt-4 text-[15px] md:text-[20px]">نؤمن أن كل طفل يستحق فرصة ليحلم، ونحن هنا لنصنع له تلك الفرصة</p>
     </div>
   </div>
 </template>
