@@ -25,7 +25,7 @@ onMounted(async () => {
 
 <template>
   <div id="success-stories" class="h-[622px] my-12 width-100%">
-    <div id="mobile-title">
+    <div id="mobile-title" class="mr-5">
       <Title title="قصص نجاح" />
     </div>
     <div

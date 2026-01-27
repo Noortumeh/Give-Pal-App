@@ -38,7 +38,9 @@ console.log(duplicatedLogos.value);
 
 <template>
   <div class="my-12 max-w-[1350px] mx-auto px-0">
-    <Title title="شركاء النجاح" />
+    <div class="mr-5">
+      <Title title="شركاء النجاح" />
+    </div>
     <p v-if="!data" class="mt-5 text-center text-3xl">
       لايوحد شركاء نجاح لعرضهم بعد!
     </p>
@@ -56,7 +58,7 @@ console.log(duplicatedLogos.value);
             :key="index"
             :src="`http://127.0.0.1:8000/storage/${logo.icon}`"
             :alt="logo.icon"
-            class="h-[190px] w-[190px] object-contain select-none"
+            class="max-h-[190px] w-[190px] object-contain select-none"
             draggable="false"
           />
         </div>
@@ -78,7 +80,7 @@ console.log(duplicatedLogos.value);
   0% {
     transform: translateX(100%);
   }
-  80% {
+  100% {
     transform: translateX(-50%);
   }
 }

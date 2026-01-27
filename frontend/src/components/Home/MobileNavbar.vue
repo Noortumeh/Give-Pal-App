@@ -13,7 +13,6 @@ const open = ref(false);
         </button>
         <button class="mb-2 mr-3 flex flex-col items-center hover:cursor-pointer">
             <WrenchScrewdriverIcon class="h-[30px]" />
-
             <span>الخدمات</span>
         </button>
         <button class="mb-2 mr-3 flex flex-col items-center hover:cursor-pointer">

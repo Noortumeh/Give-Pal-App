@@ -12,14 +12,19 @@ defineProps({
     default: "rgba(255,255,255,0.5)",
   },
 });
+
+const faIcons = {
+  faFacebookF,
+  faLinkedinIn,
+  faTiktok,
+  faTwitter
+};
+
 </script>
 
 <template>
   <div class="flex gap-3" :style="{ color: color }">
-    <FontAwesomeIcon :class="`border border-[${borderColor}] p-3`" :icon="faFacebookF" />
-    <FontAwesomeIcon :class="`border border-[${borderColor}] p-3`" :icon="faLinkedinIn" />
-    <FontAwesomeIcon :class="`border border-[${borderColor}] p-3`" :icon="faTiktok" />
-    <FontAwesomeIcon :class="`border border-[${borderColor}] p-3`" :icon="faTwitter" />
+    <FontAwesomeIcon v-for="icon in faIcons" :class="`border border-[${borderColor}] p-3 cursor-pointer`" :icon="icon" />
   </div>
 </template>
 <style scoped>

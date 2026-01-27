@@ -1,6 +1,5 @@
 <script setup>
 import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
-import UnderFooterLine from "./UnderFooterLine.vue";
 </script>
 <template>
   <div
@@ -9,7 +8,7 @@ import UnderFooterLine from "./UnderFooterLine.vue";
   >
     <div
       id="footer-logo"
-      class="col-start-1 sm:row-span-2 row-start-4 md:row-start-1 flex justify-center items-center"
+      class="col-start-1 my-5 sm:row-span-2 row-start-4 md:row-start-1 flex justify-center items-center"
     >
       <img src="../../assets/Footer/FooterLogo.png" />
     </div>
@@ -65,17 +64,18 @@ import UnderFooterLine from "./UnderFooterLine.vue";
     >
       <h3 class="text-[20px]">ابقى معنا على اتصال عن طريق :</h3>
       <div
-        class="flex justify-between items-center min-w-[50%] border-1 px-3 my-2"
+        id="email-div"
+        class="flex justify-between items-center border px-3 py-2 my-2"
       >
-        <input placeholder="البريد الالكتروني" />
-        <div class="my-2">
+        <input class="w-[80%]" placeholder="البريد الالكتروني" />
+        <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="3"
             stroke="currentColor"
-            class="size-10 bg-black text-white"
+            class="size-8 lg:size-10 bg-black text-white cursor-pointer"
           >
             <path
               stroke-linecap="round"
@@ -90,7 +90,7 @@ import UnderFooterLine from "./UnderFooterLine.vue";
         والموثوقية.
       </p>
     </div>
-    <div class="flex md:hidden mt-5 row-start-5">
+    <div id="social" class="flex md:hidden mt-5 mb-8 row-start-5">
       <SocialMedia color="rgba(1,123,50,1)" borderColor="rgba(1,123,50,0.03)" />
     </div>
   </div>
@@ -106,26 +106,42 @@ li {
   margin-bottom: 10px;
 }
 
-#footer-content {
-  /* @media (width <= 768px) {
-    display: hidden;
-  } */
-}
-#footer{
-  @media (width <= 768px) {
-    grid-template-columns: 1;
-    grid-template-rows: 6;
-    justify-content: center;
-    align-items: center;
+@media (width <= 768px) {
+  #footer {
+    grid-template-columns: 1 !important;
+    grid-template-rows: 6 !important;
+    justify-content: center !important;
+    align-items: center !important;
   }
+
+  #footer-logo {
+    grid-column: span 1 / span 1 !important;
+    grid-row: span 1 / span 1 !important;
+    grid-row-start: 4 !important;
+  }
+  #social{
+    margin-bottom: 46px;
+  }
+
 }
 
-.mobile-content{
-  li{
+.mobile-content {
+  li {
+    cursor: pointer;
     padding-bottom: 24px;
     border-bottom: 1px solid rgba(28, 134, 70, 0.2);
   }
   margin-bottom: 24px;
 }
 
+@media screen and (min-width: 768px) and (max-width: 975px) {
+  #email-div {
+    position: relative;
+    svg {
+      position: absolute;
+      left: 5px;
+      top: 4px;
+    }
+  }
+}
 </style>
