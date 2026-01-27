@@ -35,7 +35,7 @@ onMounted(async () => {
       v-for="service in data"
       :id="[`media-${data.indexOf(service)}`]"
       :key="service.title"
-      class="flex-col justify-center content-center max-w-[437px] max-h-[345px] p-3 border-[0.25px] border-[rgba(1,123,50,0.5)] border-[solid]"
+      class="flex-col justify-center content-center w-[437px] max-h-[345px] p-3 border-[2px] border-[rgba(1,123,50,0.25)] border-[solid]"
     >
       <div class="flex justify-center content-center">
         <img
@@ -60,6 +60,7 @@ onMounted(async () => {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto auto;
     justify-items: center;
+    align-items: center;
     gap: 15px;
     /* grid-area: 
         "media-0 media-0"
@@ -68,8 +69,8 @@ onMounted(async () => {
   }
   .services-section #media-0 {
     border-radius: 20px;
-    width: 100%;
-    grid-column: span 2 / span 2;
+    width: 90% !important;
+    grid-column: span 2 / span 2 !important;
     display: flex;
     flex-direction: row;
     justify-content: start;
@@ -90,9 +91,9 @@ onMounted(async () => {
     }
   }
   .services-section #media-1 {
-    margin-right: 12px;
+    margin-right: auto;
     border-radius: 20px;
-    width: 100%;
+    width: 90%;
     height: 180px;
     grid-column: span 1 / span 2;
     p {
@@ -100,11 +101,12 @@ onMounted(async () => {
     }
   }
   .services-section #media-2 {
-    margin-left: 12px;
+    margin-left: auto;
     border-radius: 20px;
-    width: 100%;
+    width: 90%;
     height: 180px;
     grid-column: span 1 / span 2;
+    
     p {
       display: none;
     }

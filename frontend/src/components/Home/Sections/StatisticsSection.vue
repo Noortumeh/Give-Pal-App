@@ -22,9 +22,15 @@ onMounted(async () => {
 </script>
 <template>
   <div
-    class="grid md:grid-cols-1 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-1 gap-5 place-items-center m-5"
+    class="grid md:grid-cols-1 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-1 gap-5 place-items-center m-5 mt-24"
   >
-    <div class="row-span-1 md:col-span-1 lg:col-span-1">
+    <div
+      id="mobile-title"
+      class="row-span-1 text-start md:col-span-1 lg:col-span-1 hidden w-full"
+    >
+      <Title title="الاحصائيات" />
+    </div>
+    <div class="hidden lg:block row-span-1 md:col-span-1 lg:col-span-1">
       <Title
         title="الاحصائيات"
         description=" نحن في جمعية عطاء فلسطين، نؤمن بقوة العطاء وأثره. على مدار سنوات من
@@ -33,13 +39,14 @@ onMounted(async () => {
       />
     </div>
     <div
-      class="md:row-span-4 lg:row-span-1 md:col-span-1 lg:col-span-2 grid sm:grid-rows-3 grid-cols-2 md:grid-rows-2 justify-center place-items-center gap-5 m-5 `sm:w-[512px]` md:w-[850px] `h-[577px]`"
+      id="statistics-container"
+      class="md:row-span-4 lg:row-span-1 md:col-span-1 lg:col-span-2 grid sm:grid-rows-3 grid-cols-2 md:grid-rows-2 justify-center place-items-center gap-5 m-5 md:w-[650px]"
     >
       <div
         v-for="value in data"
         :id="[`media-${data.indexOf(value)}`]"
         :key="value.statistic_title"
-        class="shadow-2xl col-span-1 row-span-1 grid grid-cols-3 grid-rows-3 auto-rows-fr w-full h-full"
+        class="border border-[rgba(1,123,50,0.25)] md:shadow-2xl col-span-1 row-span-1 grid grid-cols-3 grid-rows-3 auto-rows-fr w-full h-full"
       >
         <img
           class="col-span-3"
@@ -56,13 +63,22 @@ onMounted(async () => {
   </div>
 </template>
 <style scoped>
-@media screen and (max-width: 750px) {
+@media screen and (max-width: 850px) {
+  #mobile-title {
+    display: block;
+  }
+  #statistics-container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(150px, 300px));
+    align-items: start;
+  }
   #media-0 {
+    border-radius: 20px;
     grid-column: span 2 / span 2;
     display: flex;
-    height: 150px;
+    /* height: 150px; */
     img {
-      height: 150px;
+      height: 200px;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
@@ -75,9 +91,11 @@ onMounted(async () => {
     }
   }
   #media-1 {
+    border-radius: 20px;
     grid-row-start: 2;
   }
   #media-2 {
+    border-radius: 20px;
     img {
       height: 250px;
       grid-column: span 3 / span 3;
@@ -86,6 +104,7 @@ onMounted(async () => {
     grid-row: span 2 / span 2;
   }
   #media-3 {
+    border-radius: 20px;
     grid-column: span 1 / span 2;
     grid-row: span 1 / span 2;
   }

@@ -7,12 +7,12 @@ import { onMounted, ref } from "vue";
 const data = ref([]);
 
 const formatDate = (date) => {
-  return new Intl.DateTimeFormat('ar', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-  }).format(new Date(date))
-}
+  return new Intl.DateTimeFormat("ar", {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+  }).format(new Date(date));
+};
 
 onMounted(async () => {
   try {
@@ -30,9 +30,14 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <Title title="الميديا" />
+  <div class="mr-5">
+    <Title title="الميديا" />
+  </div>
   <div class="flex justify-center items-center py-12">
-    <div class="grid grid-cols-4 grid-rows-2 gap-5 h-[600px] w-[1250px] overflow-x-scroll">
+    <div
+      id="media-container"
+      class="grid grid-cols-4 grid-rows-2 gap-5 h-[600px] w-[1250px]"
+    >
       <div
         v-for="value in data"
         :key="value.id"
@@ -69,19 +74,64 @@ onMounted(async () => {
 }
 #media-3 {
   grid-column: span 2 / span 2;
-  img{
+  img {
     height: 290px;
   }
 }
 #media-4 {
-  img{
+  img {
     height: 290px;
-    
   }
 }
 #media-5 {
-  img{
+  img {
     height: 290px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  #media-container {
+    padding-inline: 10%;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(3, minmax(0, 340px));
+    height: auto;
+    span {
+      display: none;
+    }
+    h2 {
+      display: none;
+    }
+  }
+  #media-0 {
+    grid-column: span 2 / span 2;
+    grid-row: span 1 / span 1;
+  }
+  #media-1 {
+    grid-column: span 1 / span 1;
+    grid-row: span 1 / span 1;
+    grid-column-start: 2;
+  }
+  #media-2 {
+    grid-column: span 1 / span 1;
+    grid-row: span 2 / span 2;
+    grid-column-start: 1;
+    grid-row-start: 2;
+  }
+  #media-3 {
+    grid-column: span 1 / span 1;
+    grid-row: span 1 / span 1;
+    grid-column-start: 2;
+    grid-row-start: 3;
+
+    img{
+      height: 100%;
+    }
+  }
+  #media-4 {
+    display: none;
+  }
+  #media-5 {
+    display: none;
   }
 }
 </style>
