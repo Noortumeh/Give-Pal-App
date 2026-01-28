@@ -32,7 +32,7 @@ function autoSlide() {
 onMounted(() => {
   updateSlides();
   window.addEventListener("resize", updateSlides);
-  interval = setInterval(autoSlide, 3000);
+  interval = setInterval(autoSlide, 5000);
 });
 
 onUnmounted(() => {
