@@ -26,6 +26,7 @@ onMounted(async () => {
     <div>
       <div class="text-start pr-5 pt-5">
         <Title
+          underLineWidth="width: 90px"
           title="الأخبار"
           description="تابع آخر أخبار وإنجازات جمعية عطاء فلسطين، من مبادرات إنسانية ومشاريع تنموية إلى قصص النجاح التي نصنعها معًا في الميدان. هنا نشارككم الأمل، التقدّم، وكل "
         />
