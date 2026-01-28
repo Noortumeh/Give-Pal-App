@@ -26,7 +26,7 @@ onMounted(async () => {
 <template>
   <div id="success-stories" class="h-[622px] my-12 width-100%">
     <div id="mobile-title" class="mr-5">
-      <Title title="قصص نجاح" />
+      <Title title="قصص نجاح" underLineWidth="width: 160px" />
     </div>
     <div
       id="container"
@@ -36,6 +36,7 @@ onMounted(async () => {
         <div class="text-start pr-5 pt-5">
           <Title
             title="قصص نجاح"
+            underLineWidth="width: 160px"
             description='
       تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال يتّسم بالإنتاجية، وقد
           انطلقت أولى مجتمعات "دار الرجاء" تسعى "عطاء فلسطين”

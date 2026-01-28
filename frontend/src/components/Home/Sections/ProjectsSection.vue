@@ -25,6 +25,7 @@ onMounted(async () => {
   <div class="text-start pr-5 pt-5">
     <Title
       title="مشاريع عطاء"
+      underLineWidth="width: 170px"
       description=' تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال يتّسم بالإنتاجية، وقد انطلقت
       أولى مجتمعات "دار الرجاء" تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال'
     />

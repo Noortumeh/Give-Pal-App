@@ -28,11 +28,12 @@ onMounted(async () => {
       id="mobile-title"
       class="row-span-1 text-start md:col-span-1 lg:col-span-1 hidden w-full"
     >
-      <Title title="الاحصائيات" />
+      <Title title="الاحصائيات" underLineWidth="width: 150px"/>
     </div>
     <div class="hidden lg:block row-span-1 md:col-span-1 lg:col-span-1">
       <Title
         title="الاحصائيات"
+        underLineWidth="width: 150px"
         description=" نحن في جمعية عطاء فلسطين، نؤمن بقوة العطاء وأثره. على مدار سنوات من
         العمل الميداني، قدمنا مبادرات إنسانية وثقافية وتعليمية تساهم في بناء
         مستقبل أكثر أمانًا لأطفال فلسطين نحن في جمعية عطاء فلسطين،"
