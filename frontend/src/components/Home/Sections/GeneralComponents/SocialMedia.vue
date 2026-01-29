@@ -7,9 +7,12 @@ defineProps({
     type: String,
     default: "white",
   },
-  borderColor: {
+  spasificStyle: {
     type: String,
-    default: "rgba(255,255,255,0.5)",
+    default: "flex"
+  },
+  spasificIconStyle: {
+    type: String,
   },
 });
 
@@ -23,8 +26,8 @@ const faIcons = {
 </script>
 
 <template>
-  <div class="flex gap-3" :style="{ color: color }">
-    <FontAwesomeIcon v-for="icon in faIcons" :class="`border border-[${borderColor}] p-3 cursor-pointer`" :icon="icon" />
+  <div :class="`${spasificStyle} gap-3 w-full`" :style="{ color: color }">
+    <FontAwesomeIcon v-for="icon in faIcons" :class="`p-3 cursor-pointer w-full h-full ${spasificIconStyle}`" :icon="icon" />
   </div>
 </template>
 <style scoped>

@@ -91,7 +91,7 @@ import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
       </p>
     </div>
     <div id="social" class="flex md:hidden mt-5 mb-8 row-start-5">
-      <SocialMedia color="rgba(1,123,50,1)" borderColor="rgba(1,123,50,0.03)" />
+      <SocialMedia color="rgba(1,123,50,1)" spasificIconStyle="border border-[rgba(1,123,50,0.5)]" />
     </div>
   </div>
 </template>
