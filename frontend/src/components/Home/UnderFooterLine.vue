@@ -9,7 +9,7 @@ import SocialMedia from './Sections/GeneralComponents/SocialMedia.vue';
             <img src="../../assets/Footer/BlueLogo.png" />
         </div>
         <div class="col-start-2 row-start-1">
-            <SocialMedia />
+            <SocialMedia spasificIconStyle="border border-[rgba(255,255,255,0.5)]"/>
         </div>
         <div class="col-start-1 row-start-1">
             <p class="p-white">© 2025 Give Palestine All Rights Reserved.</p>

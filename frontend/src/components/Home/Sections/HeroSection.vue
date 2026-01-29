@@ -1,11 +1,11 @@
 <script setup>
-import { ref, computed, onMounted, onUnmounted } from "vue";
+import { computed, onMounted, onUnmounted, shallowRef } from "vue";
 import HeroSectionVideo from "./HeroSectionCompnents/HeroSectionVideo.vue";
 import HeroSectionImage from "./HeroSectionCompnents/HeroSectionImage.vue";
 
 /* slides as components */
-const slides = ref([]);
-const currentSlide = ref(0);
+const slides = shallowRef([]);
+const currentSlide = shallowRef(0);
 let interval = null;
 
 const totalSlides = computed(() => slides.value.length);

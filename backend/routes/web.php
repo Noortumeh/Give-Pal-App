@@ -1,9 +1,21 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\{App, Route};
+use Illuminate\Http\Request;
 use App\Http\Controllers\{MediaController, NewsController, ProjectsController, ServicesController, StatisticsController, SuccessPartnersController, SuccessStoriesController, UserController};
 
 //Services Routes
+Route::get('/home-titles/{locale}',function($locale){
+    if($locale === 'en'){
+        // session()->put('locale', 'en');
+        App::setLocale('en');
+    }else{
+        // session()->put('locale', 'ar');
+        App::setLocale('ar');
+    }
+    return __('home.titles');
+    // return redirect()->back();
+});
 Route::get('/services',[ServicesController::class, 'getServices']);
 Route::get('/services/{id}',[ServicesController::class, 'getServiceData']);
 
