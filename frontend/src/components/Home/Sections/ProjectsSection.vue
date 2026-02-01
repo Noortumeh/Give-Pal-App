@@ -57,6 +57,22 @@ onMounted(async () => {
       <img class="" :src="`http://127.0.0.1:8000/storage/${projects.image}`" />
     </div>
   </div>
+  <div
+    id="more-button"
+    class="md:hidden flex justify-center items-center w-full py-5"
+  >
+    <button
+      class="text-[rgba(1,123,50,1)] border border-[rgba(1,123,50,1)] py-2 px-10 text-bold"
+    >
+      عرض الكل
+    </button>
+  </div>
 </template>
 
-<style></style>
+<style>
+@media screen and (max-width: 1200px) {
+  #more-button {
+    display: flex;
+  }
+}
+</style>

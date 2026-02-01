@@ -22,9 +22,7 @@ const navigation = [
     v-slot="{ open }"
   >
     <div class="mx-auto px-2 sm:px-6 lg:px-8 h-16 w-full hidden md:flex items-center justify-between">
-      <!-- <div class="relative flex  items-center justify-between"> -->
         <div class="flex flex-1 items-center justify-center md:items-stretch ">
-          <!-- <div class="hidden md:block"> -->
             <div class="flex space-x-2 ">
               <a
                 v-for="item in navigation"
@@ -36,8 +34,6 @@ const navigation = [
               >
             </div>
           </div>
-        <!-- </div> -->
-      <!-- </div> -->
     </div>
   </Disclosure>
 </template>

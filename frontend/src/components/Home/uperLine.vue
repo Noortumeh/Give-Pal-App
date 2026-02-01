@@ -1,5 +1,17 @@
 <script setup>
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
+import Searchbar from "./Searchbar.vue";
+import { ref } from "vue";
+
+const openSearch = ref(false);
+
+const handleSearchOpen= () => {
+  if(openSearch.value === false){
+    openSearch.value = true;
+  }else{
+    openSearch.value = false;
+  }
+}
 </script>
 <template>
   <div id="uper-line" class="h-12 text-white grid grid-rows-1 grid-cols-4">
@@ -23,8 +35,14 @@ import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
         alt="give palestine"
       />
     </div>
-    <div id="search-bar" class="hidden">
-      <MagnifyingGlassIcon class="h-12 w-12 text-[rgba(1,123,50,1)] cursor-pointer" />
+    <div id="search-bar" class="md:hidden flex justify-center items-center">
+      <div :class="openSearch ? 'block' : 'hidden'">
+        <Searchbar  />
+      </div>
+      <MagnifyingGlassIcon
+        class="h-10 text-[rgba(1,123,50,1)] cursor-pointer" 
+        @click="handleSearchOpen"
+      />
     </div>
   </div>
 </template>
@@ -62,8 +80,10 @@ import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
       grid-column-start: 2 !important;
       text-align: center;
     }
-    #search-bar{
-      display: block;
+    #search-bar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       grid-column: span 1 / span 1 !important;
       grid-column-start: 3 !important;
       text-align: center;

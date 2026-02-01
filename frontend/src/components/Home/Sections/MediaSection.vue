@@ -31,7 +31,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="mr-5">
-    <Title title="الميديا" underLineWidth="width: 90px"/>
+    <Title title="الميديا" underLineWidth="width: 90px" />
   </div>
   <div class="flex justify-center items-center py-12">
     <div
@@ -57,6 +57,16 @@ onMounted(async () => {
         </div>
       </div>
     </div>
+  </div>
+  <div
+    id="more-button"
+    class="md:hidden flex justify-center items-center w-full py-5"
+  >
+    <button
+      class="text-[rgba(1,123,50,1)] border border-[rgba(1,123,50,1)] py-2 px-10 text-bold"
+    >
+      عرض الكل
+    </button>
   </div>
 </template>
 
@@ -90,6 +100,9 @@ onMounted(async () => {
 }
 
 @media screen and (max-width: 1200px) {
+  #more-button {
+    display: flex;
+  }
   #media-container {
     padding-inline: 10%;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -123,7 +136,7 @@ onMounted(async () => {
     grid-column-start: 2;
     grid-row-start: 3;
 
-    img{
+    img {
       height: 100%;
     }
   }
