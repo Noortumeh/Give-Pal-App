@@ -49,7 +49,7 @@ onMounted(async () => {
 
       <div
         id="stories"
-        class="grid md:grid-cols-6 md:grid-rows-6 h-full md:h-[110%] md:gap-8 col-span-2 w-full grid-cols-5 grid-rows-4"
+        class="block md:grid md:grid-cols-6 md:grid-rows-6 h-full md:h-full gap-8 col-span-2 w-full relative"
       >
         <div
           v-for="value in data"
@@ -60,7 +60,7 @@ onMounted(async () => {
             class="border-[color:rgba(1,123,50,1)] border-2 border-solid rounded-full w-[60px] h-[60px] absolute -right-8 top-8 z-1"
             :src="`http://127.0.0.1:8000/storage/${value.avatar}`"
           />
-          <div class="bg-white pr-10 h-full content-center p-2">
+          <div id="card-content" class="bg-white pr-10 h-full pt-1">
             <span class="text-[color:rgba(1,123,50,1)]">{{
               value.address
             }}</span>
@@ -71,6 +71,16 @@ onMounted(async () => {
           </div>
         </div>
       </div>
+    </div>
+    <div
+      id="more-button"
+      class="md:hidden flex justify-center items-center w-full py-5"
+    >
+      <button
+        class="text-[rgba(1,123,50,1)] border border-[rgba(1,123,50,1)] py-2 px-10 text-bold"
+      >
+        عرض الكل
+      </button>
     </div>
   </div>
 </template>
@@ -117,12 +127,19 @@ onMounted(async () => {
 }
 
 @media screen and (max-width: 1100px) {
+  #more-button {
+    display: flex;
+  }
   #success-stories {
+    display: flex !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
     height: 100%;
     margin-bottom: 50px;
     font-size: 12px;
-    h3{
-    font-size: 18px;
+    h3 {
+      font-size: 18px;
     }
   }
   #mobile-title {
@@ -132,25 +149,32 @@ onMounted(async () => {
     display: none;
   }
   #stories {
-    /* margin-right: 50px; */
     overflow: visible;
   }
   #grid-0 {
-    grid-column-start: 3 !important;
-    grid-row-start: 1 !important;
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2 !important;
-    max-height: 350px;
+    position: absolute;
+    height: 280px;
+    width: 350px;
+    right: 50px;
+    bottom: 50px;
+
+    #card-content {
+      padding-top: 20px;
+    }
   }
   #grid-1 {
-    grid-row-start: 2 !important;
-    grid-column-start: 2 !important;
-    grid-column: span 2 / span 2;
-    grid-row: span 2 / span 2 !important;
-    max-height: 350px;
-    p{
+    position: absolute;
+    height: 280px;
+    width: 350px;
+    top: 150px;
+    right: -150px;
+
+    p {
       height: 200px;
       overflow: hidden;
+    }
+    #card-content {
+      padding-top: 20px;
     }
   }
 
@@ -163,41 +187,22 @@ onMounted(async () => {
   }
 }
 
-@media screen and (min-width: 750px) and (max-width: 1100px) {
-  #stories {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    grid-template-rows: repeat(4, minmax(0, auto)) !important;
-    grid-column: span 3 / span 3 !important;
-    gap: 20px !important;
-  }
+@media screen and (max-width: 768px) {
   #grid-0 {
-    grid-column-start: 3 !important;
-    grid-row-start: 1 !important;
+    right: -90px;
+    top: 0px;
+    width: 300px;
   }
 
   #grid-1 {
-    grid-column-start: 2 !important;
-    grid-row-start: 2 !important;
+    right: -220px;
+    width: 300px;
+    top: 150px;
   }
 }
 
-@media screen and (max-width: 500px) {
-  #stories {
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    grid-template-rows: repeat(3, minmax(0, auto)) !important;
-    grid-column: span 3 / span 3 !important;
-    gap: 20px !important;
-  }
-  #grid-0 {
-    grid-column-start: 3 !important;
-    grid-row-start: 1 !important;
-    font-size: 12px;
-  }
+@media screen and (max-width: 615px) {
   #grid-1 {
-    grid-column-start: 2 !important;
-    grid-row-start: 2 !important;
-    height: inherit;
-
     p {
       font-size: 12px;
     }
