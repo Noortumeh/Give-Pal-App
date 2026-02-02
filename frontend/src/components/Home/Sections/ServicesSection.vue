@@ -22,7 +22,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="text-end p-5">
-    <Title :title= "$t('titles.services')" underLineWidth="width: 170px" />
+    <Title :title="$t('titles.services')" :underLineWidth="$i18n.locale === 'ar' ? 'width: 170px' : 'width: 220px'" />
   </div>
   <div v-if="!data">
     <p class="mt-5 text-center text-3xl">لايوحد خدمات لعرضها بعد!</p>
@@ -62,10 +62,6 @@ onMounted(async () => {
     justify-items: center;
     align-items: center;
     gap: 15px;
-    /* grid-area: 
-        "media-0 media-0"
-        "media-1 media-2"
-      ; */
   }
   .services-section #media-0 {
     border-radius: 20px;
@@ -75,23 +71,22 @@ onMounted(async () => {
     flex-direction: row;
     justify-content: start;
     align-items: center;
-    
+
     #content {
       display: flex;
       flex-direction: column;
       align-items: start;
       margin-right: 10px;
 
-      p{
-        width: 100%
+      p {
+        width: 100%;
       }
-      h2{
+      h2 {
         margin-right: 8px;
       }
     }
   }
   .services-section #media-1 {
-    margin-right: auto;
     border-radius: 20px;
     width: 90%;
     height: 180px;
@@ -100,16 +95,29 @@ onMounted(async () => {
       display: none;
     }
   }
-  .services-section #media-2 {
+
+  [dir="ltr"] .services-section #media-1 {
     margin-left: auto;
+  }
+  [dir="rtl"] .services-section #media-1 {
+    margin-right: auto;
+  }
+  .services-section #media-2 {
     border-radius: 20px;
     width: 90%;
     height: 180px;
     grid-column: span 1 / span 2;
-    
+
     p {
       display: none;
     }
+  }
+
+  [dir="ltr"] .services-section #media-2 {
+    margin-right: auto;
+  }
+  [dir="rtl"] .services-section #media-2 {
+    margin-left: auto;
   }
 }
 </style>

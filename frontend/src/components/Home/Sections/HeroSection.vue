@@ -2,11 +2,14 @@
 import { computed, onMounted, onUnmounted, shallowRef } from "vue";
 import HeroSectionVideo from "./HeroSectionCompnents/HeroSectionVideo.vue";
 import HeroSectionImage from "./HeroSectionCompnents/HeroSectionImage.vue";
+import { useI18n } from "vue-i18n";
 
 /* slides as components */
 const slides = shallowRef([]);
 const currentSlide = shallowRef(0);
 let interval = null;
+
+const {locale} = useI18n();
 
 const totalSlides = computed(() => slides.value.length);
 
@@ -18,8 +21,10 @@ const updateSlides = () => {
   currentSlide.value = 0;
 };
 
+console.log(locale.value);
+
 const sliderStyle = computed(() => ({
-  transform: `translateX(${currentSlide.value * 100}%)`,
+  transform: locale.value === 'ar' ? `translateX(${currentSlide.value * 100}%)` : `translateX(-${currentSlide.value * 100}%)`,
 }));
 
 function autoSlide() {

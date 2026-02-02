@@ -3,7 +3,7 @@ import Title from "@/components/Title.vue";
 </script>
 <template>
   <div
-    class="mb-5 relative overflow-hidden h-[490px] w-full flex items-center justify-start shadow-[10px_10px_30px_rgba(0,0,0,0.05)]"
+    :class="['mb-5 relative overflow-hidden h-[490px] w-full flex items-center shadow-[10px_10px_30px_rgba(0,0,0,0.05)]', $i18n.locale === 'en' ? 'justify-end' : 'justify-start']"
   >
     <img
       id="left-image"
@@ -18,12 +18,12 @@ import Title from "@/components/Title.vue";
       class="absolute right-0 z-1 w-[56%] h-full"
       alt=""
     />
-    <div id="content" class="absolute z-3 w-20% mr-5 lg:mr-28">
+    <div id="content" :class="['relative z-3 w-20% max-w-[700px]', $i18n.locale === 'en' ? 'mr-8' : 'mr-5 lg:mr-28']">
       <span class="text-[rgba(1,123,50,1)]">{{ $t("hero.message") }}</span>
-      <div class="w-[40%]">
+      <div >
         <Title
           :title="$t('hero.title')"
-          underLineWidth="width: 250px"
+          :underLineWidth= "$i18n.locale === 'ar' ? 'width: 250px' : 'width: 180px'"
           :description="$t('hero.description')"
         />
       </div>
@@ -31,11 +31,14 @@ import Title from "@/components/Title.vue";
   </div>
 </template>
 <style scoped>
+@media screen and (max-width: 1650px) {
+  #content{
+    max-width: 40%;
+  }
+} 
 @media screen and (min-width: 880px) and (max-width: 980px) {
   #left-image {
     left: -110px;
-  }
-  #content {
   }
 }
 

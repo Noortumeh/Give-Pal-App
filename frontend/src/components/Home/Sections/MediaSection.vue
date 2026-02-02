@@ -30,7 +30,7 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="mr-5">
+  <div class="mr-5 pl-5">
     <Title :title="$t('titles.media')" underLineWidth="width: 90px" />
   </div>
   <div class="flex justify-center items-center py-12">

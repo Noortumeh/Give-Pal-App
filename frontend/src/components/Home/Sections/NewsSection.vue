@@ -30,7 +30,7 @@ onMounted(async () => {
 <template>
   <div class="my-12">
     <div>
-      <div class="text-start pr-5 pt-5 w-[80%]">
+      <div class="text-start p-5 w-[80%]">
         <Title
           underLineWidth="width: 90px"
           :title="$t('titles.news.title')"

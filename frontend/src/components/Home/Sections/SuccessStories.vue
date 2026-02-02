@@ -25,8 +25,13 @@ onMounted(async () => {
 
 <template>
   <div id="success-stories" class="h-[622px] my-12 w-full">
-    <div id="mobile-title" class="mr-5">
-      <Title :title="$t('titles.success-stories.title')" underLineWidth="width: 160px" />
+    <div id="mobile-title" class="mr-5 pl-5 pt-2">
+      <Title
+        :title="$t('titles.success-stories.title')"
+        :underLineWidth="
+          $i18n.locale === 'ar' ? 'width: 160px' : 'width: 220px'
+        "
+      />
     </div>
     <div
       id="container"
@@ -36,7 +41,9 @@ onMounted(async () => {
         <div class="text-start pr-5 pt-5">
           <Title
             :title="$t('titles.success-stories.title')"
-            underLineWidth="width: 160px"
+            :underLineWidth="
+              $i18n.locale === 'ar' ? 'width: 160px' : 'width: 220px'
+            "
             :description="$t('titles.success-stories.description')"
             id="p-black"
           />
@@ -57,7 +64,13 @@ onMounted(async () => {
             class="border-[color:rgba(1,123,50,1)] border-2 border-solid rounded-full w-[60px] h-[60px] absolute -right-8 top-8 z-1"
             :src="`http://127.0.0.1:8000/storage/${value.avatar}`"
           />
-          <div id="card-content" class="bg-white pr-10 h-full pt-1">
+          <div
+            id="card-content"
+            :class="[
+              'bg-white h-full pt-1',
+              $i18n.locale === 'en' ? 'pr-0 pl-10' : 'pr-10',
+            ]"
+          >
             <span class="text-[color:rgba(1,123,50,1)]">{{
               value.address
             }}</span>
@@ -76,7 +89,7 @@ onMounted(async () => {
       <button
         class="text-[rgba(1,123,50,1)] border border-[rgba(1,123,50,1)] py-2 px-10 text-bold"
       >
-        {{ $t('buttons.name') }}
+        {{ $t("buttons.name") }}
       </button>
     </div>
   </div>
@@ -85,6 +98,18 @@ onMounted(async () => {
 <style scoped>
 #mobile-title {
   display: none;
+}
+[dir="ltr"] #stories {
+    right: 50px;
+  }
+@media screen and (max-width: 1200px) {
+  [dir="ltr"] #stories {
+    right: 40px;
+  }
+  #title-container{
+    width: 480px;
+  }
+
 }
 #success-stories {
   background-image: url("../../../assets/bg-success-stories.png");
@@ -121,6 +146,7 @@ onMounted(async () => {
   grid-row: span 3 / span 3;
   grid-row-start: 3;
   grid-column-start: 4;
+  margin-top: 15px;
 }
 
 @media screen and (max-width: 1100px) {
@@ -148,7 +174,7 @@ onMounted(async () => {
   #stories {
     overflow: visible;
   }
-  #grid-0 {
+  [dir="rtl"] #grid-0 {
     position: absolute;
     height: 280px;
     width: 350px;
@@ -159,12 +185,39 @@ onMounted(async () => {
       padding-top: 20px;
     }
   }
-  #grid-1 {
+  [dir="ltr"] #grid-0 {
+    position: absolute;
+    height: 280px;
+    width: 350px;
+    left: 50px;
+    bottom: 50px;
+
+    #card-content {
+      padding-top: 20px;
+    }
+  }
+  [dir="rtl"] #grid-1 {
     position: absolute;
     height: 280px;
     width: 350px;
     top: 150px;
     right: -150px;
+
+    p {
+      height: 200px;
+      overflow: hidden;
+    }
+    #card-content {
+      padding-top: 20px;
+    }
+  }
+
+  [dir="ltr"] #grid-1 {
+    position: absolute;
+    height: 280px;
+    width: 350px;
+    top: 150px;
+    left: -150px;
 
     p {
       height: 200px;
@@ -185,14 +238,26 @@ onMounted(async () => {
 }
 
 @media screen and (max-width: 768px) {
-  #grid-0 {
+  [dir="rtl"] #grid-0 {
     right: -90px;
     top: 0px;
     width: 300px;
   }
 
-  #grid-1 {
+  [dir="ltr"] #grid-0 {
+    left: -90px;
+    top: 0px;
+    width: 300px;
+  }
+
+  [dir="rtl"] #grid-1 {
     right: -220px;
+    width: 300px;
+    top: 150px;
+  }
+
+  [dir="ltr"] #grid-1 {
+    left: -220px;
     width: 300px;
     top: 150px;
   }

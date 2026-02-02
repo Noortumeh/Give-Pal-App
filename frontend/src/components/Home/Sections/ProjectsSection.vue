@@ -22,10 +22,10 @@ onMounted(async () => {
 });
 </script>
 <template>
-  <div class="text-start pr-5 pt-5">
+  <div class="text-start p-5 pt-5">
     <Title
       :title="$t('titles.projects.title')"
-      underLineWidth="width: 170px"
+      :underLineWidth="$i18n.locale === 'ar' ? 'width: 170px' : 'width: 220px'"
       :description="$t('titles.projects.description')"
     />
   </div>

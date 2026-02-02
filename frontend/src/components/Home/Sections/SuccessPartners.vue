@@ -38,7 +38,7 @@ console.log(duplicatedLogos.value);
 
 <template>
   <div class="my-12 max-w-[1350px] mx-auto px-0">
-    <div class="mr-5">
+    <div class="mr-5 p-5">
       <Title :title="$t('titles.success-partners')" underLineWidth="width: 160px" />
     </div>
     <p v-if="!data" class="mt-5 text-center text-3xl">
@@ -46,7 +46,7 @@ console.log(duplicatedLogos.value);
     </p>
     <div class="overflow-hidden w-full relative mx-auto select-none py-20">
       <div
-        class="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white to-transparent"
+        class="absolute left-0 top-0 h-full w-20 z-1 pointer-events-none bg-gradient-to-r from-white to-transparent"
       ></div>
 
       <div class="marquee-inner flex min-w-[200%]">
@@ -65,7 +65,7 @@ console.log(duplicatedLogos.value);
       </div>
 
       <div
-        class="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white to-transparent"
+        class="absolute right-0 top-0 h-full w-20 md:w-40 z-1 pointer-events-none bg-gradient-to-l from-white to-transparent"
       ></div>
     </div>
   </div>
