@@ -13,11 +13,14 @@ const props = defineProps({
   },
   underLineWidth:{
     type: String,
+  },
+  titleWidth:{
+    type: String,
   }
 });
 </script>
 <template>
-    <h1 class="text-3xl font-semibold absolute">{{ title }}</h1>
+    <h1 class="text-3xl font-semibold absolute" :style="titleWidth">{{ title }}</h1>
     <div class="under-line" :style="underLineWidth"></div>
     <p :id="id" :class="[id ? 'text-2xl' : 'text-sm', 'text-slate-500 pt-8']">
       {{ description }}

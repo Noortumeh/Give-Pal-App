@@ -25,6 +25,7 @@ import Title from "@/components/Title.vue";
           :title="$t('hero.title')"
           :underLineWidth= "$i18n.locale === 'ar' ? 'width: 250px' : 'width: 180px'"
           :description="$t('hero.description')"
+          titleWidth = 'font-size: 25px'
         />
       </div>
     </div>
