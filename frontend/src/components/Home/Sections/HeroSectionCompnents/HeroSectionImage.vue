@@ -19,16 +19,12 @@ import Title from "@/components/Title.vue";
       alt=""
     />
     <div id="content" class="absolute z-3 w-20% mr-5 lg:mr-28">
-      <span class="text-[rgba(1,123,50,1)]">أهلا بك في عطاء فلسطين</span>
+      <span class="text-[rgba(1,123,50,1)]">{{ $t("hero.message") }}</span>
       <div class="w-[40%]">
         <Title
-          title="مجتمعات دار الرجـــــــاء"
+          :title="$t('hero.title')"
           underLineWidth="width: 250px"
-          description="تسعى عطاء فلسطين لتوفير مجتمع آمن وفعّال يتّسم بالإنتاجية، وقد
-                    انطلقت أولى مجتمعات دار الرجاء
-                    كـفكرة رائدة تساهم في تخفيف 
-                    أعباء  الحرب على قطاع غزة، 
-                    حيث يقع مجتمع دار الرجاء"
+          :description="$t('hero.description')"
         />
       </div>
     </div>
@@ -39,7 +35,7 @@ import Title from "@/components/Title.vue";
   #left-image {
     left: -110px;
   }
-  #content{
+  #content {
   }
 }
 

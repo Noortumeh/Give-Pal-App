@@ -1,0 +1,104 @@
+{
+     "uperbar":{
+        "form" : "Form",
+        "donate":"Donate Now"
+    },
+
+    "navbar":{
+        "who-are-we":"Who are we",
+        "services":"Services",
+        "projects":"Projects",
+        "success-stories":"Success Stories",
+        "store":"Store",
+        "news":"News",
+        "partners":"Partners and financiers",
+        "reports":"Reports",
+        "contact": "Contact Us"
+    },
+
+     "titles":{
+        "services" : "Given Services",
+        "projects" : {
+            "title" : "Given Projects",
+            "description" : "'Ataa Palestine' seeks to provide a safe, effective, and productive community, and the first 'Dar Al-Raja' community has been launched. 'Ataa Palestine' seeks to provide a safe and effective community."
+        },
+        "success-stories" : {
+            "title" : "Success stories",
+            "description" : "'Ataa Palestine' seeks to provide a safe, effective, and productive community, and the first 'Dar Al Raja' community has been launched. 'Ataa Palestine' seeks",
+            "button" : "Learn more"
+        },
+        "statistics" : {
+            "title" : "Statistics",
+            "description": "At Ata'a Palestine Association, we believe in the power and impact of giving. Through years of fieldwork, we have delivered humanitarian, cultural, and educational initiatives that contribute to building a safer future for the children of Palestine."
+        },
+        "news" : {
+            "title": "News",
+            "description": "Follow the latest news and achievements of the Ata'a Palestine Association, from humanitarian initiatives and development projects to the success stories we create together on the ground. Here we share with you hope, progress, and everything else."
+        },
+        "media" : "Media",
+        "success-partners" : "Success Partners"
+    },
+
+    "hero": {
+        "message" : "Welcome to Given Palestine",
+        "title": "Dar Al Raja Communities",
+        "description": "Ata'a Palestine seeks to provide a safe, effective, and productive community. The first Dar Al-Raja' community was launched as a pioneering idea to help alleviate the burdens of war on the Gaza Strip, where the Dar Al-Raja' community is located."
+    },
+
+    "final-section":{
+        "title":"We plant hope in the hearts of children so that we may reap a safer and more stable tomorrow in Palestine.",
+        "description":"We believe that every child deserves a chance to dream, and we are here to create that opportunity for them."
+    },
+
+    "buttons":{
+        "name":"View all"
+    },
+
+    "mobile-navbar":{
+        "home" : "Home",
+        "services" : "Services",
+        "alwatni" : "Alwatni Online",
+        "contact" : "Contact Us"
+    },
+
+    "footer-mobile":{
+        "contact":"Contact Us",
+        "quastion":"Frequently asked questions",
+        "who-are-we":"Who are we",
+        "events":"Upcoming events",
+        "comunity":"Our community",
+        "new-releases":"New Releases"
+    },
+
+    "footer-who-are-we": {
+        "title" : "Who are we",
+        "products":"Products",
+        "available-goods":"Available Goods",
+        "new-releases":"New Releases",
+        "partners":"Partners"
+    },
+
+    "footer-contact": {
+        "title" : "Contact Us",
+        "customers":"Customer Services",
+        "offers":"Special offers",
+        "job-opportunities":"Job Opportunities",
+        "new-releases":"New Eeleases"
+    },
+
+    "footer-questions":{
+        "title" : "Frequently asked questions",
+        "events":"Upcoming Events",
+        "art-exhibition":"Art Exhibition",
+        "offers" : "Special Offers",
+        "our-community" : "Our community"
+    },
+
+    "footer-email":{
+        "email-title" : "Stay in touch with us by:",
+        "email-placeholder" : "e-mail",
+        "email-description" : "At Ata’a Palestine, we strive to build a safer world based on professionalism and reliability."
+    },
+
+    "all-rights-reserved": "© 2025 Give Palestine All Rights Reserved."
+}

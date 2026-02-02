@@ -2,15 +2,15 @@
 import { Disclosure } from "@headlessui/vue";
 
 const navigation = [
-  { name: "من نحن", href: "#", current: true },
-  { name: "الخدمات", href: "#", current: false },
-  { name: "المشاريع", href: "#", current: false },
-  { name: "قصص النجاح", href: "#", current: false },
-  { name: "المتجر", href: "#", current: false },
-  { name: "الاعلام", href: "#", current: false },
-  { name: "الشركاء والممولين", href: "#", current: false },
-  { name: "التقارير", href: "#", current: false },
-  { name: "اتصل بنا", href: "#", current: false },
+  { name: 'who-are-we', href: "#", current: true },
+  { name: "services", href: "#", current: false },
+  { name: "projects", href: "#", current: false },
+  { name: "success-stories", href: "#", current: false },
+  { name: "store", href: "#", current: false },
+  { name: "news", href: "#", current: false },
+  { name: "partners", href: "#", current: false },
+  { name: "reports", href: "#", current: false },
+  { name: "contact", href: "#", current: false },
 ];
 </script>
 
@@ -30,7 +30,7 @@ const navigation = [
                 :href="item.href"
                 class="text-black rounded-md sm:px-0 md:px-3 xl:px-5.5 py-2  "
                 :aria-current="item.current ? 'page' : undefined"
-                >{{ item.name }}</a
+                >{{ $t(`navbar.${item.name}`)}}</a
               >
             </div>
           </div>

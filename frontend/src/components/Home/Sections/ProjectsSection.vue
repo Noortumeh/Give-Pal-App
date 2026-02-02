@@ -24,10 +24,9 @@ onMounted(async () => {
 <template>
   <div class="text-start pr-5 pt-5">
     <Title
-      title="مشاريع عطاء"
+      :title="$t('titles.projects.title')"
       underLineWidth="width: 170px"
-      description=' تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال يتّسم بالإنتاجية، وقد انطلقت
-      أولى مجتمعات "دار الرجاء" تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال'
+      :description="$t('titles.projects.description')"
     />
   </div>
 
@@ -64,7 +63,7 @@ onMounted(async () => {
     <button
       class="text-[rgba(1,123,50,1)] border border-[rgba(1,123,50,1)] py-2 px-10 text-bold"
     >
-      عرض الكل
+      {{ $t('buttons.name') }}
     </button>
   </div>
 </template>

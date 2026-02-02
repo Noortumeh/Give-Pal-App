@@ -24,9 +24,9 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div id="success-stories" class="h-[622px] my-12 width-100%">
+  <div id="success-stories" class="h-[622px] my-12 w-full">
     <div id="mobile-title" class="mr-5">
-      <Title title="قصص نجاح" underLineWidth="width: 160px" />
+      <Title :title="$t('titles.success-stories.title')" underLineWidth="width: 160px" />
     </div>
     <div
       id="container"
@@ -35,15 +35,12 @@ onMounted(async () => {
       <div id="title-container" class="w-[525px] h-[252px] content-center">
         <div class="text-start pr-5 pt-5">
           <Title
-            title="قصص نجاح"
+            :title="$t('titles.success-stories.title')"
             underLineWidth="width: 160px"
-            description='
-      تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال يتّسم بالإنتاجية، وقد
-          انطلقت أولى مجتمعات "دار الرجاء" تسعى "عطاء فلسطين”
-          '
+            :description="$t('titles.success-stories.description')"
             id="p-black"
           />
-          <Button title="معرفة المزيد" />
+          <Button :title="$t('titles.success-stories.button')" />
         </div>
       </div>
 
@@ -79,7 +76,7 @@ onMounted(async () => {
       <button
         class="text-[rgba(1,123,50,1)] border border-[rgba(1,123,50,1)] py-2 px-10 text-bold"
       >
-        عرض الكل
+        {{ $t('buttons.name') }}
       </button>
     </div>
   </div>

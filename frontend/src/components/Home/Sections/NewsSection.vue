@@ -33,8 +33,8 @@ onMounted(async () => {
       <div class="text-start pr-5 pt-5 w-[80%]">
         <Title
           underLineWidth="width: 90px"
-          title="الأخبار"
-          description="تابع آخر أخبار وإنجازات جمعية عطاء فلسطين، من مبادرات إنسانية ومشاريع تنموية إلى قصص النجاح التي نصنعها معًا في الميدان. هنا نشارككم الأمل، التقدّم، وكل "
+          :title="$t('titles.news.title')"
+          :description="$t('titles.news.description')"
         />
       </div>
       <div id="news" class="grid grid-rows-1 grid-cols-3 gap-15 my-8">

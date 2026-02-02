@@ -31,7 +31,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="mr-5">
-    <Title title="الميديا" underLineWidth="width: 90px" />
+    <Title :title="$t('titles.media')" underLineWidth="width: 90px" />
   </div>
   <div class="flex justify-center items-center py-12">
     <div
@@ -65,7 +65,7 @@ onMounted(async () => {
     <button
       class="text-[rgba(1,123,50,1)] border border-[rgba(1,123,50,1)] py-2 px-10 text-bold"
     >
-      عرض الكل
+      {{ $t('buttons.name') }}
     </button>
   </div>
 </template>
