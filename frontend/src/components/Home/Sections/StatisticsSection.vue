@@ -22,21 +22,20 @@ onMounted(async () => {
 </script>
 <template>
   <div
-    class="grid md:grid-cols-1 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-1 gap-5 place-items-center m-5 mt-24"
+    id="statistic-section"
+    class="grid md:grid-cols-1 md:grid-rows-5 lg:grid-cols-3 lg:grid-rows-1 gap-5 place-items-center m-5 md:mt-24"
   >
     <div
       id="mobile-title"
       class="row-span-1 text-start md:col-span-1 lg:col-span-1 hidden w-full"
     >
-      <Title title="الاحصائيات" underLineWidth="width: 150px"/>
+      <Title :title="$t('titles.statistics.title')" underLineWidth="width: 150px" />
     </div>
     <div class="hidden lg:block row-span-1 md:col-span-1 lg:col-span-1">
       <Title
-        title="الاحصائيات"
+        :title="$t('titles.statistics.title')"
         underLineWidth="width: 150px"
-        description=" نحن في جمعية عطاء فلسطين، نؤمن بقوة العطاء وأثره. على مدار سنوات من
-        العمل الميداني، قدمنا مبادرات إنسانية وثقافية وتعليمية تساهم في بناء
-        مستقبل أكثر أمانًا لأطفال فلسطين نحن في جمعية عطاء فلسطين،"
+        :description="$t('titles.statistics.description')"
       />
     </div>
     <div
@@ -64,10 +63,17 @@ onMounted(async () => {
   </div>
 </template>
 <style scoped>
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 1100px) {
+    #statistic-section{
+      margin-top: 0px;
+    }
+}
+@media screen and (max-width: 1023px) {
   #mobile-title {
     display: block;
   }
+}
+@media screen and (max-width: 850px) {
   #statistics-container {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(3, minmax(150px, 300px));

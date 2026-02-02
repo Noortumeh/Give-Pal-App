@@ -6,7 +6,7 @@ import { watchEffect } from "vue";
 
 const { lang, setLang } = useLang();
 watchEffect(() => {
-  console.log("lang changed:", lang.value);
+  console.log("lang changed from side bar:", lang.value);
 });
 </script>
 <template>
@@ -17,9 +17,9 @@ watchEffect(() => {
     <!-- <RouterLink :to="`/?lang=${lang ==='en'? 'ar': 'en'}`" > -->
     <div
       class="bg-[rgba(1,123,50,1)] text-white text-center pt-3 h-12 mt-2 cursor-pointer"
-      @click="setLang(lang === 'en' ? 'ar' : 'en')"
+      @click="setLang($i18n.locale ==='en' ? 'ar' : 'en'), $i18n.locale ==='ar' ? $i18n.locale = 'en' : $i18n.locale = 'ar'"
     >
-      {{ lang === "en" ? "AR" : "EN" }}
+      {{ $i18n.locale === "en" ? "AR" : "EN" }}
     </div>
     <!-- </RouterLink> -->
     <div>

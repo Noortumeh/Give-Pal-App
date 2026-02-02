@@ -12,7 +12,7 @@ const totalSlides = computed(() => slides.value.length);
 
 const updateSlides = () => {
   slides.value =
-    window.innerWidth <= 765
+    window.innerWidth <= 767
       ? [{ component: HeroSectionImage }]
       : [{ component: HeroSectionImage }, { component: HeroSectionVideo }];
   currentSlide.value = 0;

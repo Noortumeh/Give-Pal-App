@@ -19,10 +19,10 @@ const handleSearchOpen= () => {
     <nav
       class="bg-[rgba(46,99,68,1)] col-start-1 col-span-3 flex items-center justify-end pl-5"
     >
-      <a href="#">الاستمارة</a>
+      <a href="#">{{ $t('uperbar.form') }}</a>
     </nav>
     <nav class="bg-[rgba(1,123,50,1)] flex justify-start items-center">
-      <a href="#" class="pr-5">تبرع الان</a>
+      <a href="#" class="pr-5">{{ $t('uperbar.donate') }}</a>
     </nav>
 
     <div

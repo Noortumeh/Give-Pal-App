@@ -22,7 +22,7 @@ onMounted(async () => {
 </script>
 <template>
   <div class="text-end p-5">
-    <Title title="خدمات عطاء" underLineWidth="width: 170px" />
+    <Title :title= "$t('titles.services')" underLineWidth="width: 170px" />
   </div>
   <div v-if="!data">
     <p class="mt-5 text-center text-3xl">لايوحد خدمات لعرضها بعد!</p>

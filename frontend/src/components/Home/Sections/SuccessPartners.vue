@@ -39,7 +39,7 @@ console.log(duplicatedLogos.value);
 <template>
   <div class="my-12 max-w-[1350px] mx-auto px-0">
     <div class="mr-5">
-      <Title title="شركاء النجاح" underLineWidth="width: 160px" />
+      <Title :title="$t('titles.success-partners')" underLineWidth="width: 160px" />
     </div>
     <p v-if="!data" class="mt-5 text-center text-3xl">
       لايوحد شركاء نجاح لعرضهم بعد!

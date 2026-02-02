@@ -20,41 +20,41 @@ import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
         class="md:flex justify-around items-center w-full hidden"
       >
         <div>
-          <h3 class="list-title">من نحن</h3>
+          <h3 class="list-title">{{ $t('footer-who-are-we.title') }}</h3>
           <ul>
-            <li>المنتجات</li>
-            <li>السلع المتاحة</li>
-            <li>الإصدارات الجديدة</li>
-            <li>الشركاء</li>
+            <li>{{ $t('footer-who-are-we.products') }}</li>
+            <li>{{ $t('footer-who-are-we.available-goods') }}</li>
+            <li>{{ $t('footer-who-are-we.new-releases') }}</li>
+            <li>{{ $t('footer-who-are-we.partners') }}</li>
           </ul>
         </div>
         <div>
-          <h3 class="list-title">تواصل معنا</h3>
+          <h3 class="list-title">{{ $t('footer-contact.title') }}</h3>
           <ul>
-            <li>خدمة العملاء</li>
-            <li>العروض الخاصة</li>
-            <li>فرص العمل</li>
-            <li>الإصدارات الجديدة</li>
+            <li>{{ $t('footer-contact.customers') }}</li>
+            <li>{{ $t('footer-contact.offers') }}</li>
+            <li>{{ $t('footer-contact.job-opportunities') }}</li>
+            <li>{{ $t('footer-contact.new-releases') }}</li>
           </ul>
         </div>
         <div>
-          <h3 class="list-title">الأسئلة المتكرره</h3>
+          <h3 class="list-title">{{ $t('footer-questions.title') }}</h3>
           <ul>
-            <li>الفعاليات القادمة</li>
-            <li>المعرض الفني</li>
-            <li>العروض المميزة</li>
-            <li>مجتمعنا</li>
+            <li>{{ $t('footer-questions.events') }}</li>
+            <li>{{ $t('footer-questions.art-exhibition') }}</li>
+            <li>{{ $t('footer-questions.offers') }}</li>
+            <li>{{ $t('footer-questions.our-community') }}</li>
           </ul>
         </div>
       </div>
       <div class="flex-col justify-center text-center md:hidden row-start-1">
         <ul class="mobile-content">
-          <li>تواصل معنا</li>
-          <li>الاسئلة المتكررة</li>
-          <li>من نحن</li>
-          <li>الفعاليات القادمة</li>
-          <li>مجتمعنا</li>
-          <li>الاصدارات الجديدة</li>
+          <li>{{ $t('footer-mobile.contact') }}</li>
+          <li>{{ $t('footer-mobile.quastion') }}</li>
+          <li>{{ $t('footer-mobile.who-are-we') }}</li>
+          <li>{{ $t('footer-mobile.events') }}</li>
+          <li>{{ $t('footer-mobile.comunity') }}</li>
+          <li>{{ $t('footer-mobile.new-releases') }}</li>
         </ul>
       </div>
     </div>
@@ -62,12 +62,12 @@ import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
       id="footer-contact"
       class="col-start-4 sm:row-span-1 ml-4 sm:col-span-1 hidden md:block"
     >
-      <h3 class="text-[20px]">ابقى معنا على اتصال عن طريق :</h3>
+      <h3 class="text-[20px]">{{ $t('footer-email.email-title') }}</h3>
       <div
         id="email-div"
         class="flex justify-between items-center border px-3 py-2 my-2"
       >
-        <input class="w-[80%]" placeholder="البريد الالكتروني" />
+        <input class="w-[80%]" :placeholder="$t('footer-email.email-placeholder')" />
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -86,8 +86,7 @@ import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
         </div>
       </div>
       <p>
-        نسعى في عطاء فلسطين لبناء عالم أكثر أمانًا قائمًا على الاحترافية
-        والموثوقية.
+       {{ $t('footer-email.email-description') }}
       </p>
     </div>
     <div id="social" class="flex md:hidden mt-5 mb-8 row-start-5">
