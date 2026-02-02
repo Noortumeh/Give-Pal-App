@@ -5,13 +5,13 @@ import { ref } from "vue";
 
 const openSearch = ref(false);
 
-const handleSearchOpen= () => {
-  if(openSearch.value === false){
+const handleSearchOpen = () => {
+  if (openSearch.value === false) {
     openSearch.value = true;
-  }else{
+  } else {
     openSearch.value = false;
   }
-}
+};
 </script>
 <template>
   <div id="uper-line" class="h-12 text-white grid grid-rows-1 grid-cols-4">
@@ -19,15 +19,22 @@ const handleSearchOpen= () => {
     <nav
       class="bg-[rgba(46,99,68,1)] col-start-1 col-span-3 flex items-center justify-end pl-5"
     >
-      <a href="#">{{ $t('uperbar.form') }}</a>
+      <a href="#" :class="[$i18n.locale === 'en' ? 'pr-5' : '']">{{
+        $t("uperbar.form")
+      }}</a>
     </nav>
     <nav class="bg-[rgba(1,123,50,1)] flex justify-start items-center">
-      <a href="#" class="pr-5">{{ $t('uperbar.donate') }}</a>
+      <a href="#" :class="[$i18n.locale === 'en' ? 'pl-5' : 'pr-5']">{{
+        $t("uperbar.donate")
+      }}</a>
     </nav>
 
     <div
       id="logo"
-      class="flex shrink-0 items-center absolute top-0 xl:right-1/12"
+      :class="[
+        'flex shrink-0 items-center absolute top-0',
+        $i18n.locale === 'ar' ? 'xl:right-1/12' : 'xl:left-1/12',
+      ]"
     >
       <img
         class="h-auto w-auto xl:block"
@@ -37,21 +44,30 @@ const handleSearchOpen= () => {
     </div>
     <div id="search-bar" class="md:hidden flex justify-center items-center">
       <div :class="openSearch ? 'block' : 'hidden'">
-        <Searchbar  />
+        <Searchbar />
       </div>
       <MagnifyingGlassIcon
-        class="h-10 text-[rgba(1,123,50,1)] cursor-pointer" 
+        class="h-10 text-[rgba(1,123,50,1)] cursor-pointer"
         @click="handleSearchOpen"
       />
     </div>
   </div>
 </template>
 <style>
-@media (width <= 1490px) {
-  #logo {
-    right: 5%;
+@media (width <= 1630px) {
+  [dir="ltr"] #logo {
+    left: 5%;
   }
 }
+@media (width <= 1490px) {
+  [dir="rtl"] #logo {
+    right: 5%;
+  }
+  [dir="ltr"] #logo {
+    left: 0%;
+  }
+}
+
 @media (width <= 1380px) {
   #logo {
     right: 1%;

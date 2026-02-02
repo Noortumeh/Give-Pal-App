@@ -20,41 +20,41 @@ import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
         class="md:flex justify-around items-center w-full hidden"
       >
         <div>
-          <h3 class="list-title">{{ $t('footer-who-are-we.title') }}</h3>
+          <h3 class="list-title">{{ $t("footer-who-are-we.title") }}</h3>
           <ul>
-            <li>{{ $t('footer-who-are-we.products') }}</li>
-            <li>{{ $t('footer-who-are-we.available-goods') }}</li>
-            <li>{{ $t('footer-who-are-we.new-releases') }}</li>
-            <li>{{ $t('footer-who-are-we.partners') }}</li>
+            <li>{{ $t("footer-who-are-we.products") }}</li>
+            <li>{{ $t("footer-who-are-we.available-goods") }}</li>
+            <li>{{ $t("footer-who-are-we.new-releases") }}</li>
+            <li>{{ $t("footer-who-are-we.partners") }}</li>
           </ul>
         </div>
         <div>
-          <h3 class="list-title">{{ $t('footer-contact.title') }}</h3>
+          <h3 class="list-title">{{ $t("footer-contact.title") }}</h3>
           <ul>
-            <li>{{ $t('footer-contact.customers') }}</li>
-            <li>{{ $t('footer-contact.offers') }}</li>
-            <li>{{ $t('footer-contact.job-opportunities') }}</li>
-            <li>{{ $t('footer-contact.new-releases') }}</li>
+            <li>{{ $t("footer-contact.customers") }}</li>
+            <li>{{ $t("footer-contact.offers") }}</li>
+            <li>{{ $t("footer-contact.job-opportunities") }}</li>
+            <li>{{ $t("footer-contact.new-releases") }}</li>
           </ul>
         </div>
         <div>
-          <h3 class="list-title">{{ $t('footer-questions.title') }}</h3>
+          <h3 class="list-title">{{ $t("footer-questions.title") }}</h3>
           <ul>
-            <li>{{ $t('footer-questions.events') }}</li>
-            <li>{{ $t('footer-questions.art-exhibition') }}</li>
-            <li>{{ $t('footer-questions.offers') }}</li>
-            <li>{{ $t('footer-questions.our-community') }}</li>
+            <li>{{ $t("footer-questions.events") }}</li>
+            <li>{{ $t("footer-questions.art-exhibition") }}</li>
+            <li>{{ $t("footer-questions.offers") }}</li>
+            <li>{{ $t("footer-questions.our-community") }}</li>
           </ul>
         </div>
       </div>
       <div class="flex-col justify-center text-center md:hidden row-start-1">
         <ul class="mobile-content">
-          <li>{{ $t('footer-mobile.contact') }}</li>
-          <li>{{ $t('footer-mobile.quastion') }}</li>
-          <li>{{ $t('footer-mobile.who-are-we') }}</li>
-          <li>{{ $t('footer-mobile.events') }}</li>
-          <li>{{ $t('footer-mobile.comunity') }}</li>
-          <li>{{ $t('footer-mobile.new-releases') }}</li>
+          <li>{{ $t("footer-mobile.contact") }}</li>
+          <li>{{ $t("footer-mobile.quastion") }}</li>
+          <li>{{ $t("footer-mobile.who-are-we") }}</li>
+          <li>{{ $t("footer-mobile.events") }}</li>
+          <li>{{ $t("footer-mobile.comunity") }}</li>
+          <li>{{ $t("footer-mobile.new-releases") }}</li>
         </ul>
       </div>
     </div>
@@ -62,20 +62,26 @@ import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
       id="footer-contact"
       class="col-start-4 sm:row-span-1 ml-4 sm:col-span-1 hidden md:block"
     >
-      <h3 class="text-[20px]">{{ $t('footer-email.email-title') }}</h3>
+      <h3 class="text-[20px]">{{ $t("footer-email.email-title") }}</h3>
       <div
         id="email-div"
         class="flex justify-between items-center border px-3 py-2 my-2"
       >
-        <input class="w-[80%]" :placeholder="$t('footer-email.email-placeholder')" />
-        <div>
+        <input
+          class="w-[80%]"
+          :placeholder="$t('footer-email.email-placeholder')"
+        />
+        <div class="">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
             viewBox="0 0 24 24"
             stroke-width="3"
             stroke="currentColor"
-            class="size-8 lg:size-10 bg-black text-white cursor-pointer"
+            :class="[
+              'size-8 lg:size-10 bg-black text-white cursor-pointer',
+              $i18n.locale === 'en' ? 'rotate-180' : '',
+            ]"
           >
             <path
               stroke-linecap="round"
@@ -86,11 +92,14 @@ import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
         </div>
       </div>
       <p>
-       {{ $t('footer-email.email-description') }}
+        {{ $t("footer-email.email-description") }}
       </p>
     </div>
     <div id="social" class="flex md:hidden mt-5 mb-8 row-start-5">
-      <SocialMedia color="rgba(1,123,50,1)" spasificIconStyle="border border-[rgba(1,123,50,0.5)]" />
+      <SocialMedia
+        color="rgba(1,123,50,1)"
+        spasificIconStyle="border border-[rgba(1,123,50,0.5)]"
+      />
     </div>
   </div>
 </template>
@@ -118,10 +127,9 @@ li {
     grid-row: span 1 / span 1 !important;
     grid-row-start: 4 !important;
   }
-  #social{
+  #social {
     margin-bottom: 46px;
   }
-
 }
 
 .mobile-content {
@@ -136,9 +144,14 @@ li {
 @media screen and (min-width: 768px) and (max-width: 975px) {
   #email-div {
     position: relative;
-    svg {
+    [dir="rtl"] svg {
       position: absolute;
       left: 5px;
+      top: 4px;
+    }
+    [dir="ltr"] svg {
+      position: absolute;
+      right: 5px;
       top: 4px;
     }
   }
