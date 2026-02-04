@@ -3,22 +3,29 @@ import { API_HEADER } from "@/APIs/ApiHeader";
 import { servicesSection } from "@/APIs/EndPoints";
 import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
-const data = ref([]);
+// const data = ref([]);
 
-onMounted(async () => {
-  try {
-    const res = await fetch(servicesSection, {
-      method: "GET",
-      headers: API_HEADER,
-    });
-    if (res.ok) {
-      data.value = await res.json();
-      console.log("Services Data: ", data.value);
-    }
-  } catch (err) {
-    console.log("Faild to load Service Data", err);
+const props = defineProps({
+  data: {
+    type: Array,
   }
-});
+})
+
+console.log(props.data);
+// onMounted(async () => {
+//   try {
+//     const res = await fetch(servicesSection, {
+//       method: "GET",
+//       headers: API_HEADER,
+//     });
+//     if (res.ok) {
+//       data.value = await res.json();
+//       console.log("Services Data: ", data.value);
+//     }
+//   } catch (err) {
+//     console.log("Faild to load Service Data", err);
+//   }
+// });
 </script>
 <template>
   <div class="text-end p-5">
@@ -40,14 +47,14 @@ onMounted(async () => {
       <div class="flex justify-center content-center">
         <img
           class="max-w-[94px] max-h-[83px] mb-2"
-          :src="`http://127.0.0.1:8000/storage/${service.icon}`"
+          :src="`http://127.0.0.1:8000/storage/${service.file_path}`"
           :alt="service.title"
         />
       </div>
       <div id="content" class="flex-col">
         <h2 class="font-bold text-[20px] pb-2">{{ service.title }}</h2>
         <p class="w-[372px] h-[104px]">
-          {{ service.description }}
+          {{ service.description.substring(0,180) }}
         </p>
       </div>
     </div>

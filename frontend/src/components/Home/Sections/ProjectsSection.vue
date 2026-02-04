@@ -4,22 +4,29 @@ import { projectsSection } from "@/APIs/EndPoints";
 import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
 
-const data = ref([]);
 
-onMounted(async () => {
-  try {
-    const res = await fetch(projectsSection, {
-      method: "GET",
-      headers: API_HEADER,
-    });
-    if (res.ok) {
-      data.value = await res.json();
-      console.log("Projects Data: ", data.value);
-    }
-  } catch (err) {
-    console.log("Faild to load Service Data", err);
+const props = defineProps({
+  data: {
+    type: Array,
   }
-});
+})
+
+// const data = ref([]);
+
+// onMounted(async () => {
+//   try {
+//     const res = await fetch(projectsSection, {
+//       method: "GET",
+//       headers: API_HEADER,
+//     });
+//     if (res.ok) {
+//       data.value = await res.json();
+//       console.log("Projects Data: ", data.value);
+//     }
+//   } catch (err) {
+//     console.log("Faild to load Service Data", err);
+//   }
+// });
 </script>
 <template>
   <div class="text-start p-5 pt-5">
@@ -44,16 +51,16 @@ onMounted(async () => {
     >
       <div class="h-[204px] p-6">
         <span class="text-[rgba(193,221,204,0.4)] font-bold text-6xl">{{
-          projects.id < 10 ? "0" + projects.id : projects.id
+          projects.id < 10 ? "0" + projects.order : projects.order
         }}</span>
         <h2 class="text-base text-slate-900 font-medium mt-3">
           {{ projects.title }}
         </h2>
         <p class="text-xs font-medium mt-1">
-          {{ projects.description }}
+          {{ projects.description.substring(0,100) }}
         </p>
       </div>
-      <img class="" :src="`http://127.0.0.1:8000/storage/${projects.image}`" />
+      <img :src="`http://127.0.0.1:8000/storage/${projects.file_path}`" />
     </div>
   </div>
   <div

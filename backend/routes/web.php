@@ -2,7 +2,11 @@
 
 use Illuminate\Support\Facades\{App, Route};
 use Illuminate\Http\Request;
-use App\Http\Controllers\{MediaController, NewsController, ProjectsController, ServicesController, StatisticsController, SuccessPartnersController, SuccessStoriesController, UserController};
+use App\Http\Controllers\{MediaController, NewsController, ProjectsController, SectionsController, ServicesController, StatisticsController, SuccessPartnersController, SuccessStoriesController, UserController};
+
+
+// New Structure For Sections
+Route::get('/home-contents', [SectionsController::class, 'getSectionsData']);
 
 //Services Routes
 Route::get('/home-titles/{locale}',function($locale){

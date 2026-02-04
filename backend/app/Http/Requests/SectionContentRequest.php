@@ -1,0 +1,37 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class SectionContentRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'section' => 'required|string',
+            'title' => 'string',
+            'subtitle' => 'string',
+            'description' => 'string',
+            'type' => 'string',
+            'order' => 'integer',
+            'date' => 'date',
+            'address' => 'string',
+            'file_path' => 'string',
+            'file_type' => 'string',
+        ];
+    }
+}

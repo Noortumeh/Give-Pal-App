@@ -2,11 +2,21 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{MediaController, NewsController, ProjectsController, ServicesController, StatisticsController, SuccessPartnersController, SuccessStoriesController, UserController};
+use App\Http\Controllers\{MediaController, NewsController, ProjectsController, SectionsController, ServicesController, StatisticsController, SuccessPartnersController, SuccessStoriesController, UserController};
 
 Route::get('/user', function (Request $request) {
     return $request->user();
 })->middleware('auth:sanctum');
+
+//
+
+Route::post('/addsection', [SectionsController::class, 'addSections']);
+Route::post('/addSectionContent', [SectionsController::class, 'addSectionContent']);
+//
+Route::delete('/deleteSection/{id}',[SectionsController::class, 'deleteSection']);
+
+//
+
 
 Route::post('/register', [UserController::class, 'register']);
 Route::post('/login', [UserController::class, 'login'])->middleware('throttle:limit3');

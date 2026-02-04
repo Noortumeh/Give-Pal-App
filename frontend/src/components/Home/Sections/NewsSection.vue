@@ -9,23 +9,28 @@ import { Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 
-const data = ref([]);
+const props = defineProps({
+  data: {
+    type: Array,
+  }
+})
+// const data = ref([]);
 const modules = [Navigation];
 
-onMounted(async () => {
-  try {
-    const res = await fetch(newsSection, {
-      method: "GET",
-      headers: API_HEADER,
-    });
-    if (res.ok) {
-      data.value = await res.json();
-      console.log("News Data: ", data.value);
-    }
-  } catch (err) {
-    console.log("Faild to load News Data", err);
-  }
-});
+// onMounted(async () => {
+//   try {
+//     const res = await fetch(newsSection, {
+//       method: "GET",
+//       headers: API_HEADER,
+//     });
+//     if (res.ok) {
+//       data.value = await res.json();
+//       console.log("News Data: ", data.value);
+//     }
+//   } catch (err) {
+//     console.log("Faild to load News Data", err);
+//   }
+// });
 </script>
 <template>
   <div class="my-12">
@@ -45,7 +50,7 @@ onMounted(async () => {
         >
           <img
             class="w-full h-full object-cover"
-            :src="`http://127.0.0.1:8000/storage/${value.image}`"
+            :src="`http://127.0.0.1:8000/storage/${value.file_path}`"
           />
           <div
             class="absolute place-self-end card-backgraound p-4 shadow-2xl h-[50%] w-[90%] -translate-x-8 translate-y-7 z-10"
@@ -60,7 +65,7 @@ onMounted(async () => {
             </div>
             <h2 class="text-2xl text-bold">{{ value.title }}</h2>
             <p class="text-sm">
-              {{ value.description }}
+              {{ value.description.substring(0,320) }}
               <span class="text-[rgba(1,123,50,1)] text-bold"
                 >معرفة المزيد.</span
               >

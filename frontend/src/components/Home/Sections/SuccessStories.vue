@@ -5,22 +5,28 @@ import Button from "@/components/Button.vue";
 import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
 
-const data = ref([]);
-
-onMounted(async () => {
-  try {
-    const res = await fetch(successStoriesSection, {
-      method: "GET",
-      headers: API_HEADER,
-    });
-    if (res.ok) {
-      data.value = await res.json();
-      console.log("Success Stories Data: ", data.value);
-    }
-  } catch (err) {
-    console.log("Faild to load Success Stories Data", err);
+const props = defineProps({
+  data: {
+    type: Array,
   }
-});
+})
+console.log(props.data);
+// const data = ref([]);
+
+// onMounted(async () => {
+//   try {
+//     const res = await fetch(successStoriesSection, {
+//       method: "GET",
+//       headers: API_HEADER,
+//     });
+//     if (res.ok) {
+//       data.value = await res.json();
+//       console.log("Success Stories Data: ", data.value);
+//     }
+//   } catch (err) {
+//     console.log("Faild to load Success Stories Data", err);
+//   }
+// });
 </script>
 
 <template>
@@ -58,11 +64,11 @@ onMounted(async () => {
         <div
           v-for="value in data"
           :id="[`grid-${data.indexOf(value)}`]"
-          class="relative shadow-2xl h-fit"
+          class="relative shadow-2xl h-full"
         >
           <img
             class="border-[color:rgba(1,123,50,1)] border-2 border-solid rounded-full w-[60px] h-[60px] absolute -right-8 top-8 z-1"
-            :src="`http://127.0.0.1:8000/storage/${value.avatar}`"
+            :src="`http://127.0.0.1:8000/storage/${value.file_path}`"
           />
           <div
             id="card-content"
@@ -74,9 +80,9 @@ onMounted(async () => {
             <span class="text-[color:rgba(1,123,50,1)]">{{
               value.address
             }}</span>
-            <h3 class="font-bold text-2xl size-9 w-full">{{ value.name }}</h3>
+            <h3 class="font-bold text-2xl size-9 w-full">{{ value.title }}</h3>
             <p class="w-[80%] mt-1">
-              {{ value.description }}
+              {{ value.description.substring(0,220) }}
             </p>
           </div>
         </div>
@@ -125,6 +131,7 @@ onMounted(async () => {
   grid-row-start: 2 !important;
   grid-column: span 2 / span 2;
   grid-row: span 3 / span 3;
+  max-height: 105%;
 }
 
 #grid-1 {
@@ -132,6 +139,7 @@ onMounted(async () => {
   grid-column-start: 1;
   grid-column: span 3 / span 3;
   grid-row: span 2 / span 2;
+  height: 110%;
 }
 
 #grid-2 {
@@ -139,6 +147,7 @@ onMounted(async () => {
   grid-column-start: 4 !important;
   grid-row: span 2 / span 2;
   grid-column: span 3 / span 3;
+  height: 100%;
 }
 
 #grid-3 {
@@ -146,7 +155,8 @@ onMounted(async () => {
   grid-row: span 3 / span 3;
   grid-row-start: 3;
   grid-column-start: 4;
-  margin-top: 15px;
+  
+  height: 100%;
 }
 
 @media screen and (max-width: 1100px) {
