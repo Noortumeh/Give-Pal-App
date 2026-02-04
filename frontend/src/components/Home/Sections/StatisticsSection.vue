@@ -3,22 +3,31 @@ import { API_HEADER } from "@/APIs/ApiHeader";
 import { statisticsSection } from "@/APIs/EndPoints";
 import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
-const data = ref([]);
 
-onMounted(async () => {
-  try {
-    const res = await fetch(statisticsSection, {
-      method: "GET",
-      headers: API_HEADER,
-    });
-    if (res.ok) {
-      data.value = await res.json();
-      console.log("Statistics Data: ", data.value);
-    }
-  } catch (err) {
-    console.log("Faild to load Statistics Data", err);
+const props = defineProps({
+  data: {
+    type: Array,
   }
-});
+})
+
+// const data = ref([]);
+
+// onMounted(async () => {
+//   try {
+//     const res = await fetch(statisticsSection, {
+//       method: "GET",
+//       headers: API_HEADER,
+//     });
+//     if (res.ok) {
+//       data.value = await res.json();
+//       console.log("Statistics Data: ", data.value);
+//     }
+//   } catch (err) {
+//     console.log("Faild to load Statistics Data", err);
+//   }
+// });
+
+console.log(props.data);
 </script>
 <template>
   <div
@@ -45,18 +54,18 @@ onMounted(async () => {
       <div
         v-for="value in data"
         :id="[`media-${data.indexOf(value)}`]"
-        :key="value.statistic_title"
+        :key="value.title"
         class="border border-[rgba(1,123,50,0.25)] md:shadow-2xl col-span-1 row-span-1 grid grid-cols-3 grid-rows-3 auto-rows-fr w-full h-full"
       >
         <img
           class="col-span-3"
-          :src="`http://127.0.0.1:8000/storage/${value.icon}`"
+          :src="`http://127.0.0.1:8000/storage/${value.file_path}`"
         />
         <div class="content-flex col-span-3 content-center text-center">
           <span class="text-8xl font-bold text-[rgba(1,123,50,1)]">{{
-            value.statistic
+            value.description
           }}</span>
-          <h2 class="text-2xl">{{ value.statistic_title }}</h2>
+          <h2 class="text-2xl">{{ value.title }}</h2>
         </div>
       </div>
     </div>

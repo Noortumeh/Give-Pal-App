@@ -4,34 +4,41 @@ import { successPartners } from "@/APIs/EndPoints";
 import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
 
-const data = ref([]);
+
+const props = defineProps({
+  data: {
+    type: Array,
+  }
+})
+
+// const data = ref([]);
 const duplicatedLogos = ref([]);
 
-const logos = [
-  "slack",
-  "framer",
-  "netflix",
-  "google",
-  "linkedin",
-  "instagram",
-  "facebook",
-];
+// const logos = [
+//   "slack",
+//   "framer",
+//   "netflix",
+//   "google",
+//   "linkedin",
+//   "instagram",
+//   "facebook",
+// ];
 
-onMounted(async () => {
-  try {
-    const res = await fetch(successPartners, {
-      method: "GET",
-      headers: API_HEADER,
-    });
-    if (res.ok) {
-      data.value = await res.json();
-      duplicatedLogos.value = [...data.value, ...data.value];
-      console.log("Success Partners Data: ", data.value);
-    }
-  } catch (err) {
-    console.log("Faild to load Success Partners Data", err);
-  }
-});
+// onMounted(async () => {
+//   try {
+//     const res = await fetch(successPartners, {
+//       method: "GET",
+//       headers: API_HEADER,
+//     });
+//     if (res.ok) {
+//       data.value = await res.json();
+      duplicatedLogos.value = [...props.data, ...props.data];
+//       console.log("Success Partners Data: ", data.value);
+//     }
+//   } catch (err) {
+//     console.log("Faild to load Success Partners Data", err);
+//   }
+// });
 
 console.log(duplicatedLogos.value);
 </script>
@@ -56,7 +63,7 @@ console.log(duplicatedLogos.value);
         >
           <img
             :key="index"
-            :src="`http://127.0.0.1:8000/storage/${logo.icon}`"
+            :src="`http://127.0.0.1:8000/storage/${logo.file_path}`"
             :alt="logo.icon"
             class="max-h-[190px] w-[190px] object-contain select-none"
             draggable="false"

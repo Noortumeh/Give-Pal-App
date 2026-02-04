@@ -4,7 +4,12 @@ import { mediaSection } from "@/APIs/EndPoints";
 import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
 
-const data = ref([]);
+// const data = ref([]);
+const props = defineProps({
+  data: {
+    type: Array,
+  }
+})
 
 const formatDate = (date) => {
   return new Intl.DateTimeFormat("ar", {
@@ -14,20 +19,20 @@ const formatDate = (date) => {
   }).format(new Date(date));
 };
 
-onMounted(async () => {
-  try {
-    const res = await fetch(mediaSection, {
-      method: "GET",
-      headers: API_HEADER,
-    });
-    if (res.ok) {
-      data.value = await res.json();
-      console.log("Media Data: ", data.value);
-    }
-  } catch (err) {
-    console.log("Faild to load Media Data", err);
-  }
-});
+// onMounted(async () => {
+//   try {
+//     const res = await fetch(mediaSection, {
+//       method: "GET",
+//       headers: API_HEADER,
+//     });
+//     if (res.ok) {
+//       data.value = await res.json();
+//       console.log("Media Data: ", data.value);
+//     }
+//   } catch (err) {
+//     console.log("Faild to load Media Data", err);
+//   }
+// });
 </script>
 <template>
   <div class="mr-5 pl-5">
@@ -45,7 +50,7 @@ onMounted(async () => {
         class="grid grid-cols-1 grid-rows-1 overflow-visible"
       >
         <img
-          :src="`http://127.0.0.1:8000/storage/${value.media}`"
+          :src="`http://127.0.0.1:8000/storage/${value.file_path}`"
           class="h-full w-full col-start-1 row-start-1 object-cover"
         />
         <div
@@ -53,7 +58,7 @@ onMounted(async () => {
         >
           <span class="text-white">{{ formatDate(value.date) }}</span>
           <h2 class="text-white text-2xl text-bold">{{ value.title }}</h2>
-          <span class="text-white text-[14px]">{{ value.dsecription }}</span>
+          <span class="text-white text-[14px]">{{ value.description.substring(0,80) }}</span>
         </div>
       </div>
     </div>
