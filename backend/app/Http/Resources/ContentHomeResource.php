@@ -14,22 +14,24 @@ class ContentHomeResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-
         return [
             'id' => $this->id,
             'parent_id' => $this->parent_id,
             'section' => $this->section,
             'type' => $this->type,
-            'title' => $this->title,
-            'subtitle' => $this->subtitle,
-            'description' => $this->description,
+
+            'title' => $this->translation?->title,
+            'subtitle' => $this->translation?->subtitle,
+            'description' => $this->translation?->description,
+            'address' => $this->translation?->address,
+            'date' => $this->translation?->date,
+
             'file_path' => $this->file_path,
             'file_type' => $this->file_type,
             'order' => $this->order,
-            'address' => $this->address,
-            'date' => $this->date,
+
             'children' => ContentHomeResource::collection(
-                $this->childrenRecursive()->take($this->items_count)->get()
+                $this->childrenRecursive()->with('translation')->take($this->items_count)->get()
             ),
         ];
     }

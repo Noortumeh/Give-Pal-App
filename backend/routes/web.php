@@ -1,14 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\{App, Route};
-use Illuminate\Http\Request;
 use App\Http\Controllers\{MediaController, NewsController, ProjectsController, SectionsController, ServicesController, StatisticsController, SuccessPartnersController, SuccessStoriesController, UserController};
 
 
 // New Structure For Sections
 Route::get('/home-contents', [SectionsController::class, 'getSectionsData']);
+Route::get('/search/{keyWord}', [SectionsController::class, 'search']);
 
-//Services Routes
+//Services Routes// TEST
 Route::get('/home-titles/{locale}',function($locale){
     if($locale === 'en'){
         // session()->put('locale', 'en');
@@ -17,9 +17,13 @@ Route::get('/home-titles/{locale}',function($locale){
         // session()->put('locale', 'ar');
         App::setLocale('ar');
     }
-    return __('home.titles');
+    return __('home.createdSection');
     // return redirect()->back();
 });
+
+
+
+
 Route::get('/services',[ServicesController::class, 'getServices']);
 Route::get('/services/{id}',[ServicesController::class, 'getServiceData']);
 

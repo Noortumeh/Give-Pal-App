@@ -4,7 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\Facades\{App, RateLimiter};
 use Illuminate\Support\ServiceProvider;
-use App\Services\{MediaService, NewsService, ProjectsService, ServicesService, StatisticsService, StoreFileService, SuccessPartnersService, SuccessStoriesService, UserService};
+use App\Services\{ContentHomeService, MediaService, NewsService, ProjectsService, ServicesService, StatisticsService, StoreFileService, SuccessPartnersService, SuccessStoriesService, UserService};
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 
@@ -15,6 +15,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
+        App::bind(ContentHomeService::class, function () {
+            return new ContentHomeService();
+        });
+
         App::bind(ServicesService::class, function () {
             return new ServicesService();
         });

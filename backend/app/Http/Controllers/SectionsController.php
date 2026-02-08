@@ -5,65 +5,41 @@ namespace App\Http\Controllers;
 use App\Http\Requests\{SectionContentRequest, SectionRequest};
 use App\Http\Resources\ContentHomeResource;
 use App\Models\Sections;
+use App\Services\ContentHomeService;
 use Exception;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 
 class SectionsController extends Controller
 {
+    protected $contentHomeService;
+    public function __construct(ContentHomeService $contentHomeService)
+    {
+        $this->contentHomeService = $contentHomeService;
+    }
+
     public function getSectionsData()
     {
-        try {
-            $content = ContentHomeResource::collection(
-                Sections::whereNull('parent_id')
-                    ->where('active', true)
-                    ->with('childrenRecursive')
-                    ->get()
-            );
-            if ($content) {
-                return response()->json(['message: ' => 'Returned Sections Content Successfuly', 'data' => $content], 200);
-            }
-            return response()->json(['message: ' => 'There is no Content'], 404);
-        } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
-        }
+        return $this->contentHomeService->getSectionsData();
     }
 
     public function addSections(SectionRequest $request)
     {
-        try {
-            $section = $request->validated();
-            Sections::create($section);
-
-            return response()->json(['message: ' => 'Section Created Successfuly', 'data: ' => $section], 200);
-        } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
-        }
+        return $this->contentHomeService->addSections($request);
     }
 
     public function addSectionContent(SectionContentRequest $request)
     {
-        try {
-            $content = $request->validated();
-            $parent = Sections::where('section', $content['section'])->where('type', 'section')->firstOrFail();
-            $content['parent_id'] = $parent->id;
-            Sections::create($content);
-
-            return response()->json(['message: ' => 'Section Content Created Successfuly', 'data: ' => $content], 200);
-        } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
-        }
+        return $this->contentHomeService->addSectionContent($request);
     }
 
     public function deleteSection($id)
     {
-        try {
-            $section = Sections::find($id);
-            $section->active = false;
-            $section->save();
-            $section->delete();
+        return $this->contentHomeService->deleteSection($id);
+    }
 
-            return response()->json(['message: ' => 'Section Deleted Successfuly', 'Section Deleted: ' => $section], 200);
-        } catch (Exception $error) {
-            return response()->json(['message: ' => 'Server Error', $error], 500);
-        }
+    public function search($keyWord)
+    {
+        return $this->contentHomeService->search($keyWord);
     }
 }

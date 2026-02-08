@@ -16,9 +16,18 @@ class SuccessPartnersSeeder extends Seeder
         $successPartners = Sections::create([
             'section' => 'successPartners',
             'type' => 'section',
-            'title' => 'شركاء النجاح',
             'order' => 8,
             'items_count' => 6
+        ]);
+
+        $successPartners->translations()->create([
+            'locale' => 'ar',
+            'title' => 'شركاء النجاح',
+        ]);
+
+        $successPartners->translations()->create([
+            'locale' => 'en',
+            'title' => 'Success Partners',
         ]);
 
         $items = [
@@ -30,13 +39,33 @@ class SuccessPartnersSeeder extends Seeder
             ['title' => 'شريك 6', 'file_path' => 'successPartners-icons/qk8vpcjDoToDBQYs8SAJ7SJWGJdlKTE0pzDexkCz.png'],
         ];
 
+        $items_en = [
+            ['title' => 'partner 1'],
+            ['title' => 'partner 2'],
+            ['title' => 'partner 3'],
+            ['title' => 'partner 4'],
+            ['title' => 'partner 5'],
+            ['title' => 'partner 6'],
+        ];
+
         foreach ($items as $index => $item) {
-            Sections::create([
+            $successPartner = Sections::create([
                 'parent_id' => $successPartners->id,
                 'section' => 'successPartners',
                 'type' => 'item',
                 'order' => $index + 1,
-                ...$item,
+                'file_path' => $item['file_path'],
+                'file_type' => 'logo',
+            ]);
+
+            $successPartner->translations()->create([
+                'locale' => 'ar',
+                'title' => $item['title'],
+            ]);
+
+            $successPartner->translations()->create([
+                'locale' => 'en',
+                'title' => $items_en[$index]['title'],
             ]);
         }
     }

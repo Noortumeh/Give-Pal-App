@@ -16,18 +16,12 @@ class Sections extends Model
         'parent_id',
         'section',
         'type',
-        'title',
-        'subtitle',
-        'description',
         'file_path',
         'file_type',
         'order',
-        'address',
-        'date',
         'active',
+        'items_count',
     ];
-
-
 
     public function children()
     {
@@ -41,7 +35,23 @@ class Sections extends Model
 
     public function childrenRecursive()
     {
-        return $this->children()->with('childrenRecursive')
+        return $this->children()->with([
+            'translation',
+            'childrenRecursive'
+        ])
             ->where('active', true);
+    }
+
+    public function translations()
+    {
+        return $this->hasMany(SectionTranslations::class, 'section_id');
+    }
+
+    public function translation($locale = null)
+    {
+        $locale = $locale ?? app()->getLocale();
+
+        return $this->hasOne(SectionTranslations::class, 'section_id')
+            ->where('locale', $locale);
     }
 }
