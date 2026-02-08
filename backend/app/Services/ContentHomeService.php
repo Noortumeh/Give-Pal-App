@@ -102,7 +102,8 @@ class ContentHomeService
                         $query->where('title', 'LIKE', "%{$keyword}%")
                             ->orWhere('subtitle', 'LIKE', "%{$keyword}%")
                             ->orWhere('description', 'LIKE', "%{$keyword}%")
-                            ->orWhere('address', 'LIKE', "%{$keyword}%");
+                            ->orWhere('address', 'LIKE', "%{$keyword}%")
+                            ->orWhere('date', 'LIKE', "%{$keyword}%");
                     });
             })
                 ->where('active', true)

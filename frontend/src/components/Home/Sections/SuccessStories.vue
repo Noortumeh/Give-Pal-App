@@ -1,9 +1,6 @@
 <script setup>
-import { API_HEADER } from "@/APIs/ApiHeader";
-import { successStoriesSection } from "@/APIs/EndPoints";
 import Button from "@/components/Button.vue";
 import Title from "@/components/Title.vue";
-import { onMounted, ref } from "vue";
 
 const props = defineProps({
   data: {

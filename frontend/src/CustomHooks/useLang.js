@@ -11,6 +11,5 @@ export function useLang() {
       query: { ...route.query, lang: newLang },
     });
   };
-
   return { lang, setLang };
 }

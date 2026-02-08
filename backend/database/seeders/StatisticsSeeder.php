@@ -39,10 +39,10 @@ class StatisticsSeeder extends Seeder
         ];
         
         $items_en = [
-            ['title' => 'عدد المشاريع المنفذة', 'description' => '115'],
-            ['title' => 'مستفيدين من البرنامج الثقافي','description' => '92%'],
-            ['title' => 'مستفيدين من البرنامج الاغاثي','description' => '45%'],
-            ['title' => 'عدد المقالات','description' => '70'],
+            ['title' => 'Number of implemented projects', 'description' => '115'],
+            ['title' => 'Beneficiaries of the cultural program','description' => '92%'],
+            ['title' => 'Beneficiaries of the relief program','description' => '45%'],
+            ['title' => 'Number of articles','description' => '70'],
         ];
 
         foreach ($items as $index => $item) {

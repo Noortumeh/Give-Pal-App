@@ -1,5 +1,4 @@
 <script setup>
-import { API_HEADER } from "@/APIs/ApiHeader";
 import { servicesSection } from "@/APIs/EndPoints";
 import Title from "@/components/Title.vue";
 import { onMounted, ref } from "vue";
