@@ -13,14 +13,9 @@ return new class extends Migration
     {
         Schema::create('sections', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('parent_id')->nullable();
+            $table->foreignId('parent_id')->nullable()->constrained('sections')->onDelete('cascade');
             $table->string('section');
             $table->string('type');
-            $table->string('title')->nullable();
-            $table->string('subtitle')->nullable();
-            $table->text('description')->nullable();
-            $table->string('address')->nullable();
-            $table->date('date')->nullable();
             $table->string('file_path')->nullable();
             $table->string('file_type')->nullable();
             $table->integer('order')->default(1);

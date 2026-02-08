@@ -17,9 +17,20 @@ class ProjectsSeeder extends Seeder
         $projects = Sections::create([
             'section' => 'projects',
             'type' => 'section',
-            'title' => 'مشاريع عطاء',
             'order' => 3,
             'items_count' => 4
+        ]);
+
+        $projects->translations()->create([
+            'locale' => 'ar',
+            'title' => 'مشاريع عطاء',
+            'description' => 'تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال يتّسم بالإنتاجية، وقد انطلقت أولى مجتمعات "دار الرجاء"  تسعى "عطاء فلسطين” لتوفير مجتمع آمن وفعّال'
+        ]);
+
+        $projects->translations()->create([
+            'locale' => 'en',
+            'title' => 'Ata`a Projects',
+            'description' => '"Ataa Palestine" seeks to provide a safe, effective, and productive community, and the first "Dar Al-Raja" community has been launched. "Ataa Palestine" seeks to provide a safe and effective community.'
         ]);
 
         $items = [
@@ -29,13 +40,33 @@ class ProjectsSeeder extends Seeder
             ['title' => 'الرعاية الصحية', 'description' => 'تقديم خدمات طبية مجانية وتحسين الوصول إلى الرعاية الصحية الأساسية للأسر المحتاجة.', 'file_path' => 'projects-images/hwMD0BvKj7hvBiVlg2BH1FSIpAKJW3sU2Z99f7uw.png'],
         ];
 
+        $items_en = [
+            ['title' => 'We build real impact', 'description' => 'Practical initiatives that contribute to improving the lives of Palestinian families and building a more secure future.'],
+            ['title' => 'Community empowerment', 'description' => 'Providing training and vocational programs to enhance young people`s skills and increase job opportunities.'],
+            ['title' => 'Promote education', 'description' => 'Establishing new schools and providing educational resources to improve the quality of education in disadvantaged areas.'],
+            ['title' => 'health care', 'description' => 'Providing free medical services and improving access to basic healthcare for families in need.'],
+        ];
+
         foreach ($items as $index => $item) {
-            Sections::create([
+            $projects_item = Sections::create([
                 'parent_id' => $projects->id,
                 'section' => 'projects',
                 'type' => 'item',
                 'order' => $index + 1,
-                ...$item,
+                'file_path' => $item['file_path'],
+                'file_type' => 'image'
+            ]);
+
+            $projects_item->translations()->create([
+                'locale' => 'ar',
+                'title' => $item['title'],
+                'description' => $item['description'],
+            ]);
+
+            $projects_item->translations()->create([
+                'locale' => 'en',
+                'title' => $items_en[$index]['title'],
+                'description' => $items_en[$index]['description'],
             ]);
         }
     }

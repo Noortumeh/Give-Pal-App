@@ -30,7 +30,7 @@ class SectionContentRequest extends FormRequest
             'order' => 'integer',
             'date' => 'date',
             'address' => 'string',
-            'file_path' => 'string',
+            'file_path' => 'file|mimes:png,jpg,jpeg,gif,ico,mp4',
             'file_type' => 'string',
         ];
     }

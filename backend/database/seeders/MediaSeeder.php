@@ -16,27 +16,60 @@ class MediaSeeder extends Seeder
          $media = Sections::create([
             'section' => 'media',
             'type' => 'section',
-            'title' => 'الميديا',
             'order' => 6,
             'items_count' => 6
         ]);
 
+        $media->translations()->create([
+            'locale' => 'ar',
+            'title' => 'الميديا'
+        ]);
+
+        $media->translations()->create([
+            'locale' => 'en',
+            'title' => 'Media'
+        ]);
+
         $items = [
-            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'address' => '١٥ مارس ٢٠٢٥', 'file_path' => 'media/0EjY9ybGIGjVfhAuk9XxCFP08s62fi8UdHauYP2I.png'],
-            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'address' => '١٥ مارس ٢٠٢٥', 'file_path' => 'media/78D8jN86m5xGhKZohA7NlPC6EiLN9YXvGrYTxCv7.png'],
-            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'address' => '١٥ مارس ٢٠٢٥', 'file_path' => 'media/A6lPz5nJaP11Oax2xvqZMBKpruKtlj5TrAhwCbZY.png'],
-            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'address' => '١٥ مارس ٢٠٢٥', 'file_path' => 'media/akMCzJ6dhijds4Tj91RSLiAasolhbcBGyo5krwkr.png'],
-            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'address' => '١٥ مارس ٢٠٢٥', 'file_path' => 'media/iObEUwYJAw87NuomOSkUF6mkYMBzgTOifpHRCSDk.png'],
-            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'address' => '١٥ مارس ٢٠٢٥', 'file_path' => 'media/JTqUuby1yVLRP4BAhcX8jbHPs3WZe7MJ6yB8E0Tl.png'],
+            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'date' => '2025/3/15', 'file_path' => 'media/0EjY9ybGIGjVfhAuk9XxCFP08s62fi8UdHauYP2I.png'],
+            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'date' => '2025/3/15', 'file_path' => 'media/78D8jN86m5xGhKZohA7NlPC6EiLN9YXvGrYTxCv7.png'],
+            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'date' => '2025/3/15', 'file_path' => 'media/A6lPz5nJaP11Oax2xvqZMBKpruKtlj5TrAhwCbZY.png'],
+            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'date' => '2025/3/15', 'file_path' => 'media/akMCzJ6dhijds4Tj91RSLiAasolhbcBGyo5krwkr.png'],
+            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'date' => '2025/3/15', 'file_path' => 'media/iObEUwYJAw87NuomOSkUF6mkYMBzgTOifpHRCSDk.png'],
+            ['title' => 'مساحات تدعم التعلم', 'description' => 'مركزنا الرئيسي يوفر بيئة ملهمة ومريحة للإبداع', 'date' => '2025/3/15', 'file_path' => 'media/JTqUuby1yVLRP4BAhcX8jbHPs3WZe7MJ6yB8E0Tl.png'],
+        ];
+
+        $items_en = [
+            ['title' => 'Spaces that support learning', 'description' => 'Our main center provides an inspiring and comfortable environment for creativity.', 'date' => '2025/3/15'],
+            ['title' => 'Spaces that support learning', 'description' => 'Our main center provides an inspiring and comfortable environment for creativity.', 'date' => '2025/3/15'],
+            ['title' => 'Spaces that support learning', 'description' => 'Our main center provides an inspiring and comfortable environment for creativity.', 'date' => '2025/3/15'],
+            ['title' => 'Spaces that support learning', 'description' => 'Our main center provides an inspiring and comfortable environment for creativity.', 'date' => '2025/3/15'],
+            ['title' => 'Spaces that support learning', 'description' => 'Our main center provides an inspiring and comfortable environment for creativity.', 'date' => '2025/3/15'],
+            ['title' => 'Spaces that support learning', 'description' => 'Our main center provides an inspiring and comfortable environment for creativity.', 'date' => '2025/3/15'],
         ];
 
         foreach ($items as $index => $item) {
-            Sections::create([
+            $media_item = Sections::create([
                 'parent_id' => $media->id,
                 'section' => 'media',
                 'type' => 'item',
                 'order' => $index + 1,
-                ...$item,
+                'file_path' => $item['file_path'],
+                'file_type' => 'image',
+            ]);
+
+            $media_item->translations()->create([
+                'locale' => 'ar',
+                'title' => $item['title'],
+                'description' => $item['description'],
+                'date' => $item['date'],
+            ]);
+
+            $media_item->translations()->create([
+                'locale' => 'en',
+                'title' => $items_en[$index]['title'],
+                'description' => $items_en[$index]['description'],
+                'date' => $items_en[$index]['date'],
             ]);
         }
     }

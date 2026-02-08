@@ -25,6 +25,7 @@ onMounted(async () => {
       const json = await res.json();
       data.value = json.data;
       console.log("Titles Data: ", data.value);
+      console.log(json.message);
     }
   } catch (err) {
     console.log("Faild to load Titles Data", err);
