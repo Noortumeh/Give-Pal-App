@@ -43,7 +43,7 @@ onUnmounted(() => {
           :slides-per-view="1"
           :pagination="{ clickable: true }"
           :autoplay="{ delay: 5000 }"
-          :dir="locale === 'ar' ? 'rtl' : 'ltr'"
+          :dir="locale === 'ar' ? 'ltr' : 'ltr'"
           class="w-full"
         >
           <SwiperSlide v-for="(slide, index) in slides" :key="index">

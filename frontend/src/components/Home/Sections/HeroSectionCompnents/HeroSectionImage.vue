@@ -3,7 +3,7 @@ import Title from "@/components/Title.vue";
 </script>
 <template>
   <div
-    :class="['mb-5 relative overflow-hidden h-[490px] w-full flex items-center shadow-[10px_10px_30px_rgba(0,0,0,0.05)]', $i18n.locale === 'en' ? 'justify-end' : 'justify-start']"
+    :class="['mb-5 relative overflow-hidden h-[490px] w-full flex items-center shadow-[10px_10px_30px_rgba(0,0,0,0.05)]', 'justify-end']"
   >
     <img
       id="left-image"
@@ -18,7 +18,7 @@ import Title from "@/components/Title.vue";
       class="absolute right-0 z-1 w-[56%] h-full"
       alt=""
     />
-    <div id="content" :class="['relative z-3 w-20% max-w-[700px]', $i18n.locale === 'en' ? 'mr-8' : 'mr-5 lg:mr-28']">
+    <div id="content" :class="['relative z-3 w-20% max-w-[700px]', $i18n.locale === 'en' ? 'mr-8' : 'mr-5 lg:mr-12']">
       <span class="text-[rgba(1,123,50,1)]">{{ $t("hero.message") }}</span>
       <div >
         <Title

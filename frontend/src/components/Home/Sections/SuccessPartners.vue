@@ -1,8 +1,6 @@
 <script setup>
-import { API_HEADER } from "@/APIs/ApiHeader";
-import { successPartners } from "@/APIs/EndPoints";
 import Title from "@/components/Title.vue";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 
 
 const props = defineProps({

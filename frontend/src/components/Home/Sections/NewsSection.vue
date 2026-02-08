@@ -1,8 +1,5 @@
 <script setup>
 import Title from "@/components/Title.vue";
-import { API_HEADER } from "@/APIs/ApiHeader";
-import { onMounted, ref } from "vue";
-import { newsSection } from "@/APIs/EndPoints";
 
 import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation } from "swiper/modules";
