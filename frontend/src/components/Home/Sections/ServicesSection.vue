@@ -46,7 +46,7 @@ console.log(props.data);
       <div class="flex justify-center content-center">
         <img
           class="max-w-[94px] max-h-[83px] mb-2"
-          :src="`http://127.0.0.1:8000/storage/${service.file_path}`"
+          :src="`${service.file_path}`"
           :alt="service.title"
         />
       </div>

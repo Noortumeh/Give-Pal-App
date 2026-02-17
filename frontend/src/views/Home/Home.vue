@@ -1,5 +1,5 @@
 <script setup>
-import { getApiHeader } from "@/APIs/ApiHeader";
+import { BASE_URL, getApiHeader } from "@/APIs/ApiHeader";
 import Footer from "@/components/Home/Footer.vue";
 import FinallSection from "@/components/Home/Sections/FinallSection.vue";
 import HeroSection from "@/components/Home/Sections/HeroSection.vue";
@@ -21,7 +21,7 @@ const fetchData = async () => {
   console.log("lang changed from Home:", lang.value);
   console.log(getApiHeader(lang.value));
   try {
-    const res = await fetch("http://127.0.0.1:8000/home-contents", {
+    const res = await fetch(`${BASE_URL}/home-contents/?locale=${lang.value}`, {
       method: "GET",
       headers: getApiHeader(lang.value),
     });

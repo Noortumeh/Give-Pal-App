@@ -27,9 +27,4 @@ class SectionTranslations extends Model
     {
         return $this->belongsTo(Sections::class);
     }
-
-    public function scopeLocale($query, $locale)
-    {
-        return $query->where('locale', $locale);
-    }
 }
