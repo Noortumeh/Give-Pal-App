@@ -17,7 +17,7 @@ class ContentHomeService
             $content = ContentHomeResource::collection(
                 Sections::whereNull('parent_id')
                     ->where('active', true)
-                    ->with(['translation', 'childrenRecursive'])
+                    ->with(['translation', 'childrenRecursive.translation'])
                     ->get()
             );
 
@@ -99,11 +99,11 @@ class ContentHomeService
             $sections = Sections::whereHas('translations', function ($q) use ($keyword, $locale) {
                 $q->where('locale', $locale)
                     ->where(function ($query) use ($keyword) {
-                        $query->where('title', 'LIKE', "%{$keyword}%")
-                            ->orWhere('subtitle', 'LIKE', "%{$keyword}%")
-                            ->orWhere('description', 'LIKE', "%{$keyword}%")
-                            ->orWhere('address', 'LIKE', "%{$keyword}%")
-                            ->orWhere('date', 'LIKE', "%{$keyword}%");
+                        $query->where('title', 'REGEXP', $keyword)
+                            ->orWhere('subtitle', 'REGEXP', $keyword)
+                            ->orWhere('description', 'REGEXP', $keyword)
+                            ->orWhere('address', 'REGEXP', $keyword)
+                            ->orWhere('date', 'REGEXP', $keyword);
                     });
             })
                 ->where('active', true)

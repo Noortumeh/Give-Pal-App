@@ -61,7 +61,7 @@ console.log(duplicatedLogos.value);
         >
           <img
             :key="index"
-            :src="`http://127.0.0.1:8000/storage/${logo.file_path}`"
+            :src="`${logo.file_path}`"
             :alt="logo.icon"
             class="max-h-[190px] w-[190px] object-contain select-none"
             draggable="false"

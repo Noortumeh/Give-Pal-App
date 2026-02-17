@@ -47,7 +47,7 @@ const modules = [Navigation];
         >
           <img
             class="w-full h-full object-cover"
-            :src="`http://127.0.0.1:8000/storage/${value.file_path}`"
+            :src="`${value.file_path}`"
           />
           <div
             class="absolute place-self-end card-backgraound p-4 shadow-2xl h-[50%] w-[90%] -translate-x-8 translate-y-7 z-10"

@@ -56,7 +56,7 @@ console.log(props.data);
       >
         <img
           class="col-span-3"
-          :src="`http://127.0.0.1:8000/storage/${value.file_path}`"
+          :src="`${value.file_path}`"
         />
         <div class="content-flex col-span-3 content-center text-center">
           <span class="text-8xl font-bold text-[rgba(1,123,50,1)]">{{

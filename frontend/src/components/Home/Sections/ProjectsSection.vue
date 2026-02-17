@@ -58,7 +58,7 @@ const props = defineProps({
           {{ projects.description.substring(0,100) }}
         </p>
       </div>
-      <img :src="`http://127.0.0.1:8000/storage/${projects.file_path}`" />
+      <img :src="`${projects.file_path}`" />
     </div>
   </div>
   <div

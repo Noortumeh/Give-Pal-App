@@ -47,7 +47,7 @@ const formatDate = (date) => {
         class="grid grid-cols-1 grid-rows-1 overflow-visible"
       >
         <img
-          :src="`http://127.0.0.1:8000/storage/${value.file_path}`"
+          :src="`${value.file_path}`"
           class="h-full w-full col-start-1 row-start-1 object-cover"
         />
         <div

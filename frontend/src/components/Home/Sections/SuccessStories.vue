@@ -65,7 +65,7 @@ console.log(props.data);
         >
           <img
             class="border-[color:rgba(1,123,50,1)] border-2 border-solid rounded-full w-[60px] h-[60px] absolute -right-8 top-8 z-1"
-            :src="`http://127.0.0.1:8000/storage/${value.file_path}`"
+            :src="`${value.file_path}`"
           />
           <div
             id="card-content"
