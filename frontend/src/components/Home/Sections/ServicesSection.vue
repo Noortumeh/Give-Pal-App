@@ -1,7 +1,5 @@
 <script setup>
-import { servicesSection } from "@/APIs/EndPoints";
 import Title from "@/components/Title.vue";
-import { onMounted, ref } from "vue";
 // const data = ref([]);
 
 const props = defineProps({
@@ -11,20 +9,6 @@ const props = defineProps({
 })
 
 console.log(props.data);
-// onMounted(async () => {
-//   try {
-//     const res = await fetch(servicesSection, {
-//       method: "GET",
-//       headers: API_HEADER,
-//     });
-//     if (res.ok) {
-//       data.value = await res.json();
-//       console.log("Services Data: ", data.value);
-//     }
-//   } catch (err) {
-//     console.log("Faild to load Service Data", err);
-//   }
-// });
 </script>
 <template>
   <div class="text-end p-5">
