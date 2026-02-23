@@ -1,17 +1,21 @@
 <script setup>
 import { Disclosure } from "@headlessui/vue";
+import { computed } from "vue";
 
-const navigation = [
-  { name: 'who-are-we', href: "#", current: true },
-  { name: "services", href: "#", current: false },
-  { name: "projects", href: "#", current: false },
-  { name: "success-stories", href: "#", current: false },
-  { name: "store", href: "#", current: false },
-  { name: "news", href: "#", current: false },
-  { name: "partners", href: "#", current: false },
-  { name: "reports", href: "#", current: false },
-  { name: "contact", href: "#", current: false },
-];
+const props = defineProps({
+  data: {
+    type: Array,
+    default: () => [],
+  },
+});
+console.log(props.data);
+const navigation = computed(() => props.data.map((item) => ({
+  name: item.label,
+  href: item.url,
+  current: false,
+})));
+
+
 </script>
 
 <template>
@@ -30,7 +34,7 @@ const navigation = [
                 :href="item.href"
                 class="text-black rounded-md sm:px-0 md:px-3 xl:px-5.5 py-2  "
                 :aria-current="item.current ? 'page' : undefined"
-                >{{ $t(`navbar.${item.name}`)}}</a
+                >{{ item.name }}</a
               >
             </div>
           </div>

@@ -1,6 +1,5 @@
 <script setup>
 import { BASE_URL, getApiHeader } from "@/APIs/ApiHeader";
-import Footer from "@/components/Home/Footer.vue";
 import FinallSection from "@/components/Home/Sections/FinallSection.vue";
 import HeroSection from "@/components/Home/Sections/HeroSection.vue";
 import MediaSection from "@/components/Home/Sections/MediaSection.vue";
@@ -10,16 +9,14 @@ import ServicesSection from "@/components/Home/Sections/ServicesSection.vue";
 import StatisticsSection from "@/components/Home/Sections/StatisticsSection.vue";
 import SuccessPartners from "@/components/Home/Sections/SuccessPartners.vue";
 import SuccessStories from "@/components/Home/Sections/SuccessStories.vue";
-import UnderFooterLine from "@/components/Home/UnderFooterLine.vue";
 import { useLang } from "@/CustomHooks/useLang";
 import useSection from "@/CustomHooks/useSection";
 import { ref, watch } from "vue";
 
 const data = ref();
-const {lang} = useLang();
+
+const { lang } = useLang();
 const fetchData = async () => {
-  console.log("lang changed from Home:", lang.value);
-  console.log(getApiHeader(lang.value));
   try {
     const res = await fetch(`${BASE_URL}/home-contents/?locale=${lang.value}`, {
       method: "GET",
@@ -36,14 +33,6 @@ const fetchData = async () => {
   }
 };
 
-watch(
-  lang,
-  () => {
-    fetchData();
-  },
-  {immediate : true}
-);
-
 const hero = useSection(data, "hero");
 const services = useSection(data, "services");
 const projects = useSection(data, "projects");
@@ -52,9 +41,50 @@ const statistics = useSection(data, "statistics");
 const news = useSection(data, "news");
 const media = useSection(data, "media");
 const successPartners = useSection(data, "successPartners");
+
+// const fetchLinksData = async () => {
+//   try {
+//     const res = await fetch(`${BASE_URL}/links/?locale=${lang.value}`, {
+//       method: "GET",
+//       headers: getApiHeader(lang.value),
+//     });
+//     if (res.ok) {
+//       const json = await res.json();
+//       links.value = json.data;
+//       console.log("links Data: ", links.value[0]);
+//     }
+//   } catch (err) {
+//     console.log("Failed to load links Data", err);
+//   }
+// };
+
+// const navbar = computed(() => links.value?.find((c) => c.name === "navbar"));
+// const footer = computed(() => {
+//   if (!links.value) return null;
+//   return links.value.find((c) => c.name === "footer");
+// });
+
+// watch(links, (newVal) => {
+//   console.log("Links updated:", newVal);
+//   console.log("Footer computed:", footer.value.items);
+// });
+
+watch(
+  lang,
+  () => {
+    fetchData();
+    // fetchLinksData();
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
+  <!-- <UperLine /> -->
+  <!-- <Navbar :data="navbar?.items || []" /> -->
+  <!-- <MobileNavbar /> -->
+  <!-- <SideBar /> -->
+
   <HeroSection />
   <div class="max-w-[1350px] mx-auto px-0">
     <ServicesSection v-if="services" :data="services.children" />
@@ -68,6 +98,6 @@ const successPartners = useSection(data, "successPartners");
     <SuccessPartners v-if="successPartners" :data="successPartners.children" />
   </div>
   <FinallSection />
-  <Footer />
-  <UnderFooterLine />
+  <!-- <Footer :data="footer?.items || []" />
+  <UnderFooterLine /> -->
 </template>

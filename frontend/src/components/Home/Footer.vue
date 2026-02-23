@@ -1,5 +1,20 @@
 <script setup>
+import { computed } from "vue";
 import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
+
+const props = defineProps({
+  data: {
+    type: Array,
+    required: true,
+  },
+});
+
+const footerData = computed(() => {
+  if (!props.data) return null;
+  return props.data;
+});
+// console.log(footerData.value);
+
 </script>
 <template>
   <div
