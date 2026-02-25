@@ -1,14 +1,11 @@
 <script setup>
 import Title from "@/components/Title.vue";
-// const data = ref([]);
 
 const props = defineProps({
   data: {
     type: Array,
   }
 })
-
-console.log(props.data);
 </script>
 <template>
   <div class="text-end p-5">
@@ -35,7 +32,7 @@ console.log(props.data);
         />
       </div>
       <div id="content" class="flex-col">
-        <h2 class="font-bold text-[20px] pb-2">{{ service.title }}</h2>
+        <h2 class="font-bold text-[20px] pb-2">{{ service.title.substring(0,50) }}</h2>
         <p class="w-[372px] h-[104px]">
           {{ service.description.substring(0,180) }}
         </p>

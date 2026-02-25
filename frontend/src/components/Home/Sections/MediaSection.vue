@@ -1,7 +1,6 @@
 <script setup>
 import Title from "@/components/Title.vue";
 
-// const data = ref([]);
 const props = defineProps({
   data: {
     type: Array,
@@ -15,21 +14,6 @@ const formatDate = (date) => {
     year: "numeric",
   }).format(new Date(date));
 };
-
-// onMounted(async () => {
-//   try {
-//     const res = await fetch(mediaSection, {
-//       method: "GET",
-//       headers: API_HEADER,
-//     });
-//     if (res.ok) {
-//       data.value = await res.json();
-//       console.log("Media Data: ", data.value);
-//     }
-//   } catch (err) {
-//     console.log("Faild to load Media Data", err);
-//   }
-// });
 </script>
 <template>
   <div class="mr-5 pl-5">
@@ -54,7 +38,7 @@ const formatDate = (date) => {
           class="col-start-1 row-start-1 z-10 place-self-auto p-4 flex-col content-end"
         >
           <span class="text-white">{{ formatDate(value.date) }}</span>
-          <h2 class="text-white text-2xl text-bold">{{ value.title }}</h2>
+          <h2 class="text-white text-2xl text-bold">{{ value.title.substring(0,80) }}</h2>
           <span class="text-white text-[14px]">{{ value.description.substring(0,80) }}</span>
         </div>
       </div>

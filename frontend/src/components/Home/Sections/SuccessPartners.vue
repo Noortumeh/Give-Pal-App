@@ -2,49 +2,23 @@
 import Title from "@/components/Title.vue";
 import { ref } from "vue";
 
-
 const props = defineProps({
   data: {
     type: Array,
-  }
-})
+  },
+});
 
-// const data = ref([]);
 const duplicatedLogos = ref([]);
-
-// const logos = [
-//   "slack",
-//   "framer",
-//   "netflix",
-//   "google",
-//   "linkedin",
-//   "instagram",
-//   "facebook",
-// ];
-
-// onMounted(async () => {
-//   try {
-//     const res = await fetch(successPartners, {
-//       method: "GET",
-//       headers: API_HEADER,
-//     });
-//     if (res.ok) {
-//       data.value = await res.json();
-      duplicatedLogos.value = [...props.data, ...props.data];
-//       console.log("Success Partners Data: ", data.value);
-//     }
-//   } catch (err) {
-//     console.log("Faild to load Success Partners Data", err);
-//   }
-// });
-
-console.log(duplicatedLogos.value);
+duplicatedLogos.value = [...props.data, ...props.data];
 </script>
 
 <template>
   <div class="my-12 max-w-[1350px] mx-auto px-0">
     <div class="mr-5 p-5">
-      <Title :title="$t('titles.success-partners')" underLineWidth="width: 160px" />
+      <Title
+        :title="$t('titles.success-partners')"
+        underLineWidth="width: 160px"
+      />
     </div>
     <p v-if="!data" class="mt-5 text-center text-3xl">
       لايوحد شركاء نجاح لعرضهم بعد!

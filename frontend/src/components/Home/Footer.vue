@@ -13,7 +13,6 @@ const footerData = computed(() => {
   if (!props.data) return null;
   return props.data;
 });
-// console.log(footerData.value);
 
 </script>
 <template>
@@ -34,31 +33,10 @@ const footerData = computed(() => {
         id="footer-content"
         class="md:flex justify-around items-center w-full hidden"
       >
-        <div>
-          <h3 class="list-title">{{ $t("footer-who-are-we.title") }}</h3>
+        <div v-for="menu in footerData" :key="menu.id">
+          <h3 class="list-title">{{ menu.label }}</h3>
           <ul>
-            <li>{{ $t("footer-who-are-we.products") }}</li>
-            <li>{{ $t("footer-who-are-we.available-goods") }}</li>
-            <li>{{ $t("footer-who-are-we.new-releases") }}</li>
-            <li>{{ $t("footer-who-are-we.partners") }}</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="list-title">{{ $t("footer-contact.title") }}</h3>
-          <ul>
-            <li>{{ $t("footer-contact.customers") }}</li>
-            <li>{{ $t("footer-contact.offers") }}</li>
-            <li>{{ $t("footer-contact.job-opportunities") }}</li>
-            <li>{{ $t("footer-contact.new-releases") }}</li>
-          </ul>
-        </div>
-        <div>
-          <h3 class="list-title">{{ $t("footer-questions.title") }}</h3>
-          <ul>
-            <li>{{ $t("footer-questions.events") }}</li>
-            <li>{{ $t("footer-questions.art-exhibition") }}</li>
-            <li>{{ $t("footer-questions.offers") }}</li>
-            <li>{{ $t("footer-questions.our-community") }}</li>
+            <li v-for="item in menu.children" :key="item.id">{{ item.label }}</li>
           </ul>
         </div>
       </div>

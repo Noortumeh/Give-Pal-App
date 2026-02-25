@@ -42,49 +42,16 @@ const news = useSection(data, "news");
 const media = useSection(data, "media");
 const successPartners = useSection(data, "successPartners");
 
-// const fetchLinksData = async () => {
-//   try {
-//     const res = await fetch(`${BASE_URL}/links/?locale=${lang.value}`, {
-//       method: "GET",
-//       headers: getApiHeader(lang.value),
-//     });
-//     if (res.ok) {
-//       const json = await res.json();
-//       links.value = json.data;
-//       console.log("links Data: ", links.value[0]);
-//     }
-//   } catch (err) {
-//     console.log("Failed to load links Data", err);
-//   }
-// };
-
-// const navbar = computed(() => links.value?.find((c) => c.name === "navbar"));
-// const footer = computed(() => {
-//   if (!links.value) return null;
-//   return links.value.find((c) => c.name === "footer");
-// });
-
-// watch(links, (newVal) => {
-//   console.log("Links updated:", newVal);
-//   console.log("Footer computed:", footer.value.items);
-// });
-
 watch(
   lang,
   () => {
     fetchData();
-    // fetchLinksData();
   },
   { immediate: true },
 );
 </script>
 
 <template>
-  <!-- <UperLine /> -->
-  <!-- <Navbar :data="navbar?.items || []" /> -->
-  <!-- <MobileNavbar /> -->
-  <!-- <SideBar /> -->
-
   <HeroSection />
   <div class="max-w-[1350px] mx-auto px-0">
     <ServicesSection v-if="services" :data="services.children" />
@@ -98,6 +65,4 @@ watch(
     <SuccessPartners v-if="successPartners" :data="successPartners.children" />
   </div>
   <FinallSection />
-  <!-- <Footer :data="footer?.items || []" />
-  <UnderFooterLine /> -->
 </template>

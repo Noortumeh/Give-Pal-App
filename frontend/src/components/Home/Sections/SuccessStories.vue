@@ -7,23 +7,6 @@ const props = defineProps({
     type: Array,
   }
 })
-console.log(props.data);
-// const data = ref([]);
-
-// onMounted(async () => {
-//   try {
-//     const res = await fetch(successStoriesSection, {
-//       method: "GET",
-//       headers: API_HEADER,
-//     });
-//     if (res.ok) {
-//       data.value = await res.json();
-//       console.log("Success Stories Data: ", data.value);
-//     }
-//   } catch (err) {
-//     console.log("Faild to load Success Stories Data", err);
-//   }
-// });
 </script>
 
 <template>
@@ -75,9 +58,9 @@ console.log(props.data);
             ]"
           >
             <span class="text-[color:rgba(1,123,50,1)]">{{
-              value.address
+              value.address.substring(0,50)
             }}</span>
-            <h3 class="font-bold text-2xl size-9 w-full">{{ value.title }}</h3>
+            <h3 class="font-bold text-2xl size-9 w-full">{{ value.title.substring(0,50) }}</h3>
             <p class="w-[80%] mt-1">
               {{ value.description.substring(0,220) }}
             </p>
