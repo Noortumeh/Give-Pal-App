@@ -1,7 +1,5 @@
 <script setup>
 import Title from "@/components/Title.vue";
-import { onMounted, ref } from "vue";
-
 
 const props = defineProps({
   data: {
@@ -9,22 +7,6 @@ const props = defineProps({
   }
 })
 
-// const data = ref([]);
-
-// onMounted(async () => {
-//   try {
-//     const res = await fetch(projectsSection, {
-//       method: "GET",
-//       headers: API_HEADER,
-//     });
-//     if (res.ok) {
-//       data.value = await res.json();
-//       console.log("Projects Data: ", data.value);
-//     }
-//   } catch (err) {
-//     console.log("Faild to load Service Data", err);
-//   }
-// });
 </script>
 <template>
   <div class="text-start p-5 pt-5">
@@ -52,7 +34,7 @@ const props = defineProps({
           projects.id < 10 ? "0" + projects.order : projects.order
         }}</span>
         <h2 class="text-base text-slate-900 font-medium mt-3">
-          {{ projects.title }}
+          {{ projects.title.substring(0,100) }}
         </h2>
         <p class="text-xs font-medium mt-1">
           {{ projects.description.substring(0,100) }}

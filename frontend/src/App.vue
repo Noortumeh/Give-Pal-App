@@ -29,22 +29,17 @@ const fetchLinksData = async () => {
     if (res.ok) {
       const json = await res.json();
       links.value = json.data;
-      console.log("links Data: ", links.value[0]);
     }
   } catch (err) {
     console.log("Failed to load links Data", err);
   }
 };
 
+const upernav = computed(() => links.value?.find((c) => c.name === "upernav"));
 const navbar = computed(() => links.value?.find((c) => c.name === "navbar"));
 const footer = computed(() => {
   if (!links.value) return null;
   return links.value.find((c) => c.name === "footer");
-});
-
-watch(links, (newVal) => {
-  console.log("Links updated:", newVal);
-  console.log("Footer computed:", footer.value.items);
 });
 
 watch(
@@ -56,7 +51,7 @@ watch(
 );
 </script>
 <template>
-  <UperLine />
+  <UperLine :data = "upernav?.items || []" />
   <Navbar v-if="navbar" :data="navbar?.items || []" />
   <MobileNavbar />
   <SideBar />

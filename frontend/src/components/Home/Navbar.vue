@@ -8,7 +8,7 @@ const props = defineProps({
     default: () => [],
   },
 });
-console.log(props.data);
+
 const navigation = computed(() => props.data.map((item) => ({
   name: item.label,
   href: item.url,

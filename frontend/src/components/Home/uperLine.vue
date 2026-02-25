@@ -1,9 +1,21 @@
 <script setup>
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 import Searchbar from "./Searchbar.vue";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 
 const openSearch = ref(false);
+
+const props = defineProps({
+  data: {
+    type: Array,
+  },
+});
+
+const navigation = computed(() => props.data.map((item) => ({
+  name: item.label,
+  href: item.url,
+  current: false,
+})));
 
 const handleSearchOpen = () => {
   if (openSearch.value === false) {
@@ -19,13 +31,13 @@ const handleSearchOpen = () => {
     <nav
       class="bg-[rgba(46,99,68,1)] col-start-1 col-span-3 flex items-center justify-end pl-5"
     >
-      <a href="#" :class="[$i18n.locale === 'en' ? 'pr-5' : '']">{{
-        $t("uperbar.form")
+      <a :href="navigation[0]?.href" :class="[$i18n.locale === 'en' ? 'pr-5' : '']">{{
+        navigation[0]?.name
       }}</a>
     </nav>
     <nav class="bg-[rgba(1,123,50,1)] flex justify-start items-center">
-      <a href="#" :class="[$i18n.locale === 'en' ? 'pl-5' : 'pr-5']">{{
-        $t("uperbar.donate")
+      <a :href="navigation[1]?.href" :class="[$i18n.locale === 'en' ? 'pl-5' : 'pr-5']">{{
+        navigation[1]?.name
       }}</a>
     </nav>
 

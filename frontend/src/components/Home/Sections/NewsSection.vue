@@ -11,23 +11,7 @@ const props = defineProps({
     type: Array,
   }
 })
-// const data = ref([]);
 const modules = [Navigation];
-
-// onMounted(async () => {
-//   try {
-//     const res = await fetch(newsSection, {
-//       method: "GET",
-//       headers: API_HEADER,
-//     });
-//     if (res.ok) {
-//       data.value = await res.json();
-//       console.log("News Data: ", data.value);
-//     }
-//   } catch (err) {
-//     console.log("Faild to load News Data", err);
-//   }
-// });
 </script>
 <template>
   <div class="my-12">
@@ -57,10 +41,10 @@ const modules = [Navigation];
                 {{ value.date }}
               </div>
               <span class="text-[rgba(102,102,102,1)]"
-                >#{{ value.address }}</span
+                >#{{ value.address.substring(0,50) }}</span
               >
             </div>
-            <h2 class="text-2xl text-bold">{{ value.title }}</h2>
+            <h2 class="text-2xl text-bold">{{ value.title.substring(0,100) }}</h2>
             <p class="text-sm">
               {{ value.description.substring(0,320) }}
               <span class="text-[rgba(1,123,50,1)] text-bold"
@@ -86,12 +70,12 @@ const modules = [Navigation];
                     {{ value.date }}
                   </div>
                   <span class="text-[rgba(102,102,102,1)] text-[16px] md:text-[24px]"
-                    >#{{ value.address }}</span
+                    >#{{ value.address.substring(0,50) }}</span
                   >
                 </div>
-                <h2 class="text-2xl text-bold">{{ value.title }}</h2>
+                <h2 class="text-2xl text-bold">{{ value.title.substring(0,100) }}</h2>
                 <p class="text-sm hidden md:block">
-                  {{ value.description }}
+                  {{ value.description.substring(0,220) }}
                   <span class="text-[rgba(1,123,50,1)] text-bold"
                     >معرفة المزيد.</span
                   >

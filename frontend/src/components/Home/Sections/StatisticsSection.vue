@@ -6,25 +6,6 @@ const props = defineProps({
     type: Array,
   }
 })
-
-// const data = ref([]);
-
-// onMounted(async () => {
-//   try {
-//     const res = await fetch(statisticsSection, {
-//       method: "GET",
-//       headers: API_HEADER,
-//     });
-//     if (res.ok) {
-//       data.value = await res.json();
-//       console.log("Statistics Data: ", data.value);
-//     }
-//   } catch (err) {
-//     console.log("Faild to load Statistics Data", err);
-//   }
-// });
-
-console.log(props.data);
 </script>
 <template>
   <div
@@ -60,9 +41,9 @@ console.log(props.data);
         />
         <div class="content-flex col-span-3 content-center text-center">
           <span class="text-8xl font-bold text-[rgba(1,123,50,1)]">{{
-            value.description
+            value.description.substring(0,100)
           }}</span>
-          <h2 class="text-2xl">{{ value.title }}</h2>
+          <h2 class="text-2xl">{{ value.title.substring(0,50) }}</h2>
         </div>
       </div>
     </div>

@@ -18,11 +18,6 @@ const updateSlides = () => {
       ? [{ component: HeroSectionImage }]
       : [{ component: HeroSectionImage }, { component: HeroSectionVideo }];
 };
-// const currentSlide = ref(0);
-// const sliderStyle = computed(() => ({
-//   transform: locale.value === 'ar' ? `translateX(${currentSlide.value * 100}%)` : `translateX(-${currentSlide.value * 100}%)`,
-// }));
-
 
 onMounted(() => {
   updateSlides();

@@ -2,17 +2,32 @@
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
 import { useLang } from "@/CustomHooks/useLang";
-import { watchEffect } from "vue";
+import { ref, watchEffect } from "vue";
+import Searchbar from "./Searchbar.vue";
 
 const { lang, setLang } = useLang();
+const openSearch = ref(false);
+
 watchEffect(() => {
   console.log("lang changed from side bar:", lang.value);
 });
+
+const handleSearchOpen = () => {
+  if (openSearch.value === false) {
+    openSearch.value = true;
+  } else {
+    openSearch.value = false;
+  }
+};
 </script>
 <template>
   <div class="hidden md:block fixed left-0 top-28 z-2 flex-col gap-5 w-12 h-12]">
-    <div class="bg-[rgba(1,123,50,1)]">
-      <MagnifyingGlassIcon class="p-2 text-white cursor-pointer" />
+    <div class="bg-[rgba(1,123,50,1)] flex">
+      <MagnifyingGlassIcon class="p-2 text-white cursor-pointer" @click="handleSearchOpen" />
+      
+       <div :class="openSearch ? 'block' : 'hidden'" class="absolute top-1 left-13 w-80">
+        <Searchbar />
+      </div>
     </div>
     <!-- <RouterLink :to="`/?lang=${lang ==='en'? 'ar': 'en'}`" > -->
     <div
