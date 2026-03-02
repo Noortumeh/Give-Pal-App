@@ -52,7 +52,7 @@ watch(
 </script>
 <template>
   <UperLine :data = "upernav?.items || []" />
-  <Navbar v-if="navbar" :data="navbar?.items || []" />
+  <Navbar :data="navbar?.items || []" />
   <MobileNavbar />
   <SideBar />
   <main>
