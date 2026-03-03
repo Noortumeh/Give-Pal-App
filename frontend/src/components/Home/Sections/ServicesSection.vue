@@ -3,13 +3,13 @@ import Title from "@/components/Title.vue";
 
 const props = defineProps({
   data: {
-    type: Array,
-  }
+    type: Object,
+  },
 })
 </script>
 <template>
   <div class="text-end p-5">
-    <Title :title="$t('titles.services')" :underLineWidth="$i18n.locale === 'ar' ? 'width: 170px' : 'width: 220px'" />
+    <Title :title="data.title" :underLineWidth="$i18n.locale === 'ar' ? 'width: 170px' : 'width: 220px'" />
   </div>
   <div v-if="!data">
     <p class="mt-5 text-center text-3xl">لايوحد خدمات لعرضها بعد!</p>
@@ -19,8 +19,8 @@ const props = defineProps({
     class="flex flex-wrap gap-4 justify-around content-center text-center mt-5 services-section"
   >
     <div
-      v-for="service in data"
-      :id="[`media-${data.indexOf(service)}`]"
+      v-for="(service, index) in data.children"
+      :id="[`media-${index}`]"
       :key="service.title"
       class="flex-col justify-center content-center w-[437px] max-h-[345px] p-3 border-[2px] border-[rgba(1,123,50,0.25)] border-[solid]"
     >

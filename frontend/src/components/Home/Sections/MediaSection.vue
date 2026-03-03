@@ -3,9 +3,9 @@ import Title from "@/components/Title.vue";
 
 const props = defineProps({
   data: {
-    type: Array,
-  }
-})
+    type: Object,
+  },
+});
 
 const formatDate = (date) => {
   return new Intl.DateTimeFormat("ar", {
@@ -16,8 +16,11 @@ const formatDate = (date) => {
 };
 </script>
 <template>
+  <p v-if="!data" class="mt-5 text-center text-3xl">
+    {{ $t("no-data") }}
+  </p>
   <div class="mr-5 pl-5">
-    <Title :title="$t('titles.media')" underLineWidth="width: 90px" />
+    <Title :title="data.title" underLineWidth="width: 90px" />
   </div>
   <div class="flex justify-center items-center py-12">
     <div
@@ -25,9 +28,9 @@ const formatDate = (date) => {
       class="grid grid-cols-4 grid-rows-2 gap-5 h-[600px] w-[1250px]"
     >
       <div
-        v-for="value in data"
-        :key="value.id"
-        :id="[`media-${data.indexOf(value)}`]"
+        v-for="(value, index) in data.children"
+        :key="index"
+        :id="[`media-${index}`]"
         class="grid grid-cols-1 grid-rows-1 overflow-visible"
       >
         <img
@@ -38,8 +41,12 @@ const formatDate = (date) => {
           class="col-start-1 row-start-1 z-10 place-self-auto p-4 flex-col content-end"
         >
           <span class="text-white">{{ formatDate(value.date) }}</span>
-          <h2 class="text-white text-2xl text-bold">{{ value.title.substring(0,80) }}</h2>
-          <span class="text-white text-[14px]">{{ value.description.substring(0,80) }}</span>
+          <h2 class="text-white text-2xl text-bold">
+            {{ value.title.substring(0, 80) }}
+          </h2>
+          <span class="text-white text-[14px]">{{
+            value.description.substring(0, 80)
+          }}</span>
         </div>
       </div>
     </div>
@@ -51,7 +58,7 @@ const formatDate = (date) => {
     <button
       class="text-[rgba(1,123,50,1)] border border-[rgba(1,123,50,1)] py-2 px-10 text-bold"
     >
-      {{ $t('buttons.name') }}
+      {{ $t("buttons.name") }}
     </button>
   </div>
 </template>

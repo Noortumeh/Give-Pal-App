@@ -4,7 +4,7 @@ import Title from "@/components/Title.vue";
 
 const props = defineProps({
   data: {
-    type: Array,
+    type: Object,
   }
 })
 </script>
@@ -13,7 +13,7 @@ const props = defineProps({
   <div id="success-stories" class="h-[622px] my-12 w-full">
     <div id="mobile-title" class="mr-5 pl-5 pt-2">
       <Title
-        :title="$t('titles.success-stories.title')"
+        :title="data.title"
         :underLineWidth="
           $i18n.locale === 'ar' ? 'width: 160px' : 'width: 220px'
         "
@@ -26,11 +26,11 @@ const props = defineProps({
       <div id="title-container" class="w-[525px] h-[252px] content-center">
         <div class="text-start pr-5 pt-5">
           <Title
-            :title="$t('titles.success-stories.title')"
+            :title="data.title"
             :underLineWidth="
               $i18n.locale === 'ar' ? 'width: 160px' : 'width: 220px'
             "
-            :description="$t('titles.success-stories.description')"
+            :description="data.description"
             id="p-black"
           />
           <Button :title="$t('titles.success-stories.button')" />
@@ -42,8 +42,9 @@ const props = defineProps({
         class="block md:grid md:grid-cols-6 md:grid-rows-6 h-full md:h-full gap-8 col-span-2 w-full relative"
       >
         <div
-          v-for="value in data"
-          :id="[`grid-${data.indexOf(value)}`]"
+          v-for="(value, index) in data.children"
+          :id="[`grid-${index}`]"
+          :key="value.title"
           class="relative shadow-2xl h-full"
         >
           <img
