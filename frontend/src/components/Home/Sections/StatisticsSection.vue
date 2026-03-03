@@ -3,7 +3,7 @@ import Title from "@/components/Title.vue";
 
 const props = defineProps({
   data: {
-    type: Array,
+    type: Object,
   }
 })
 </script>
@@ -16,13 +16,13 @@ const props = defineProps({
       id="mobile-title"
       class="row-span-1 text-start md:col-span-1 lg:col-span-1 hidden w-full"
     >
-      <Title :title="$t('titles.statistics.title')" underLineWidth="width: 150px" />
+      <Title :title="data.title" underLineWidth="width: 150px" />
     </div>
     <div class="hidden lg:block row-span-1 md:col-span-1 lg:col-span-1">
       <Title
-        :title="$t('titles.statistics.title')"
+        :title="data.title"
         underLineWidth="width: 150px"
-        :description="$t('titles.statistics.description')"
+        :description="data.description"
       />
     </div>
     <div
@@ -30,8 +30,8 @@ const props = defineProps({
       class="md:row-span-4 lg:row-span-1 md:col-span-1 lg:col-span-2 grid sm:grid-rows-3 grid-cols-2 md:grid-rows-2 justify-center place-items-center gap-5 m-5 md:w-[650px]"
     >
       <div
-        v-for="value in data"
-        :id="[`media-${data.indexOf(value)}`]"
+        v-for="(value, index) in data.children"
+        :id="[`media-${index}`]"
         :key="value.title"
         class="border border-[rgba(1,123,50,0.25)] md:shadow-2xl col-span-1 row-span-1 grid grid-cols-3 grid-rows-3 auto-rows-fr w-full h-full"
       >

@@ -8,9 +8,10 @@ import "swiper/css/navigation";
 
 const props = defineProps({
   data: {
-    type: Array,
+    type: Object,
   }
 })
+console.log(props.data);
 const modules = [Navigation];
 </script>
 <template>
@@ -19,14 +20,14 @@ const modules = [Navigation];
       <div class="text-start p-5 w-[80%]">
         <Title
           underLineWidth="width: 90px"
-          :title="$t('titles.news.title')"
-          :description="$t('titles.news.description')"
+          :title="data.title"
+          :description="data.description"
         />
       </div>
       <div id="news" class="grid grid-rows-1 grid-cols-3 gap-15 my-8">
         <div
-          v-for="value in data"
-          :key="value.id"
+          v-for="(value, index) in data.children"
+          :key="index"
           class="grid w-full ounded-xl shadow-xl overflow-visible relative"
         >
           <img
@@ -48,7 +49,7 @@ const modules = [Navigation];
             <p class="text-sm">
               {{ value.description.substring(0,320) }}
               <span class="text-[rgba(1,123,50,1)] text-bold"
-                >معرفة المزيد.</span
+                >{{ $t("read-more") }}</span
               >
             </p>
           </div>
@@ -56,13 +57,13 @@ const modules = [Navigation];
       </div>
       <div id="swiper" class="hidden w-[80%] m-auto">
         <Swiper :navigation="true" :modules="modules" class="mySwiper">
-          <swiper-slide v-for="value in data" :key="value.id">
+          <swiper-slide v-for="(value, index) in data.children" :key="index">
             <div
               class="flex-col md:w-[50%] w-[70%] h-[50%] m-5 ounded-xl shadow-xl overflow-visible relative"
             >
               <img
                 class="w-full max-h-[300px] object-cover"
-                :src="`http://127.0.0.1:8000/storage/${value.image}`"
+                :src="`${value.file_path}`"
               />
               <div class="card-backgraound p-4 shadow-2xl text-start">
                 <div class="flex justify-between items-center mb-3">
@@ -77,7 +78,7 @@ const modules = [Navigation];
                 <p class="text-sm hidden md:block">
                   {{ value.description.substring(0,220) }}
                   <span class="text-[rgba(1,123,50,1)] text-bold"
-                    >معرفة المزيد.</span
+                    >{{ $t("read-more") }}</span
                   >
                 </p>
               </div>

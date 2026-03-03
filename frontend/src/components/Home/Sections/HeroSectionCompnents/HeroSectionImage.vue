@@ -1,14 +1,31 @@
 <script setup>
+import { computed } from "vue";
 import Title from "@/components/Title.vue";
+
+const props = defineProps({
+  item: {
+    type: Object,
+    default: () => ({}),
+  },
+});
+
+// fallback to existing assets if no path provided
+const heroImage = computed(() => props.item.file_path);
+
+const titleText = computed(() => props.item.title || "");
+const descriptionText = computed(() => props.item.description || "");
 </script>
 <template>
   <div
-    :class="['mb-5 relative overflow-hidden h-[490px] w-full flex items-center shadow-[10px_10px_30px_rgba(0,0,0,0.05)]', 'justify-end']"
+    :class="[
+      'mb-5 relative overflow-hidden h-[490px] w-full flex items-center shadow-[10px_10px_30px_rgba(0,0,0,0.05)]',
+      'justify-end',
+    ]"
   >
     <img
       id="left-image"
       class="object-contain absolute left-[-125px] top-[-160px] w-[65%]"
-      src="@/assets/HeroSectionImage.png"
+      :src="heroImage"
       alt="Hero section image"
     />
 
@@ -18,14 +35,20 @@ import Title from "@/components/Title.vue";
       class="absolute right-0 z-1 w-[56%] h-full"
       alt=""
     />
-    <div id="content" :class="['relative z-3 w-20% max-w-[700px]', $i18n.locale === 'en' ? 'mr-8' : 'mr-5 lg:mr-12']">
-      <span class="text-[rgba(1,123,50,1)]">{{ $t("hero.message") }}</span>
-      <div >
+    <div
+      id="content"
+      :class="[
+        'relative z-3 w-20% max-w-[700px]',
+        $i18n.locale === 'en' ? 'mr-8' : 'mr-5 lg:mr-12',
+      ]"
+    >
+      <span class="text-[rgba(1,123,50,1)]">{{ props.item.subtitle }}</span>
+      <div>
         <Title
-          :title="$t('hero.title')"
-          :underLineWidth= "$i18n.locale === 'ar' ? 'width: 250px' : 'width: 180px'"
-          :description="$t('hero.description')"
-          titleWidth = 'font-size: 25px'
+          :title="titleText"
+          :underLineWidth="$i18n.locale === 'ar' ? 'width: 250px' : 'width: 180px'"
+          :description="descriptionText"
+          titleWidth="font-size: 25px"
         />
       </div>
     </div>

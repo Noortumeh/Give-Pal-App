@@ -3,7 +3,7 @@ import Title from "@/components/Title.vue";
 
 const props = defineProps({
   data: {
-    type: Array,
+    type: Object,
   }
 })
 
@@ -11,9 +11,9 @@ const props = defineProps({
 <template>
   <div class="text-start p-5 pt-5">
     <Title
-      :title="$t('titles.projects.title')"
+      :title="data.title"
       :underLineWidth="$i18n.locale === 'ar' ? 'width: 170px' : 'width: 220px'"
-      :description="$t('titles.projects.description')"
+      :description="data.description"
     />
   </div>
 
@@ -26,7 +26,8 @@ const props = defineProps({
     class="flex flex-wrap items-center justify-center gap-4 pt-12 pb-12"
   >
     <div
-      v-for="projects in data"
+      v-for="( projects, index) in data.children"
+      :key="projects.title"
       class="max-w-[323px] max-h-[544px] w-full shadow-2xl"
     >
       <div class="h-[204px] p-6">

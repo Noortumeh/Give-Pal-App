@@ -42,12 +42,17 @@ const footerData = computed(() => {
       </div>
       <div class="flex-col justify-center text-center md:hidden row-start-1">
         <ul class="mobile-content">
-          <li>{{ $t("footer-mobile.contact") }}</li>
-          <li>{{ $t("footer-mobile.quastion") }}</li>
-          <li>{{ $t("footer-mobile.who-are-we") }}</li>
-          <li>{{ $t("footer-mobile.events") }}</li>
-          <li>{{ $t("footer-mobile.comunity") }}</li>
-          <li>{{ $t("footer-mobile.new-releases") }}</li>
+          <li v-for="menu in footerData" :key="menu.id">
+            <h3 class="list-title">{{ menu.label }}</h3>
+            <ul>
+              <li
+                v-for="item in menu.children"
+                :key="item.id"
+              >
+                {{ item.label }}
+              </li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>

@@ -4,24 +4,25 @@ import { ref } from "vue";
 
 const props = defineProps({
   data: {
-    type: Array,
+    type: Object,
   },
 });
 
 const duplicatedLogos = ref([]);
-duplicatedLogos.value = [...props.data, ...props.data];
+duplicatedLogos.value = [...props.data.children, ...props.data.children];
+console.log(props.data);
 </script>
 
 <template>
   <div class="my-12 max-w-[1350px] mx-auto px-0">
     <div class="mr-5 p-5">
       <Title
-        :title="$t('titles.success-partners')"
+        :title="data.title"
         underLineWidth="width: 160px"
       />
     </div>
     <p v-if="!data" class="mt-5 text-center text-3xl">
-      لايوحد شركاء نجاح لعرضهم بعد!
+      {{ $t('no-data') }}
     </p>
     <div class="overflow-hidden w-full relative mx-auto select-none py-20">
       <div

@@ -52,17 +52,17 @@ watch(
 </script>
 
 <template>
-  <HeroSection />
+  <HeroSection v-if="hero" :data="hero" />
   <div class="max-w-[1350px] mx-auto px-0">
-    <ServicesSection v-if="services" :data="services.children" />
-    <ProjectsSection v-if="projects" :data="projects.children" />
+    <ServicesSection v-if="services" :data="services"/>
+    <ProjectsSection v-if="projects" :data="projects" />
   </div>
-  <SuccessStories v-if="successStories" :data="successStories.children" />
+  <SuccessStories v-if="successStories" :data="successStories" />
   <div class="max-w-[1350px] mx-auto px-0">
-    <StatisticsSection v-if="statistics" :data="statistics.children" />
-    <NewsSection v-if="news" :data="news.children" />
-    <MediaSection v-if="media" :data="media.children" />
-    <SuccessPartners v-if="successPartners" :data="successPartners.children" />
+    <StatisticsSection v-if="statistics" :data="statistics" />
+    <NewsSection v-if="news" :data="news" />
+    <MediaSection v-if="media" :data="media" />
+    <SuccessPartners v-if="successPartners" :data="successPartners" />
   </div>
   <FinallSection />
 </template>
