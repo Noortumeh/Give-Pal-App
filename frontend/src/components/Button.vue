@@ -7,7 +7,6 @@ const props = defineProps({
 });
 </script>
 
-<
 <template>
   <button
     id="bold-button"
@@ -16,6 +15,7 @@ const props = defineProps({
     {{ title }}
   </button>
 </template>
+
 <style>
 #bold-button {
   font-weight: bold;

@@ -1,5 +1,6 @@
 <script setup>
 import Title from "@/components/Title.vue";
+import { useI18n } from "vue-i18n";
 
 const props = defineProps({
   data: {
@@ -7,8 +8,10 @@ const props = defineProps({
   },
 });
 
+const { locale } = useI18n();
+
 const formatDate = (date) => {
-  return new Intl.DateTimeFormat("ar", {
+  return new Intl.DateTimeFormat(locale.value, {
     day: "numeric",
     month: "long",
     year: "numeric",
