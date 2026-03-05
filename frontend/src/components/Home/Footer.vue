@@ -14,6 +14,7 @@ const footerData = computed(() => {
   return props.data;
 });
 
+console.log(footerData);
 </script>
 <template>
   <div
@@ -34,22 +35,24 @@ const footerData = computed(() => {
         class="md:flex justify-around items-center w-full hidden"
       >
         <div v-for="menu in footerData" :key="menu.id">
-          <h3 class="list-title">{{ menu.label }}</h3>
+          <h3 class="list-title"><a :href="menu.url">{{ menu.label }}</a></h3>
           <ul>
-            <li v-for="item in menu.children" :key="item.id">{{ item.label }}</li>
+            <li v-for="item in menu.children" :key="item.id">
+               <a :href="item.url">{{ item.label }}</a>
+            </li>
           </ul>
         </div>
       </div>
       <div class="flex-col justify-center text-center md:hidden row-start-1">
         <ul class="mobile-content">
           <li v-for="menu in footerData" :key="menu.id">
-            <h3 class="list-title">{{ menu.label }}</h3>
+            <h3 class="list-title"><a :href="menu.url">{{ menu.label }}</a></h3>
             <ul>
               <li
                 v-for="item in menu.children"
                 :key="item.id"
               >
-                {{ item.label }}
+                <a :href="item.url">{{ item.label }}</a>
               </li>
             </ul>
           </li>

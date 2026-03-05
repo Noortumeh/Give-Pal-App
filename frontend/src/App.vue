@@ -37,10 +37,7 @@ const fetchLinksData = async () => {
 
 const upernav = computed(() => links.value?.find((c) => c.name === "upernav"));
 const navbar = computed(() => links.value?.find((c) => c.name === "navbar"));
-const footer = computed(() => {
-  if (!links.value) return null;
-  return links.value.find((c) => c.name === "footer");
-});
+const footer = computed(() => links.value?.find((c) => c.name === "footer"));
 
 watch(
   lang,
