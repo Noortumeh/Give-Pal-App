@@ -33,7 +33,7 @@ const props = defineProps({
             :description="data.description"
             id="p-black"
           />
-          <Button :title="$t('titles.success-stories.button')" />
+          <Button :title="$t('learn-more')" />
         </div>
       </div>
 
