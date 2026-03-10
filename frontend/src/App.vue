@@ -56,6 +56,6 @@ watch(
   <main>
     <RouterView />
   </main>
-  <Footer :data="footer?.items || []" />
+  <Footer :data="footer?.items || []" :socialmedia="socialmedia?.items || []" />
   <UnderFooterLine />
 </template>

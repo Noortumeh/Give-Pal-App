@@ -7,7 +7,15 @@ const props = defineProps({
     type: Array,
     required: true,
   },
+  socialmedia: {
+    type: Array,
+  },
 });
+
+const icons = computed(() => props.socialmedia.map((item) => ({
+  name: item.label,
+  href: item.url,
+})));
 
 const footerData = computed(() => {
   if (!props.data) return null;
@@ -100,7 +108,8 @@ console.log(footerData);
       <SocialMedia
         color="rgba(1,123,50,1)"
         spasificIconStyle="border border-[rgba(1,123,50,0.5)]"
-      />
+        :data="icons || []"
+      />  
     </div>
   </div>
 </template>
