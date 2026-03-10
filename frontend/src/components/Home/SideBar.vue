@@ -2,11 +2,22 @@
 import { MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 import SocialMedia from "./Sections/GeneralComponents/SocialMedia.vue";
 import { useLang } from "@/CustomHooks/useLang";
-import { ref, watchEffect } from "vue";
+import { computed, ref, watchEffect } from "vue";
 import Searchbar from "./Searchbar.vue";
 
 const { lang, setLang } = useLang();
 const openSearch = ref(false);
+
+const props = defineProps({
+  data: {
+    type: Array,
+  },
+});
+
+const icons = computed(() => props.data.map((item) => ({
+  name: item.label,
+  href: item.url,
+})));
 
 watchEffect(() => {
   console.log("lang changed from side bar:", lang.value);
@@ -21,7 +32,7 @@ const handleSearchOpen = () => {
 };
 </script>
 <template>
-  <div class="hidden md:block fixed left-0 top-28 z-2 flex-col gap-5 w-12 h-12]">
+  <div class="fixed left-0 top-28 z-2 flex-col gap-5 w-12 h-12]">
     <div class="bg-[rgba(1,123,50,1)] flex">
       <MagnifyingGlassIcon class="p-2 text-white cursor-pointer" @click="handleSearchOpen" />
       
@@ -42,6 +53,7 @@ const handleSearchOpen = () => {
         spasificStyle="flex-col gap-0 mt-2"
         spasificIconStyle="bg-white text-[19px]"
         color="black"
+        :data="icons || []"
       />
     </div>
   </div>

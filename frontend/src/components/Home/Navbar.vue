@@ -14,8 +14,6 @@ const navigation = computed(() => props.data.map((item) => ({
   href: item.url,
   current: false,
 })));
-
-
 </script>
 
 <template>

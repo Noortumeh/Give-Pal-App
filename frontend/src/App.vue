@@ -38,6 +38,7 @@ const fetchLinksData = async () => {
 const upernav = computed(() => links.value?.find((c) => c.name === "upernav"));
 const navbar = computed(() => links.value?.find((c) => c.name === "navbar"));
 const footer = computed(() => links.value?.find((c) => c.name === "footer"));
+const socialmedia = computed(() => links.value?.find((c) => c.name === "socialmedia"));
 
 watch(
   lang,
@@ -51,7 +52,7 @@ watch(
   <UperLine :data = "upernav?.items || []" />
   <Navbar :data="navbar?.items || []" />
   <MobileNavbar />
-  <SideBar />
+  <SideBar :data = "socialmedia?.items || []" />
   <main>
     <RouterView />
   </main>
