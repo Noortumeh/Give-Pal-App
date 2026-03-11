@@ -10,6 +10,7 @@ import StatisticsSection from "@/components/Home/Sections/StatisticsSection.vue"
 import SuccessPartners from "@/components/Home/Sections/SuccessPartners.vue";
 import SuccessStories from "@/components/Home/Sections/SuccessStories.vue";
 import { useLang } from "@/CustomHooks/useLang";
+import { useSearch } from "@/CustomHooks/useSearch";
 import useSection from "@/CustomHooks/useSection";
 import { ref, watch } from "vue";
 
@@ -42,19 +43,28 @@ const news = useSection(data, "news");
 const media = useSection(data, "media");
 const successPartners = useSection(data, "successPartners");
 
+const { searchResults } = useSearch();
+
 watch(
-  lang,
+  [lang, searchResults],
   () => {
-    fetchData();
+    console.log("Search results changed:", searchResults.value);
+    if (searchResults.value.length > 0) {
+      data.value = searchResults.value;
+    } else {
+      fetchData();
+    }
   },
   { immediate: true },
 );
+
+console.log(data.value);
 </script>
 
 <template>
   <HeroSection v-if="hero" :data="hero" />
   <div class="max-w-[1350px] mx-auto px-0">
-    <ServicesSection v-if="services" :data="services"/>
+    <ServicesSection v-if="services" :data="services" />
     <ProjectsSection v-if="projects" :data="projects" />
   </div>
   <SuccessStories v-if="successStories" :data="successStories" />
