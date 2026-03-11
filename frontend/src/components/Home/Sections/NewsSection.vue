@@ -35,7 +35,7 @@ const modules = [Navigation];
             :src="`${value.file_path}`"
           />
           <div
-            class="absolute place-self-end card-backgraound p-4 shadow-2xl h-[50%] w-[90%] -translate-x-8 translate-y-7 z-10"
+            class="absolute place-self-end card-backgraound p-4 shadow-2xl h-[50%] w-[90%] -translate-x-8 translate-y-7 z-2"
           >
             <div class="flex justify-between items-center mb-3">
               <div class="bg-[rgba(1,123,50,1)] p-1.5 px-7 text-white">
@@ -141,7 +141,6 @@ body {
 .swiper-slide {
   text-align: center;
   font-size: 18px;
-  /* background: #444; */
 
   /* Center slide text vertically */
   display: flex;
