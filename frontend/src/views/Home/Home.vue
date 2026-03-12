@@ -69,8 +69,8 @@ console.log(data.value);
   </div>
   <SuccessStories v-if="successStories" :data="successStories" />
   <div class="max-w-[1350px] mx-auto px-0">
-    <StatisticsSection v-if="statistics" :data="statistics" />
     <NewsSection v-if="news" :data="news" />
+    <StatisticsSection v-if="statistics" :data="statistics" />
     <MediaSection v-if="media" :data="media" />
     <SuccessPartners v-if="successPartners" :data="successPartners" />
   </div>
